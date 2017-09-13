@@ -1,0 +1,766 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Device Containers &mdash; Happi Deck 0.4.0+33.g52d9f5b documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Happi Deck 0.4.0+33.g52d9f5b documentation" href="index.html"/>
+        <link rel="next" title="Creating New Device Types" href="develop.html"/>
+        <link rel="prev" title="Client" href="client.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Happi Deck
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4.0+33.g52d9f5b
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="conventions.html">Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client.html">Client</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Device Containers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#device">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#containers">Containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gate-valve">Gate Valve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#slits">Slits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pim">PIM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ipm">IPM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#attenuator">Attenuator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stopper">Stopper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mirror">Mirror</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pulsepicker">PulsePicker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lodcm">LODCM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#movablestand">MovableStand</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="develop.html">Creating New Device Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">To-Do List</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Happi Deck</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Device Containers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/device.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="device-containers">
+<span id="device-label"></span><h1>Device Containers<a class="headerlink" href="#device-containers" title="Permalink to this headline">¶</a></h1>
+<p>In order to ensure that information is entered into the database in an
+organized fashion, the client will only accept classes that inherit from
+<a class="reference internal" href="#happi.Device" title="happi.Device"><code class="xref py py-class docutils literal"><span class="pre">Device</span></code></a>. Each device will have the key information represented as
+class attributes, available to be manipulated like any other regular property</p>
+<p>Editing the information for a container is a simple as:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">happi</span> <span class="kn">import</span> <span class="n">Device</span>
+
+<span class="gp">In [2]: </span><span class="n">device</span> <span class="o">=</span> <span class="n">Device</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_device&#39;</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">device</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;new_name&#39;</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="#happi.Device" title="happi.Device"><code class="xref py py-class docutils literal"><span class="pre">Device</span></code></a> class also supports extraneous data that may not have been
+captured when the original container was created. You can either enter this as
+a keyword, or enter it into the <a class="reference internal" href="#Device.extraneous" title="Device.extraneous"><code class="xref py py-attr docutils literal"><span class="pre">Device.extraneous</span></code></a> dictionary.</p>
+<p>While you are free to play around with the device attributes, when loading the
+object into the database you will need to make sure that all of the
+<a class="reference internal" href="#happi.Device.mandatory_info" title="happi.Device.mandatory_info"><code class="xref py py-attr docutils literal"><span class="pre">Device.mandatory_info</span></code></a> has been entered, otherwise the client
+will reject the device.</p>
+<div class="section" id="device">
+<h2>Device<a class="headerlink" href="#device" title="Permalink to this headline">¶</a></h2>
+<p>A generic device container is available for use that holds a few basic traits
+pertinent to all LCLS devices. Largely this is available to provide a common
+base that more specific devices will inherit from.</p>
+<dl class="class">
+<dt id="happi.Device">
+<em class="property">class </em><code class="descclassname">happi.</code><code class="descname">Device</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.Device" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Generic Device Container</p>
+<p>The class does not need to be intialized with any specific piece of
+information, but all of the attributes listed by <code class="xref py py-attr docutils literal"><span class="pre">Device.info_names</span></code>
+can be used to assign values to <a class="reference internal" href="develop.html#happi.device.EntryInfo" title="happi.device.EntryInfo"><code class="xref py py-class docutils literal"><span class="pre">EntryInfo</span></code></a> upon initialization.
+Pieces of information that are deemed mandatory by the class must be filled
+in before the device is loaded into the database. See
+<code class="xref py py-attr docutils literal"><span class="pre">Device.mandatory_info</span></code> to see which attributes are neccesary.</p>
+<p>Additional metadata can be given to the device in the form of keywords
+on initialization, this information is kept in the <a class="reference internal" href="#Device.extraneous" title="Device.extraneous"><code class="xref py py-attr docutils literal"><span class="pre">extraneous</span></code></a>
+attribute, and will be saved in to the database as long as it does not
+clash with an existing piece of metadata that the client uses to organize
+devices.</p>
+<dl class="attribute">
+<dt id="Device.entry_info">
+<code class="descname">entry_info</code><a class="headerlink" href="#Device.entry_info" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – A list of all the <a class="reference internal" href="develop.html#happi.device.EntryInfo" title="happi.device.EntryInfo"><code class="xref py py-class docutils literal"><span class="pre">EntryInfo</span></code></a> associated with the device</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Device.extraneous">
+<code class="descname">extraneous</code><a class="headerlink" href="#Device.extraneous" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – Storage for information supplied during initialization that does not
+correspond to a specific EntryInfo</p>
+</dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li>EntryError: – If a piece of information supplied at startup is of the incorrect type</li>
+<li>ContainerError: – If one of the pieces of <a class="reference internal" href="develop.html#happi.device.EntryInfo" title="happi.device.EntryInfo"><code class="xref py py-class docutils literal"><span class="pre">EntryInfo</span></code></a> has a default value of the
+incorrect type</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Example</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">Device</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;my_device&#39;</span><span class="p">,</span>      <span class="c1">#Alias name for device</span>
+           <span class="n">prefix</span>  <span class="o">=</span> <span class="s1">&#39;CXI:DG2:DEV:01&#39;</span><span class="p">,</span> <span class="c1">#Base PV for device</span>
+           <span class="n">note</span>  <span class="o">=</span> <span class="s1">&#39;Example&#39;</span><span class="p">,</span>        <span class="c1">#Piece of arbitrary metadata</span>
+          <span class="p">)</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="happi.Device.active">
+<code class="descname">active</code><a class="headerlink" href="#happi.Device.active" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the device is actively deployed</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="happi.Device.beamline">
+<code class="descname">beamline</code><a class="headerlink" href="#happi.Device.beamline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Section of beamline the device belongs</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="happi.Device.embedded_screen">
+<code class="descname">embedded_screen</code><a class="headerlink" href="#happi.Device.embedded_screen" title="Permalink to this definition">¶</a></dt>
+<dd><p>The absolute path to an embeddable screen</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="happi.Device.info_names">
+<code class="descname">info_names</code><a class="headerlink" href="#happi.Device.info_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Names of all <a class="reference internal" href="develop.html#happi.device.EntryInfo" title="happi.device.EntryInfo"><code class="xref py py-class docutils literal"><span class="pre">EntryInfo</span></code></a> for the device</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="happi.Device.macros">
+<code class="descname">macros</code><a class="headerlink" href="#happi.Device.macros" title="Permalink to this definition">¶</a></dt>
+<dd><p>The EDM macro string asscociated with the with the device. By using a jinja2 template, this can reference other EntryInfo keywords.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="happi.Device.main_screen">
+<code class="descname">main_screen</code><a class="headerlink" href="#happi.Device.main_screen" title="Permalink to this definition">¶</a></dt>
+<dd><p>The absolute path to the main control screen</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="happi.Device.mandatory_info">
+<code class="descname">mandatory_info</code><a class="headerlink" href="#happi.Device.mandatory_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mandatory information for the device to be initialized</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="happi.Device.name">
+<code class="descname">name</code><a class="headerlink" href="#happi.Device.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shorthand name for the device</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="happi.Device.parent">
+<code class="descname">parent</code><a class="headerlink" href="#happi.Device.parent" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the device is a component of another, enter the name</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="happi.Device.post">
+<code class="descname">post</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#happi.Device.post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a document to be loaded into the MongoDB</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>post</strong> – Dictionary of all contained information</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="happi.Device.prefix">
+<code class="descname">prefix</code><a class="headerlink" href="#happi.Device.prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>A base PV for all related records</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="happi.Device.save">
+<code class="descname">save</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#happi.Device.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overwritten when the device is loaded from the client</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="happi.Device.show_info">
+<code class="descname">show_info</code><span class="sig-paren">(</span><em>handle=&lt;_io.TextIOWrapper name='&lt;stdout&gt;' mode='w' encoding='UTF-8'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.Device.show_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show the device information in a PrettyTable</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>handle</strong> (<em>file-like</em><em>, </em><em>optional</em>) – Option to write to a file-like object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="happi.Device.stand">
+<code class="descname">stand</code><a class="headerlink" href="#happi.Device.stand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Acronym for stand, must be three alphanumeric characters</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="happi.Device.system">
+<code class="descname">system</code><a class="headerlink" href="#happi.Device.system" title="Permalink to this definition">¶</a></dt>
+<dd><p>The system the device is involved with, i.e Vacuum, Timing e.t.c</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="happi.Device.z">
+<code class="descname">z</code><a class="headerlink" href="#happi.Device.z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Beamline position of the device</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="containers">
+<h2>Containers<a class="headerlink" href="#containers" title="Permalink to this headline">¶</a></h2>
+<p>Each of the containers below share the attributes and entries of the generic
+Device container. This section documents the entries when they either do not
+exist in the generic device or require further clarification on a case-by-case
+basis.</p>
+<div class="section" id="gate-valve">
+<h3>Gate Valve<a class="headerlink" href="#gate-valve" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="happi.containers.GateValve">
+<em class="property">class </em><code class="descclassname">happi.containers.</code><code class="descname">GateValve</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.containers.GateValve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard MPS isolation valves. Generally, these close when there is a
+problem and beam is not allowed. Devices made with this class will be set
+as part of the vacuum system. These devices have mps and veto attributes in
+addition to the standard entries.</p>
+<dl class="attribute">
+<dt id="GateValve.prefix">
+<code class="descname">prefix</code><a class="headerlink" href="#GateValve.prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The prefix pv should be the record one level below the state and control
+PVs. For example, if the open command pv is “HXX:MXT:VGC:01:OPN_SW”,
+the base pv is “HXX:MXT:VGC:01”. A regex will be used to check that
+“VGC” is found in the base PV.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="GateValve.mps">
+<code class="descname">mps</code><a class="headerlink" href="#GateValve.mps" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The mps pv should be the prefix before the OPN_DI_MPSC segment. For
+example, if the open PV is “HXX:MXT:VGC_01:OPN_DI_MPSC”, the base PV
+would be “HXX:MXT:VGC_01”.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="GateValve.veto">
+<code class="descname">veto</code><a class="headerlink" href="#GateValve.veto" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>bool</em> – Set this to True if the gate valve is a veto device.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="slits">
+<h3>Slits<a class="headerlink" href="#slits" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="happi.containers.Slits">
+<em class="property">class </em><code class="descclassname">happi.containers.</code><code class="descname">Slits</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.containers.Slits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mechanical devices to control beam profile. This class refers specifically
+to slits that use the JAWS record. These devices will be assigned the beam
+control system by default.</p>
+<dl class="attribute">
+<dt id="Slits.prefix">
+<code class="descname">prefix</code><a class="headerlink" href="#Slits.prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The prefix PV should be the JAWS record one level below the center and
+width PVs. Note that this is NOT the motor record. For example, if the
+x center PV is “XCS:SB2:DS:JAWS:ACTUAL_XCENTER”, then the base PV
+should be “XCS:SB2:DS:JAWS”. A regex will be used to check that “JAWS”
+is found in the base PV.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="pim">
+<h3>PIM<a class="headerlink" href="#pim" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="happi.containers.PIM">
+<em class="property">class </em><code class="descclassname">happi.containers.</code><code class="descname">PIM</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.containers.PIM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Beam profile monitors. All of these are cameras pointing at YAG screens.
+These devices have a data attribute in addition to the standard entries to
+link up the device with its camera output. These devices will be assigned
+the diagnostic system by default.</p>
+<dl class="attribute">
+<dt id="PIM.prefix">
+<code class="descname">prefix</code><a class="headerlink" href="#PIM.prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The base PV should be the motor states PV that shows whether the
+monitor is out, in at yag, or in at diode. Note that this is NOT the
+motor record. For example, if the command PV to pull the PIM out is
+“XPP:SB3:PIM:OUT:GO”, then the base PV is “XPP:SB3:PIM”. A regex will
+be used to check that “PIM” is found in the base PV.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PIM.data">
+<code class="descname">data</code><a class="headerlink" href="#PIM.data" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The data PV should be the AreaDetector base. For example, if the image
+data is broadcast on “XCS:SB1:P6740:IMAGE1:ArrayData”, the data base
+should be “XCS:SB1:P6740”.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ipm">
+<h3>IPM<a class="headerlink" href="#ipm" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="happi.containers.IPM">
+<em class="property">class </em><code class="descclassname">happi.containers.</code><code class="descname">IPM</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.containers.IPM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Beam intensity monitors. These are often used as a sanity check for beam
+presence, though they can also be used to track shot to shot intensity and
+estimate beam position. These devices have a data attribute in addition to
+the standard entries to link the device with its scalar output. These
+devices will be assigned the diagnostic system by default.</p>
+<dl class="attribute">
+<dt id="IPM.prefix">
+<code class="descname">prefix</code><a class="headerlink" href="#IPM.prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The base PV should be the prefix one level up from the diode and target
+state PVs. Note that this is NOT the motor record, it is neither the
+diode nor the target state PV, and it may not even be a valid PV name.
+For example, if the command PV to set the target position to a state is
+“XPP:SB3:IPM:TARGET:GO” and the command PV to move the diode to a state
+is “XPP:SB3:IPM:DIODE:GO”, then the base PV is the shared prefix
+“XPP:SB3:IPM”. A regex will be used to check that “IPM” is found in the
+base PV.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="IPM.data">
+<code class="descname">data</code><a class="headerlink" href="#IPM.data" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The data PV should be the IPM PV that most reliably predicts beam
+prescence. This will, in general, be the sum of the channels.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="IPM.z">
+<code class="descname">z</code><a class="headerlink" href="#IPM.z" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – If the diode and target have subtly different recorded z-positions, use
+the diode position for the purposes of this database.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="attenuator">
+<h3>Attenuator<a class="headerlink" href="#attenuator" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="happi.containers.Attenuator">
+<em class="property">class </em><code class="descclassname">happi.containers.</code><code class="descname">Attenuator</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.containers.Attenuator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Beam attenuators, used to get a lower intensity beam downstream to protect
+the sample or to protect hardware components. These devices will be
+assigned the beam control system by default.</p>
+<dl class="attribute">
+<dt id="Attenuator.prefix">
+<code class="descname">prefix</code><a class="headerlink" href="#Attenuator.prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – For attunators, the base PV should be the base record from the
+attentuation calculation and control IOC, one level up from the
+calculated tranmission ratio. For example, if the transmission PV is
+“XPP:ATT:COM:R_CUR”, the base PV is “XPP:ATT:COM”. A regex will be used
+to check that “ATT” is found in the base PV.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="stopper">
+<h3>Stopper<a class="headerlink" href="#stopper" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="happi.containers.Stopper">
+<em class="property">class </em><code class="descclassname">happi.containers.</code><code class="descname">Stopper</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.containers.Stopper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Large devices that prevent beam when it could cause damage to hardware. In
+addition to the standard attributes, this has entries for mps pv and veto
+boolean. The veto boolean will be True by default and does not need to be
+set for each stopper. Stoppers will have their system set to mps by
+default.</p>
+<dl class="attribute">
+<dt id="Stopper.prefix">
+<code class="descname">prefix</code><a class="headerlink" href="#Stopper.prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The base PV should be the combined mps status PV e.g.
+“STPR:XRT1:1:S5IN_MPS”.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Stopper.mps">
+<code class="descname">mps</code><a class="headerlink" href="#Stopper.mps" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The mps PV should be the prefix for the lower mps logic PVs e.g.
+“HFX:UM6:STP_01”.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="mirror">
+<h3>Mirror<a class="headerlink" href="#mirror" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="happi.containers.OffsetMirror">
+<em class="property">class </em><code class="descclassname">happi.containers.</code><code class="descname">OffsetMirror</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.containers.OffsetMirror" title="Permalink to this definition">¶</a></dt>
+<dd><p>A device that steers beam in the x direction by changing a pitch motor.
+These are used for beam delivery and alignment. These have additional
+entires for destinations and in/out state. Mirrors will have their system
+set to beam control by default.</p>
+<dl class="attribute">
+<dt id="OffsetMirror.prefix">
+<code class="descname">prefix</code><a class="headerlink" href="#OffsetMirror.prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The base PV should be a states PV that tells us which destination the
+mirror is pointing to. These states will be fairly rough and should not
+be relied on for alignment purposes, except for a guarantee that if a
+state is not active, then the beam is definitely not pointing to that
+state.
+If the mirror is purely for alignment and not for steering, or it
+doesn’t make sense for the pitch to have states, this can be the pitch
+control motor record base instead.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OffsetMirror.states">
+<code class="descname">states</code><a class="headerlink" href="#OffsetMirror.states" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – A basic in/out states pv that tells us whether the mirror is in the
+beam or not.
+If the states pv doesn’t exist yet, this can be the x control motor
+record base instead.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OffsetMirror.destinations">
+<code class="descname">destinations</code><a class="headerlink" href="#OffsetMirror.destinations" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – A mapping that matches the base pv’s outputs with destinations. The
+keys should be enum states or indexes and the values should be beamline
+names. See <a class="reference internal" href="conventions.html#conventions"><span class="std std-ref">Conventions</span></a> for an explanation of beamline names.
+If the mirror is purely for alignment and not for steering, this can be
+an empty dict.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="pulsepicker">
+<h3>PulsePicker<a class="headerlink" href="#pulsepicker" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="happi.containers.PulsePicker">
+<em class="property">class </em><code class="descclassname">happi.containers.</code><code class="descname">PulsePicker</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.containers.PulsePicker" title="Permalink to this definition">¶</a></dt>
+<dd><p>A device that syncs with the timing system to control when beam arrives in
+the hutch. These have an additional states entry to define their in/out
+states pv. Pulse pickers will be assigned the beam control system by
+default.</p>
+<dl class="attribute">
+<dt id="PulsePicker.prefix">
+<code class="descname">prefix</code><a class="headerlink" href="#PulsePicker.prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The base PV should be the motor record base that the pulsepicker IOC
+is built on top of e.g. “XCS:SB2:MMS:09”.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PulsePicker.states">
+<code class="descname">states</code><a class="headerlink" href="#PulsePicker.states" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The additional state should be the states PV associated with the
+pulsepicker in/out. An example of one such PV is “XCS:SB2:PP:Y”.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="lodcm">
+<h3>LODCM<a class="headerlink" href="#lodcm" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="happi.containers.LODCM">
+<em class="property">class </em><code class="descclassname">happi.containers.</code><code class="descname">LODCM</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.containers.LODCM" title="Permalink to this definition">¶</a></dt>
+<dd><p>This LODCM class doesn’t refer to the full LODCM, but rather one of the two
+crystals. This makes 4 LODCM objects in total, 2 for each LODCM. These have
+an additional states entry to define a list of all the miscellaneous states
+pvs associated with the LODCMs. LODCMs will be assigned the beam control
+system by default.</p>
+<p>We’re simplifying here, assuming the LODCM is aligned and that the states
+are accurate. We’ll probably only look at the H1N state for lightpath
+purposes, but it’s good to collect all the available information.</p>
+<dl class="attribute">
+<dt id="LODCM.prefix">
+<code class="descname">prefix</code><a class="headerlink" href="#LODCM.prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The base PV should be the state PV associated with the h1n or h2n
+state, depending on which crystal we’re referring to e.g.
+“XPP:LODCM:H1N”.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="LODCM.states">
+<code class="descname">states</code><a class="headerlink" href="#LODCM.states" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – The additional states should be all other available states PVs relating
+to that crystal, or an empty list if no such PVs exist.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="movablestand">
+<h3>MovableStand<a class="headerlink" href="#movablestand" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="happi.containers.MovableStand">
+<em class="property">class </em><code class="descclassname">happi.containers.</code><code class="descname">MovableStand</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.containers.MovableStand" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class stores information about stands that move, like XPP’s hand-crank
+that moves SB2 and SB3 from the PINK to XPP lines and back. There is no
+need to instantiate one of these for static stands.</p>
+<dl class="attribute">
+<dt id="MovableStand.prefix">
+<code class="descname">prefix</code><a class="headerlink" href="#MovableStand.prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – If there is a single PV with the stand’s location, this should be the
+base PV. In general, these devices will actually have multiple PVs
+with binary outputs that have yes/no on the stand being in each
+position. In these cases we pick the common prefix of these PVs.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="MovableStand.beamline">
+<code class="descname">beamline</code><a class="headerlink" href="#MovableStand.beamline" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – If the base PV is a real PV with an unambiguous location state, this
+should be a mapping from that PV’s values to which beamline the stand
+is on. If the base PV is the common prefix of two PVs, this should be a
+mapping from strings like “pv_suffix=high” to the beamline the stand is
+on. This lets us capture the state when the stand hasn’t been moved
+all the way to a hard stop, which can cause problems.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="MovableStand.stand">
+<code class="descname">stand</code><a class="headerlink" href="#MovableStand.stand" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – List of stands affected by table movement.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="develop.html" class="btn btn-neutral float-right" title="Creating New Device Types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="client.html" class="btn btn-neutral" title="Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, SLAC National Accelerator Laboratory.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.4.0+33.g52d9f5b',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
