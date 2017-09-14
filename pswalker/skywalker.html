@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Iterwalk &mdash; Skywalker 0+untagged.313.gd0c6831 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Skywalker 0+untagged.313.gd0c6831 documentation" href="index.html"/>
+        <link rel="next" title="Slit Fiducialization" href="slits.html"/>
+        <link rel="prev" title="PSWALKER" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Skywalker
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0+untagged.313.gd0c6831
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">High Level Routines</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Iterwalk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slits.html">Slit Fiducialization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Extensible Plans and Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plans.html">Plans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="callbacks.html">Fits and Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_stubs.html">Extensible Plans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_tools.html">Plan Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Skywalker</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Iterwalk</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/skywalker.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="iterwalk">
+<h1>Iterwalk<a class="headerlink" href="#iterwalk" title="Permalink to this headline">¶</a></h1>
+<p>The main workhorse of the Skywalker routine is <code class="xref py py-func docutils literal"><span class="pre">pswalker.iterwalk()</span></code>. This
+handles iteratively aligning a two mirror system on two imagers until the final
+solution is converged upon.</p>
+<dl class="function">
+<dt id="pswalker.iterwalk.iterwalk">
+<code class="descclassname">pswalker.iterwalk.</code><code class="descname">iterwalk</code><span class="sig-paren">(</span><em>detectors</em>, <em>motors</em>, <em>goals</em>, <em>starts=None</em>, <em>first_steps=1</em>, <em>gradients=None</em>, <em>detector_fields='centroid_x'</em>, <em>motor_fields='alpha'</em>, <em>tolerances=20</em>, <em>system=None</em>, <em>averages=1</em>, <em>overshoot=0</em>, <em>max_walks=None</em>, <em>timeout=None</em>, <em>recovery_plan=None</em>, <em>filters=None</em>, <em>tol_scaling=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pswalker.iterwalk.iterwalk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iteratively adjust a system of detectors and motors where each motor
+primarily affects the reading of a single detector but also affects the
+other axes parasitically.</p>
+<p>This is a Bluesky plan, but it does not have start run or end run
+decorators so it can be included inside of other plans. It yields a
+checkpoint message before adjusting the detector positions and before
+executing a walk substep.</p>
+<p>All list arguments that expect one entry per detector must be the same
+length as the detectors list. If any optional list arguments are provided
+as single values instead of as iterables, iterwalk will interpret it as
+“use this value for every detector”.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>detectors</strong> (<em>list of objects</em>) – These are your axes of motion, which must implement both the Bluesky
+reader interface and the setter interface. The set method must accept
+the “IN” and “OUT” arguments to move the device in and out. It is
+assumed that detectors earlier in the list block detectors later in the
+list.</li>
+<li><strong>motors</strong> (<em>list of objects</em>) – These are your axes of motion, which must implement both the Bluesky
+reader interface and the setter interface.</li>
+<li><strong>goals</strong> (<em>list of numbers</em>) – These are the scalar readbacks expected from the detectors at the
+desired positions.</li>
+<li><strong>starts</strong> (<em>list of numbers</em><em>, </em><em>optional</em>) – If provided, these are the nominal positions to move the motors to
+before starting to align.</li>
+<li><strong>first_steps</strong> (<em>list of numbers</em><em>, </em><em>optional.</em>) – This is how far the motors will be moved in an initial probe step as we
+gauge the detector’s response. This argument is ignored if
+<code class="docutils literal"><span class="pre">gradients</span></code> is provided.</li>
+<li><strong>gradients</strong> (<em>list of numbers</em><em>, </em><em>optional</em>) – If provided, this is a guess at the ratio between motor move and change
+in detector readback. This will be used to make a very good first guess
+at the first step towards the goal pixel. This should be in units of
+detector/motor</li>
+<li><strong>detector_fields</strong> (<em>list of strings</em><em>, </em><em>optional</em>) – For each detector, this is the field we’re walking to.</li>
+<li><strong>motor_fields</strong> (<em>list of strings</em><em>, </em><em>optional</em>) – For each motor, this is the field we’re using along with the
+detector_field to build our linear regression. This should be the
+readback with nominally the same value as the position field.</li>
+<li><strong>tolerances</strong> (<em>list of numbers</em><em>, </em><em>optional</em>) – If our detector readbacks are within these tolerances of the goal
+positions, we’ll treat the goal as reached.</li>
+<li><strong>system</strong> (<em>list of readable objects</em><em>, </em><em>optional</em>) – Other system parameters that we would like to read during the walk.</li>
+<li><strong>averages</strong> (<em>list of numbers</em><em>, </em><em>optional</em>) – For each detector, this is the number of shots to average before
+settling on a reading.</li>
+<li><strong>overshoot</strong> (<em>number</em><em>, </em><em>optional</em>) – The percent to overshoot at each goal step. For these parasitic
+systems, over or undershooting can allow convergence to occur faster.
+An overshoot of 0 is no overshoot, an overshoot of 0.1 is a 10%
+overshoot, an overshoot of -0.2 is a 20% undershoot, etc.</li>
+<li><strong>max_walks</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of sets of walks to try before giving up on the alignment.
+E.g. if max_walks is 3, we’ll move each motor/detector pair 3 times in
+series before giving up.</li>
+<li><strong>timeout</strong> (<em>number</em><em>, </em><em>optional</em>) – The maximum time to allow for the alignment before aborting. The
+timeout is checked after each walk step.</li>
+<li><strong>recovery_plan</strong> (<em>plan</em><em>, </em><em>optional</em>) – A backup plan to run when no there is no readback on the detectors.
+This plan should expect a complete description of the situation in the
+form of all arguments given to iterwalk, except for recovery_plan. Note
+that these arguments are listified before being passed to
+recovery_plan. It will also be passed <code class="docutils literal"><span class="pre">index</span></code>, which is the index in
+all of the list arguments that is currently active.
+Also note that there is no requirement to use all of the provided
+arguments. A good practice is to have recovery_plan accept and ignore
+kwargs while explicitly including desired keywords to use.</li>
+<li><strong>filters</strong> (<em>list of dictionaries</em>) – Each entry in this list should be a valid input to the filters argument
+in the lower functions, such as walk_to_pixel and measure_average.</li>
+<li><strong>tol_scaling</strong> (<em>list of floats</em><em> or </em><em>Nones</em><em>, </em><em>optional</em>) – Constants for adaptive tolerances. Nones or omitting this argument
+reverts to fixed tolerance. For early walks with a starting point far
+from the goal, tolerance for the walk is set at
+current_dist/tol_scaling instead of the set tolerance. Scaling ends
+when calculated tolerance &lt; targeted tolerance.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>In practice, we wrap this function to automatically configure a number of the
+parameters, as well as handle setup of other utilities such as plotting and
+suspension</p>
+<dl class="function">
+<dt id="pswalker.skywalker.skywalker">
+<code class="descclassname">pswalker.skywalker.</code><code class="descname">skywalker</code><span class="sig-paren">(</span><em>detectors</em>, <em>motors</em>, <em>det_fields</em>, <em>mot_fields</em>, <em>goals</em>, <em>first_steps=1</em>, <em>gradients=None</em>, <em>tolerances=20</em>, <em>averages=20</em>, <em>timeout=600</em>, <em>sim=False</em>, <em>use_filters=True</em>, <em>md=None</em>, <em>tol_scaling=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pswalker.skywalker.skywalker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterwalk as a base, with arguments for branching</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="slits.html" class="btn btn-neutral float-right" title="Slit Fiducialization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="PSWALKER" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, SLAC National Accelerator Laboratory.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0+untagged.313.gd0c6831',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Plans &mdash; Skywalker 0+untagged.313.gd0c6831 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Skywalker 0+untagged.313.gd0c6831 documentation" href="index.html"/>
+        <link rel="next" title="Fits and Plots" href="callbacks.html"/>
+        <link rel="prev" title="Slit Fiducialization" href="slits.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Skywalker
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0+untagged.313.gd0c6831
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">High Level Routines</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="skywalker.html">Iterwalk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slits.html">Slit Fiducialization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Extensible Plans and Tools</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Plans</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#stub-plans">Stub Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#full-plans">Full Plans</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="callbacks.html">Fits and Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_stubs.html">Extensible Plans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_tools.html">Plan Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Skywalker</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Plans</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/plans.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="plans">
+<h1>Plans<a class="headerlink" href="#plans" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="stub-plans">
+<h2>Stub Plans<a class="headerlink" href="#stub-plans" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pswalker.plans.measure_centroid">
+<code class="descclassname">pswalker.plans.</code><code class="descname">measure_centroid</code><span class="sig-paren">(</span><em>det</em>, <em>target_field='centroid_x'</em>, <em>average=1</em>, <em>delay=None</em>, <em>filters=None</em>, <em>drop_missing=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pswalker.plans.measure_centroid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Measure the centroid of the beam over one or more images</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>det</strong> (<code class="xref py py-class docutils literal"><span class="pre">BeamDetector</span></code>) – <cite>readable</cite> object</li>
+<li><strong>target_field</strong> (<em>str</em>) – Name of attribute associated with centroid position</li>
+<li><strong>average</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of shots to average centroid position over</li>
+<li><strong>delay</strong> (<em>float</em><em>, </em><em>optional</em>) – Time to wait inbetween images</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="full-plans">
+<h2>Full Plans<a class="headerlink" href="#full-plans" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pswalker.plans.walk_to_pixel">
+<code class="descclassname">pswalker.plans.</code><code class="descname">walk_to_pixel</code><span class="sig-paren">(</span><em>detector, motor, target, filters=None, start=None, gradient=None, models=[], target_fields=['centroid_x', 'alpha'], first_step=1.0, tolerance=20, system=None, average=1, delay=None, max_steps=None, drop_missing=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pswalker.plans.walk_to_pixel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Step a motor until a specific threshold is reached on the detector</p>
+<p>This function assumes a linear relationship between the position of the
+given motor and the position on the YAG. While at the onset of the plan, we
+don’t know anything about the physical setup of the system, we can track
+the steps as they happen and use our prior attempts to inform future ones.</p>
+<p>The first step of the plan makes a move out into the unknown parameter
+space of the model. Using the two data points of the initial centroid and
+the result of our first step we can form a coarse model by simply drawing a
+line through each point. A new step is calculated based on this rudimentary
+model, and the centroid is measured again now at a third point. As we
+gather more data points on successive attempts at alignment our linear fit
+improves. The iteration stops when the algorithm has centered the beam
+within the specified tolerance.</p>
+<p>There are ways to seed the walk with the known information to make the
+first step the algorithm takes more fruitful. The most naive is to give it
+a logical first step size that will keep the object you are trying to
+center within the image. However, in some cases we may know enough to have
+a reasonable first guess at the relationship between pitch and centroid. In
+this case the algorithm accepts the <code class="docutils literal"><span class="pre">gradient</span></code> parameter that is then
+used to calculate the optimal first step.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>detector</strong> (<code class="xref py py-class docutils literal"><span class="pre">BeamDetector</span></code>) – YAG to make measure beam centroid</li>
+<li><strong>motor</strong> (<code class="xref py py-class docutils literal"><span class="pre">FlatMirror</span></code>) – Mirror to adjust pitch mechanism</li>
+<li><strong>target</strong> (<em>int</em>) – Target pixel for beam centroid</li>
+<li><strong>start</strong> (<em>float</em>) – Starting position for pitch mechanism</li>
+<li><strong>first_step</strong> (<em>float</em><em>, </em><em>optional</em>) – Initial step to attempt</li>
+<li><strong>gradient</strong> (<em>float</em><em>, </em><em>optional</em>) – Assume an initial gradient for the relationship between pitch and beam
+center</li>
+<li><strong>target_fields</strong> (<em>iterable</em><em>, </em><em>optional</em>) – (detector, motor) fields to average and calculate line of best fit</li>
+<li><strong>models</strong> (<em>list</em><em>, </em><em>optional</em>) – Additional models to include in the <a class="reference internal" href="plan_stubs.html#pswalker.plans.fitwalk" title="pswalker.plans.fitwalk"><code class="xref py py-func docutils literal"><span class="pre">fitwalk()</span></code></a></li>
+<li><strong>system</strong> (<em>list</em><em>, </em><em>optional</em>) – Extra detectors to include in the datastream as we measure the average</li>
+<li><strong>tolerance</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of pixels the final centroid position is allowed to differ from
+the target</li>
+<li><strong>average</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of images to average together for each step along the scan</li>
+<li><strong>max_steps</strong> (<em>int</em><em>, </em><em>optional</em>) – Limit the number of steps the walk will take before exiting</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="callbacks.html" class="btn btn-neutral float-right" title="Fits and Plots" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="slits.html" class="btn btn-neutral" title="Slit Fiducialization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, SLAC National Accelerator Laboratory.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0+untagged.313.gd0c6831',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

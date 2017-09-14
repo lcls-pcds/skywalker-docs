@@ -1,0 +1,445 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Fits and Plots &mdash; Skywalker 0+untagged.313.gd0c6831 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Skywalker 0+untagged.313.gd0c6831 documentation" href="index.html"/>
+        <link rel="next" title="Extensible Plans" href="plan_stubs.html"/>
+        <link rel="prev" title="Plans" href="plans.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Skywalker
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0+untagged.313.gd0c6831
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">High Level Routines</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="skywalker.html">Iterwalk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slits.html">Slit Fiducialization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Extensible Plans and Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="plans.html">Plans</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Fits and Plots</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#livebuild">LiveBuild</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plots">Plots</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plan_stubs.html">Extensible Plans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plan_tools.html">Plan Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Skywalker</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Fits and Plots</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/callbacks.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fits-and-plots">
+<h1>Fits and Plots<a class="headerlink" href="#fits-and-plots" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal"><span class="pre">pswalker</span></code> uses callbacks to monitor live data, create fits and pipe this
+back into scanning logic in order to reach desired positions. These all build
+off of <a class="reference internal" href="#pswalker.callbacks.LiveBuild" title="pswalker.callbacks.LiveBuild"><code class="xref py py-class docutils literal"><span class="pre">LiveBuild</span></code></a> in order to be used with the <a class="reference internal" href="plan_stubs.html#pswalker.plans.fitwalk" title="pswalker.plans.fitwalk"><code class="xref py py-func docutils literal"><span class="pre">fitwalk()</span></code></a>. The
+most prominent example of this in the repository is <a class="reference internal" href="plans.html#pswalker.plans.walk_to_pixel" title="pswalker.plans.walk_to_pixel"><code class="xref py py-func docutils literal"><span class="pre">walk_to_pixel()</span></code></a></p>
+<div class="section" id="livebuild">
+<h2>LiveBuild<a class="headerlink" href="#livebuild" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pswalker.callbacks.LiveBuild">
+<em class="property">class </em><code class="descclassname">pswalker.callbacks.</code><code class="descname">LiveBuild</code><span class="sig-paren">(</span><em>model</em>, <em>y</em>, <em>independent_vars</em>, <em>init_guess=None</em>, <em>update_every=1</em>, <em>filters=None</em>, <em>drop_missing=True</em>, <em>average=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pswalker.callbacks.LiveBuild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">bluesky.callbacks.core.LiveFit</span></code></p>
+<p>Base class for live model building in Skywalker</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>model</strong> (<em>lmfit.Model</em>) – </li>
+<li><strong>y</strong> (<em>string</em>) – Key of dependent variable</li>
+<li><strong>indpendent_vars</strong> (<em>dict</em>) – Map independent variables names to keys in the event document stream</li>
+<li><strong>init_guess</strong> (<em>dict</em><em>, </em><em>optional</em>) – Initial guesses for other values if expected</li>
+<li><strong>update_every</strong> (<em>int</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – Update rate of the model. If set to None, the model will only be
+computed at the end of the run. By default, this is set to 1 i.e
+update on every new event</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pswalker.callbacks.LiveBuild.backsolve">
+<code class="descname">backsolve</code><span class="sig-paren">(</span><em>target</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pswalker.callbacks.LiveBuild.backsolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use the most recent fit to find the independent variables that create
+the requested dependent variable</p>
+<p>..note:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">For</span> <span class="n">multivariable</span> <span class="n">functions</span> <span class="n">the</span> <span class="n">user</span> <span class="n">may</span> <span class="n">have</span> <span class="n">to</span> <span class="n">specify</span> <span class="n">which</span>
+<span class="n">variable</span> <span class="n">to</span> <span class="n">solve</span> <span class="k">for</span><span class="p">,</span> <span class="ow">and</span> <span class="n">which</span> <span class="n">to</span> <span class="n">keep</span> <span class="n">fixed</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pswalker.callbacks.LiveBuild.eval">
+<code class="descname">eval</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pswalker.callbacks.LiveBuild.eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimate a point based on the current fit of the model.
+Reimplemented by subclasses</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pswalker.callbacks.LiveBuild.field_names">
+<code class="descname">field_names</code><a class="headerlink" href="#pswalker.callbacks.LiveBuild.field_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of all the keys associated with the fit</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pswalker.callbacks.LiveBuild.install_filters">
+<code class="descname">install_filters</code><span class="sig-paren">(</span><em>filters</em><span class="sig-paren">)</span><a class="headerlink" href="#pswalker.callbacks.LiveBuild.install_filters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Install additional filters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filters</strong> (<em>dict</em>) – Filters are provided in a dictionary of key / callable pairs that
+take a single input from the data stream and return a boolean
+value.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pswalker.callbacks.LiveBuild.name">
+<code class="descname">name</code><a class="headerlink" href="#pswalker.callbacks.LiveBuild.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the model</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pswalker.callbacks.LinearFit">
+<em class="property">class </em><code class="descclassname">pswalker.callbacks.</code><code class="descname">LinearFit</code><span class="sig-paren">(</span><em>y</em>, <em>x</em>, <em>init_guess=None</em>, <em>update_every=1</em>, <em>name=None</em>, <em>average=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pswalker.callbacks.LinearFit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pswalker.callbacks.LiveBuild" title="pswalker.callbacks.LiveBuild"><code class="xref py py-class docutils literal"><span class="pre">pswalker.callbacks.LiveBuild</span></code></a></p>
+<p>Model to fit a linear relationship between a single variable axis and a
+depended variable</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>y</strong> (<em>str</em>) – Keyword in the event document that reports the dependent variable</li>
+<li><strong>x</strong> (<em>str</em>) – Keyword in the event document that reports the independent variable</li>
+<li><strong>init_guess</strong> (<em>dict</em><em>, </em><em>optional</em>) – Initialization guess for the linear fit, available keys are <code class="docutils literal"><span class="pre">slope</span></code>
+and <code class="docutils literal"><span class="pre">intercept</span></code></li>
+<li><strong>name</strong> (<em>optional</em><em> , </em><em>str</em>) – Name for the contained model. When None (default) the name is the same
+as the model function</li>
+<li><strong>update_every</strong> (<em>int</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – Update rate of the model. If set to None, the model will only be
+computed at the end of the run. By default, this is set to 1 i.e
+update on every new event</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pswalker.callbacks.LinearFit.backsolve">
+<code class="descname">backsolve</code><span class="sig-paren">(</span><em>target</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pswalker.callbacks.LinearFit.backsolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the <code class="docutils literal"><span class="pre">x</span></code> position that solves the reaches the given target</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>target</strong> (<em>float</em>) – Desired <code class="docutils literal"><span class="pre">y</span></code> value</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>x</strong> – Variable name and floating value</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pswalker.callbacks.LinearFit.eval">
+<code class="descname">eval</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pswalker.callbacks.LinearFit.eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the predicted outcome based on the most recent fit of
+the given information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<em>float</em><em> or </em><em>int</em><em>, </em><em>optional</em>) – Independent variable to evaluate linear model</li>
+<li><strong>kwargs</strong> – The value for the indepenedent variable can also be given as the
+field name in the event document</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>estimate</strong> – Y value as determined by current linear fit</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="plots">
+<h2>Plots<a class="headerlink" href="#plots" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pswalker.callbacks.LivePlotWithGoal">
+<em class="property">class </em><code class="descclassname">pswalker.callbacks.</code><code class="descname">LivePlotWithGoal</code><span class="sig-paren">(</span><em>y</em>, <em>x=None</em>, <em>*</em>, <em>goal=0.0</em>, <em>tolerance=0.0</em>, <em>averages=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pswalker.callbacks.LivePlotWithGoal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">bluesky.callbacks.core.LivePlot</span></code></p>
+<p>Build a function that updates a plot from a stream of Events.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>y</strong> (<em>str</em>) – the name of a data field in an Event</li>
+<li><strong>x</strong> (<em>str</em><em>, </em><em>optional</em>) – the name of a data field in an Event, or ‘seq_num’ or ‘time’
+If None, use the Event’s sequence number.
+Special case: If the Event’s data includes a key named ‘seq_num’ or
+‘time’, that takes precedence over the standard ‘seq_num’ and ‘time’
+recorded in every Event.</li>
+<li><strong>goal</strong> (<em>float</em>) – the target pixel</li>
+<li><strong>tolerance</strong> (<em>float</em><em>, </em><em>optional</em>) – the tolerance for the pixel</li>
+<li><strong>averages</strong> (<em>float</em><em>, </em><em>optional</em>) – The number of images to average. If None is specified, every point is rendered as they come,
+otherwise the graph will update every <code class="docutils literal"><span class="pre">`averages`</span></code> points.</li>
+<li><strong>legend_keys</strong> (<em>list</em><em>, </em><em>optional</em>) – The list of keys to extract from the RunStart document and format
+in the legend of the plot. The legend will always show the
+scan_id followed by a colon (“1: “).  Each</li>
+<li><strong>xlim</strong> (<em>tuple</em><em>, </em><em>optional</em>) – passed to Axes.set_xlim</li>
+<li><strong>ylim</strong> (<em>tuple</em><em>, </em><em>optional</em>) – passed to Axes.set_ylim</li>
+<li><strong>ax</strong> (<em>Axes</em><em>, </em><em>optional</em>) – matplotib Axes; if none specified, new figure and axes are made.</li>
+<li><strong>fig</strong> (<em>Figure</em><em>, </em><em>optional</em>) – deprecated: use ax instead</li>
+<li><strong>epoch</strong> (<em>{'run'</em><em>, </em><em>'unix'}</em><em>, </em><em>optional</em>) – If ‘run’ t=0 is the time recorded in the RunStart document. If ‘unix’,
+t=0 is 1 Jan 1970 (“the UNIX epoch”). Default is ‘run’.</li>
+<li><strong>kwargs</strong> – </li>
+<li><strong>additional keyword arguments are passed through to Axes.plot.</strong> (<em>All</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>If your figure blocks the main thread when you are trying to scan with this
+callback, call <cite>plt.ion()</cite> in your IPython session.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_plotter</span> <span class="o">=</span> <span class="n">LivePlotWithGoals</span><span class="p">(</span><span class="s1">&#39;det&#39;</span><span class="p">,</span> <span class="s1">&#39;motor&#39;</span><span class="p">,</span> <span class="n">goal</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">averages</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">legend_keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sample&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">RE</span><span class="p">(</span><span class="n">my_scan</span><span class="p">,</span> <span class="n">my_plotter</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plan_stubs.html" class="btn btn-neutral float-right" title="Extensible Plans" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plans.html" class="btn btn-neutral" title="Plans" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, SLAC National Accelerator Laboratory.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0+untagged.313.gd0c6831',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
