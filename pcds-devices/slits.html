@@ -1,0 +1,452 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Slits &mdash; PCDS Devices 0.0.1+179.gddbfce3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="PCDS Devices 0.0.1+179.gddbfce3 documentation" href="index.html"/>
+        <link rel="next" title="PIM" href="pim.html"/>
+        <link rel="prev" title="Valves and Stoppers" href="valves.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PCDS Devices
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1+179.gddbfce3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Common Components</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="valves.html">Valves and Stoppers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Slits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pim.html">PIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ipimb.html">IPIMB</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Beam Steering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="homs.html">Offset Mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lodcm.html">LODCM</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="device.html">Base Device Class</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PCDS Devices</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Slits</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/slits.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="slits">
+<h1>Slits<a class="headerlink" href="#slits" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="pcdsdevices.epics.Slits">
+<em class="property">class </em><code class="descclassname">pcdsdevices.epics.</code><code class="descname">Slits</code><span class="sig-paren">(</span><em>prefix</em>, <em>*</em>, <em>ioc=''</em>, <em>read_attrs=None</em>, <em>name=None</em>, <em>nominal_aperature=5.0</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.Slits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Beam slits with combined motion for center and width.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>prefix</strong> (<em>str</em>) – The EPICS base of the motor</li>
+<li><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the offset mirror</li>
+<li><strong>nominal_aperature</strong> (<em>float</em><em>, </em><em>optional</em>) – Nominal slit size that will encompass the beam without blocking</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The slits represent a unique device when forming the lightpath as whether
+the beam is being blocked or not depends on the pointing. In order to
+create an estimate that will warn operators of narrowly closed slits while
+still allowing slits to be closed along the beampath.</p>
+<p>The simplest solution was to use a <code class="xref py py-attr docutils literal"><span class="pre">nominal_aperature</span></code> that stores
+the slit width and height that the slits should use for general operation.
+Using this the <code class="xref py py-attr docutils literal"><span class="pre">transmission</span></code> is calculated based on how the current
+aperature compares to the nominal, always using the minimum of the width or
+height. This means that if you have a nominal aperature of 2 mm, but your
+slits are set to 0.5 mm, the total estimated transmission will be 25%.
+Obviously this is greatly oversimplified, but it allows the lightpath to
+make a rough back of the hand calculation without being over aggressive
+about changing slit widths during alignment</p>
+<dl class="method">
+<dt id="pcdsdevices.epics.Slits.block">
+<code class="descname">block</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.Slits.block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overlap the slits to block the beam</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.Slits.block_cmd">
+<code class="descname">block_cmd</code><a class="headerlink" href="#pcdsdevices.epics.Slits.block_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignal</span><span class="p">,</span> <span class="s1">&#39;:BLOCK&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.Slits.blocked">
+<code class="descname">blocked</code><a class="headerlink" href="#pcdsdevices.epics.Slits.blocked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignalRO</span><span class="p">,</span> <span class="s1">&#39;:BLOCKED&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.Slits.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.Slits.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the slits to have an aperature of 0mm on each side</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.Slits.close_cmd">
+<code class="descname">close_cmd</code><a class="headerlink" href="#pcdsdevices.epics.Slits.close_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignal</span><span class="p">,</span> <span class="s1">&#39;:CLOSE&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.Slits.move">
+<code class="descname">move</code><span class="sig-paren">(</span><em>width</em>, <em>wait=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.Slits.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the dimensions of the width/height of the gap to width paramater.
+It’s OK to only return one of the statuses because they share the same
+completion flag (I think).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>width</strong> (<em>float</em>) – target width for slits in both x and y axis. EGU: mm</li>
+<li><strong>wait</strong> (<em>bool</em>) – If true, block until move is completed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>status</strong> – status object of the move</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">MoveStatus</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.Slits.open">
+<code class="descname">open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.Slits.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open the slits to have a large aperature on each side</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.Slits.open_cmd">
+<code class="descname">open_cmd</code><a class="headerlink" href="#pcdsdevices.epics.Slits.open_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignal</span><span class="p">,</span> <span class="s1">&#39;:OPEN&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.Slits.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>width=None</em>, <em>wait=False</em>, <em>timeout=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.Slits.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open the slits to unblock the beam</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>width</strong> (<em>float</em><em>, </em><em>optional</em>) – Open the slits to a specific width otherwise
+<cite>:attr:</cite>.nominal_aperature is used</li>
+<li><strong>wait</strong> (<em>bool</em><em>, </em><em>optional</em>) – Wait for the status object to complete the move before returning</li>
+<li><strong>timeout</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum time to wait for the motion. If None, the default timeout
+for this positioner is used</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Status object based on move completion</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">MoveStatus</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">ValueError: – If the width is not greater than or equal to the
+<code class="xref py py-attr docutils literal"><span class="pre">nominal_aperature</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-meth docutils literal"><span class="pre">Slits.move()</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.Slits.set">
+<code class="descname">set</code><span class="sig-paren">(</span><em>width</em>, <em>wait=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.Slits.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias for move method</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.Slits.stage">
+<code class="descname">stage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.Slits.stage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Record starting position of slits. This allows &#64;stage_wrapper to make
+plans involving the slits to return to their starting positions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.Slits.unstage">
+<code class="descname">unstage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.Slits.unstage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Place slits back in their starting positions. This allows
+&#64;stage_wrapper to make plans involving the slits to return to their
+starting positions.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.Slits.xcenter">
+<code class="descname">xcenter</code><a class="headerlink" href="#pcdsdevices.epics.Slits.xcenter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">SlitPositioner</span><span class="p">,</span> <span class="n">slit_type</span><span class="o">=</span><span class="s1">&#39;XCENTER&#39;</span><span class="p">,</span> <span class="n">egu</span><span class="o">=</span><span class="s1">&#39;mm&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.Slits.xwidth">
+<code class="descname">xwidth</code><a class="headerlink" href="#pcdsdevices.epics.Slits.xwidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">SlitPositioner</span><span class="p">,</span> <span class="n">slit_type</span><span class="o">=</span><span class="s1">&#39;XWIDTH&#39;</span><span class="p">,</span> <span class="n">egu</span><span class="o">=</span><span class="s1">&#39;mm&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.Slits.ycenter">
+<code class="descname">ycenter</code><a class="headerlink" href="#pcdsdevices.epics.Slits.ycenter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">SlitPositioner</span><span class="p">,</span> <span class="n">slit_type</span><span class="o">=</span><span class="s1">&#39;YCENTER&#39;</span><span class="p">,</span> <span class="n">egu</span><span class="o">=</span><span class="s1">&#39;mm&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.Slits.ywidth">
+<code class="descname">ywidth</code><a class="headerlink" href="#pcdsdevices.epics.Slits.ywidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">SlitPositioner</span><span class="p">,</span> <span class="n">slit_type</span><span class="o">=</span><span class="s1">&#39;YWIDTH&#39;</span><span class="p">,</span> <span class="n">egu</span><span class="o">=</span><span class="s1">&#39;mm&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pim.html" class="btn btn-neutral float-right" title="PIM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="valves.html" class="btn btn-neutral" title="Valves and Stoppers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, SLAC National Accelerator Laboratory.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1+179.gddbfce3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

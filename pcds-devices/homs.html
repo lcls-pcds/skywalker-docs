@@ -1,0 +1,1114 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Offset Mirrors &mdash; PCDS Devices 0.0.1+179.gddbfce3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="PCDS Devices 0.0.1+179.gddbfce3 documentation" href="index.html"/>
+        <link rel="next" title="LODCM" href="lodcm.html"/>
+        <link rel="prev" title="IPIMB" href="ipimb.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PCDS Devices
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1+179.gddbfce3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Common Components</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="valves.html">Valves and Stoppers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slits.html">Slits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pim.html">PIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ipimb.html">IPIMB</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Beam Steering</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Offset Mirrors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#offsetmirror">OffsetMirror</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#major-components">Major Components</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lodcm.html">LODCM</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="device.html">Base Device Class</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PCDS Devices</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Offset Mirrors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/homs.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="offset-mirrors">
+<h1>Offset Mirrors<a class="headerlink" href="#offset-mirrors" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="offsetmirror">
+<h2>OffsetMirror<a class="headerlink" href="#offsetmirror" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pcdsdevices.epics.OffsetMirror">
+<em class="property">class </em><code class="descclassname">pcdsdevices.epics.</code><code class="descname">OffsetMirror</code><span class="sig-paren">(</span><em>prefix</em>, <em>prefix_xy</em>, <em>*</em>, <em>name=None</em>, <em>read_attrs=None</em>, <em>parent=None</em>, <em>configuration_attrs=None</em>, <em>settle_time=0</em>, <em>tolerance=0.5</em>, <em>timeout=None</em>, <em>nominal_position=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror" title="Permalink to this definition">¶</a></dt>
+<dd><p>X-Ray offset mirror class for each individual mirror system used in the FEE
+and XRT. Controls for the pitch, and primary gantry x and y motors are
+included.</p>
+<p>When controlling the pitch motor, if the piezo is set to ‘PID’ mode, then
+the pitch mechanism is setup to first move the stepper as close to the
+desired position, then the piezo will kick in to constantly try and correct
+any positional changes. When in this mode the piezo cannot be controlled
+via EPICS, and must first be switched to ‘manual’ mode.</p>
+<p>Note: Interfaces to the coupling motor and both secondary gantry motors are
+not provided.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>prefix</strong> (<em>str</em>) – The EPICS base PV of the pitch motor</li>
+<li><strong>prefix_xy</strong> (<em>str</em>) – The EPICS base PV of the gantry x and y gantry motors</li>
+<li><strong>read_attrs</strong> (<em>sequence of attribute names</em><em>, </em><em>optional</em>) – The signals to be read during data acquisition (i.e., in read() and
+describe() calls)</li>
+<li><strong>configuration_attrs</strong> (<em>sequence of attribute names</em><em>, </em><em>optional</em>) – The signals to be returned when asked for the motor configuration (i.e.
+in read_configuration(), and describe_configuration() calls)</li>
+<li><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the offset mirror</li>
+<li><strong>parent</strong> (<em>instance</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – The instance of the parent device, if applicable</li>
+<li><strong>settle_time</strong> (<em>float</em><em>, </em><em>optional</em>) – The amount of time to wait after the pitch motor moves to report status
+completion</li>
+<li><strong>tolerance</strong> (<em>float</em><em>, </em><em>optional</em>) – Tolerance used to judge if the pitch motor has reached its final
+position</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pcdsdevices.epics.OffsetMirror.alpha">
+<code class="descname">alpha</code><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pitch motor readback position. Alias for the position property.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>alpha</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.OffsetMirror.gan_x_p">
+<code class="descname">gan_x_p</code><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.gan_x_p" title="Permalink to this definition">¶</a></dt>
+<dd><p>FormattedComponent attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FormattedComponent</span><span class="p">(</span><span class="n">OMMotor</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{self._prefix_xy}</span><span class="s1">:X:P&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.OffsetMirror.gan_y_p">
+<code class="descname">gan_y_p</code><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.gan_y_p" title="Permalink to this definition">¶</a></dt>
+<dd><p>FormattedComponent attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FormattedComponent</span><span class="p">(</span><span class="n">OMMotor</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{self._prefix_xy}</span><span class="s1">:Y:P&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.OffsetMirror.high_limit">
+<code class="descname">high_limit</code><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.high_limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the upper limit fot the pitch motor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>high_limit</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.OffsetMirror.limits">
+<code class="descname">limits</code><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the EPICS limits of the user_setpoint pv.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>limits</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.OffsetMirror.low_limit">
+<code class="descname">low_limit</code><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.low_limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the lower limit fot the pitch motor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>low_limit</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.OffsetMirror.motor_stop">
+<code class="descname">motor_stop</code><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.motor_stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">Signal</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.OffsetMirror.move">
+<code class="descname">move</code><span class="sig-paren">(</span><em>position</em>, <em>wait=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the pitch motor to the inputted position, optionally waiting for
+the move to complete.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>position</strong> (<em>float</em>) – Position to move to</li>
+<li><strong>wait</strong> (<em>bool</em><em>, </em><em>optional</em>) – Wait for the status object to complete the move before returning</li>
+<li><strong>moved_cb</strong> (<em>callable</em><em>, </em><em>optional</em>) – Call this callback when movement has finished. This callback must
+accept one keyword argument: ‘obj’ which will be set to this
+positioner instance</li>
+<li><strong>timeout</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum time to wait for the motion. If None, the default timeout
+for this positioner is used</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>status</strong> – Status object of the move</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">MoveStatus</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">TimeoutError</span></code> – When motion takes longer than <cite>timeout</cite></li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – On invalid positions</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code> – If motion fails other than timing out</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.OffsetMirror.mv">
+<code class="descname">mv</code><span class="sig-paren">(</span><em>position</em>, <em>wait=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.mv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the pitch motor to the inputted position, optionally waiting for
+the move to complete.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>position</strong> (<em>float</em>) – Position to move to</li>
+<li><strong>wait</strong> (<em>bool</em><em>, </em><em>optional</em>) – Wait for the status object to complete the move before returning</li>
+<li><strong>moved_cb</strong> (<em>callable</em><em>, </em><em>optional</em>) – Call this callback when movement has finished. This callback must
+accept one keyword argument: ‘obj’ which will be set to this
+positioner instance</li>
+<li><strong>timeout</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum time to wait for the motion. If None, the default timeout
+for this positioner is used</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>status</strong> – Status object of the move</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">MoveStatus</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">TimeoutError</span></code> – When motion takes longer than <cite>timeout</cite></li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – On invalid positions</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code> – If motion fails other than timing out</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.OffsetMirror.piezo">
+<code class="descname">piezo</code><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.piezo" title="Permalink to this definition">¶</a></dt>
+<dd><p>FormattedComponent attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FormattedComponent</span><span class="p">(</span><span class="n">Piezo</span><span class="p">,</span> <span class="s1">&#39;PIEZO:</span><span class="si">{self._area}</span><span class="s1">:</span><span class="si">{self._mirror}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.OffsetMirror.pitch">
+<code class="descname">pitch</code><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.pitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>FormattedComponent attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FormattedComponent</span><span class="p">(</span><span class="n">OMMotor</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{self.prefix}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.OffsetMirror.position">
+<code class="descname">position</code><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Readback the current pitch position. Alias for the pitch.position
+property.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>position</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.OffsetMirror.settle_time">
+<code class="descname">settle_time</code><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.settle_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the settle time of the pitch motor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>settle_time</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.OffsetMirror.tolerance">
+<code class="descname">tolerance</code><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.tolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the tolerance of the pitch motor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>settle_time</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.OffsetMirror.x">
+<code class="descname">x</code><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Primary gantry X readback position. Alias for the gan_x_p.position
+property.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>position</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.OffsetMirror.y">
+<code class="descname">y</code><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Primary gantry Y readback position. Alias for the gan_y_p.position
+property.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>position</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="major-components">
+<h2>Major Components<a class="headerlink" href="#major-components" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pcdsdevices.epics.mirror.Piezo">
+<em class="property">class </em><code class="descclassname">pcdsdevices.epics.mirror.</code><code class="descname">Piezo</code><span class="sig-paren">(</span><em>prefix</em>, <em>*</em>, <em>read_attrs=None</em>, <em>configuration_attrs=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.mirror.Piezo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to handle the piezo motor on the mirror pitch mechanism.</p>
+<p>Note: If the motor is set to ‘PID’ mode then none of the PVs will be
+controllable.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>prefix</strong> (<em>str</em>) – The EPICS base pv to use</li>
+<li><strong>read_attrs</strong> (<em>sequence of attribute names</em><em>, </em><em>optional</em>) – The signals to be read during data acquisition (i.e., in read() and
+describe() calls)</li>
+<li><strong>configuration_attrs</strong> (<em>sequence of attribute names</em><em>, </em><em>optional</em>) – The signals to be returned when asked for the motor configuration (i.e.
+in read_configuration(), and describe_configuration() calls)</li>
+<li><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the piezo</li>
+<li><strong>parent</strong> (<em>instance</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – The instance of the parent device, if applicable</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pcdsdevices.epics.mirror.Piezo.check_value">
+<code class="descname">check_value</code><span class="sig-paren">(</span><em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.mirror.Piezo.check_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that the position is within the soft limits.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – On invalid positions, or outside the limits</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.Piezo.enable">
+<code class="descname">enable</code><a class="headerlink" href="#pcdsdevices.epics.mirror.Piezo.enable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignalRO</span><span class="p">,</span> <span class="s1">&#39;:Enable&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.Piezo.high_limit">
+<code class="descname">high_limit</code><a class="headerlink" href="#pcdsdevices.epics.mirror.Piezo.high_limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignal</span><span class="p">,</span> <span class="s1">&#39;:VMAX&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.Piezo.limits">
+<code class="descname">limits</code><a class="headerlink" href="#pcdsdevices.epics.mirror.Piezo.limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the minimum and maximum voltage of the piezo.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>limits</strong> – Tuple of (low_limit, high_limit)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.Piezo.low_limit">
+<code class="descname">low_limit</code><a class="headerlink" href="#pcdsdevices.epics.mirror.Piezo.low_limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignal</span><span class="p">,</span> <span class="s1">&#39;:VMIN&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.Piezo.motor_stop">
+<code class="descname">motor_stop</code><a class="headerlink" href="#pcdsdevices.epics.mirror.Piezo.motor_stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">Signal</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.mirror.Piezo.move">
+<code class="descname">move</code><span class="sig-paren">(</span><em>position</em>, <em>wait=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.mirror.Piezo.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move to a specified position, optionally waiting for motion to
+complete.</p>
+<p>Note: This will only work if the motor is in ‘manual’ mode.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>position</strong> (<em>float</em>) – Position to move to</li>
+<li><strong>wait</strong> (<em>bool</em><em>, </em><em>optional</em>) – Wait for the status object to complete the move before returning</li>
+<li><strong>moved_cb</strong> (<em>callable</em><em>, </em><em>optional</em>) – Call this callback when movement has finished. This callback must
+accept one keyword argument: ‘obj’ which will be set to this
+positioner instance</li>
+<li><strong>timeout</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum time to wait for the motion. If None, the default timeout
+for this positioner is used</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>status</strong> – Status object of the move</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">MoveStatus</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">TimeoutError</span></code> – When motion takes longer than <cite>timeout</cite></li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – On invalid positions</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code> – If motion fails other than timing out</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.mirror.Piezo.mv">
+<code class="descname">mv</code><span class="sig-paren">(</span><em>position</em>, <em>wait=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.mirror.Piezo.mv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for the move() method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>status</strong> – Status object of the move</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">MoveStatus</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.Piezo.position">
+<code class="descname">position</code><a class="headerlink" href="#pcdsdevices.epics.mirror.Piezo.position" title="Permalink to this definition">¶</a></dt>
+<dd><p>The current position of the motor in its engineering units.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>position</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.Piezo.precision">
+<code class="descname">precision</code><a class="headerlink" href="#pcdsdevices.epics.mirror.Piezo.precision" title="Permalink to this definition">¶</a></dt>
+<dd><p>The precision of the readback PV, as reported by EPICS.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>precision</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.Piezo.report">
+<code class="descname">report</code><a class="headerlink" href="#pcdsdevices.epics.mirror.Piezo.report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary containing current report values of the motor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>rep</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.mirror.Piezo.set_current_position">
+<code class="descname">set_current_position</code><span class="sig-paren">(</span><em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.mirror.Piezo.set_current_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure the motor user position to the given value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pos</strong> – Position to set.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.Piezo.user_readback">
+<code class="descname">user_readback</code><a class="headerlink" href="#pcdsdevices.epics.mirror.Piezo.user_readback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignalRO</span><span class="p">,</span> <span class="s1">&#39;:VRBV&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.Piezo.user_setpoint">
+<code class="descname">user_setpoint</code><a class="headerlink" href="#pcdsdevices.epics.mirror.Piezo.user_setpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignal</span><span class="p">,</span> <span class="s1">&#39;:VSET&#39;</span><span class="p">,</span> <span class="n">limits</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pcdsdevices.epics.mirror.OMMotor">
+<em class="property">class </em><code class="descclassname">pcdsdevices.epics.mirror.</code><code class="descname">OMMotor</code><span class="sig-paren">(</span><em>prefix</em>, <em>*</em>, <em>read_attrs=None</em>, <em>configuration_attrs=None</em>, <em>name=None</em>, <em>parent=None</em>, <em>settle_time=0</em>, <em>tolerance=0.01</em>, <em>use_limits=True</em>, <em>nominal_position=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for each motor in the LCLS offset mirror system.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>prefix</strong> (<em>str</em>) – The EPICS base pv to use</li>
+<li><strong>read_attrs</strong> (<em>sequence of attribute names</em><em>, </em><em>optional</em>) – The signals to be read during data acquisition (i.e., in read() and
+describe() calls)</li>
+<li><strong>configuration_attrs</strong> (<em>sequence of attribute names</em><em>, </em><em>optional</em>) – The signals to be returned when asked for the motor configuration (i.e.
+in read_configuration(), and describe_configuration() calls)</li>
+<li><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the motor</li>
+<li><strong>nominal_position</strong> (<em>float</em><em>, </em><em>optional</em>) – The position believed to be aligned to the beam. This can either be the
+previously aligned position, or the position given by the alignment
+team</li>
+<li><strong>parent</strong> (<em>instance</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – The instance of the parent device, if applicable</li>
+<li><strong>settle_time</strong> (<em>float</em><em>, </em><em>optional</em>) – The amount of time to wait after moves to report status completion</li>
+<li><strong>tolerance</strong> (<em>float</em><em>, </em><em>optional</em>) – Tolerance used to judge if the motor has reached its final position</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pcdsdevices.epics.mirror.OMMotor.check_value">
+<code class="descname">check_value</code><span class="sig-paren">(</span><em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.check_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that the position is within the soft limits.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – On invalid positions, or outside the limits</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.enabled">
+<code class="descname">enabled</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignalRO</span><span class="p">,</span> <span class="s1">&#39;:ENABLED&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.high_limit">
+<code class="descname">high_limit</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.high_limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the upper limit fot the user setpoint.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>high_limit</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.high_limit_switch">
+<code class="descname">high_limit_switch</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.high_limit_switch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignal</span><span class="p">,</span> <span class="s1">&#39;:HLS&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.interlock">
+<code class="descname">interlock</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.interlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignalRO</span><span class="p">,</span> <span class="s1">&#39;:INTERLOCK&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.limits">
+<code class="descname">limits</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the limits of the motor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>limits</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.low_limit">
+<code class="descname">low_limit</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.low_limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the lower limit fot the user setpoint.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>low_limit</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.low_limit_switch">
+<code class="descname">low_limit_switch</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.low_limit_switch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignal</span><span class="p">,</span> <span class="s1">&#39;:LLS&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.lower_ctrl_limit">
+<code class="descname">lower_ctrl_limit</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.lower_ctrl_limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignal</span><span class="p">,</span> <span class="s1">&#39;:VAL.DRVL&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.motor_done_move">
+<code class="descname">motor_done_move</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.motor_done_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignalRO</span><span class="p">,</span> <span class="s1">&#39;:DMOV&#39;</span><span class="p">,</span> <span class="n">auto_monitor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.motor_is_moving">
+<code class="descname">motor_is_moving</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.motor_is_moving" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignalRO</span><span class="p">,</span> <span class="s1">&#39;:MOVN&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.motor_stop">
+<code class="descname">motor_stop</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.motor_stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">Signal</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.mirror.OMMotor.move">
+<code class="descname">move</code><span class="sig-paren">(</span><em>position</em>, <em>wait=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move to a specified position, optionally waiting for motion to
+complete.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>position</strong> (<em>float</em>) – Position to move to</li>
+<li><strong>wait</strong> (<em>bool</em><em>, </em><em>optional</em>) – Wait for the status object to complete the move before returning</li>
+<li><strong>moved_cb</strong> (<em>callable</em><em>, </em><em>optional</em>) – Call this callback when movement has finished. This callback must
+accept one keyword argument: ‘obj’ which will be set to this
+positioner instance</li>
+<li><strong>timeout</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum time to wait for the motion. If None, the default timeout
+for this positioner is used</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>status</strong> – Status object of the move</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">MoveStatus</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">TimeoutError</span></code> – When motion takes longer than <cite>timeout</cite></li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – On invalid positions</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code> – If motion fails other than timing out</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.moving">
+<code class="descname">moving</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.moving" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether or not the motor is moving.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>moving</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.mirror.OMMotor.mv">
+<code class="descname">mv</code><span class="sig-paren">(</span><em>position</em>, <em>wait=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.mv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for the move() method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>status</strong> – Status object of the move</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">MoveStatus</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.position">
+<code class="descname">position</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.position" title="Permalink to this definition">¶</a></dt>
+<dd><p>The current position of the motor in its engineering units.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>position</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.precision">
+<code class="descname">precision</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.precision" title="Permalink to this definition">¶</a></dt>
+<dd><p>The precision of the readback PV, as reported by EPICS.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>precision</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.report">
+<code class="descname">report</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary containing current report values of the motor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>rep</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.mirror.OMMotor.set_current_position">
+<code class="descname">set_current_position</code><span class="sig-paren">(</span><em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.set_current_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure the motor user position to the given value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pos</strong> (<em>float</em>) – </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.upper_ctrl_limit">
+<code class="descname">upper_ctrl_limit</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.upper_ctrl_limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignal</span><span class="p">,</span> <span class="s1">&#39;:VAL.DRVH&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.user_readback">
+<code class="descname">user_readback</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.user_readback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignalRO</span><span class="p">,</span> <span class="s1">&#39;:RBV&#39;</span><span class="p">,</span> <span class="n">auto_monitor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.user_setpoint">
+<code class="descname">user_setpoint</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.user_setpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignal</span><span class="p">,</span> <span class="s1">&#39;:VAL&#39;</span><span class="p">,</span> <span class="n">limits</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.mirror.OMMotor.velocity">
+<code class="descname">velocity</code><a class="headerlink" href="#pcdsdevices.epics.mirror.OMMotor.velocity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignal</span><span class="p">,</span> <span class="s1">&#39;:VELO&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lodcm.html" class="btn btn-neutral float-right" title="LODCM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ipimb.html" class="btn btn-neutral" title="IPIMB" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, SLAC National Accelerator Laboratory.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1+179.gddbfce3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

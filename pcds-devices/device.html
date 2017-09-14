@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Base Device Class &mdash; PCDS Devices 0.0.1+179.gddbfce3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="PCDS Devices 0.0.1+179.gddbfce3 documentation" href="index.html"/>
+        <link rel="prev" title="LODCM" href="lodcm.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PCDS Devices
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1+179.gddbfce3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Common Components</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="valves.html">Valves and Stoppers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slits.html">Slits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pim.html">PIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ipimb.html">IPIMB</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Beam Steering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="homs.html">Offset Mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lodcm.html">LODCM</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Base Device Class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#loading-from-happi">Loading from happi</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PCDS Devices</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Base Device Class</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/device.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="base-device-class">
+<h1>Base Device Class<a class="headerlink" href="#base-device-class" title="Permalink to this headline">¶</a></h1>
+<p><code class="xref py py-class docutils literal"><span class="pre">pcdsdevices.Device</span></code> looks for a keyword <code class="docutils literal"><span class="pre">db_info</span></code> upon
+instantiation.  This captures keyword information that come from the <code class="docutils literal"><span class="pre">happi</span></code>
+databae and saves it underneath the <code class="xref py py-attr docutils literal"><span class="pre">db</span></code> attribute as
+<a class="reference internal" href="#pcdsdevices.device.HappiData" title="pcdsdevices.device.HappiData"><code class="xref py py-class docutils literal"><span class="pre">HappiData</span></code></a>.</p>
+<dl class="class">
+<dt id="pcdsdevices.device.HappiData">
+<em class="property">class </em><code class="descclassname">pcdsdevices.device.</code><code class="descname">HappiData</code><span class="sig-paren">(</span><em>db_info</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.device.HappiData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to hold arbitrary happi data</p>
+<p>The information is stored as attribute with the name corresponding to the
+key given in the input dictionary. Dictionary-like access is still possible
+by using <code class="xref py py-attr docutils literal"><span class="pre">db_info</span></code></p>
+</dd></dl>
+
+<div class="section" id="loading-from-happi">
+<h2>Loading from happi<a class="headerlink" href="#loading-from-happi" title="Permalink to this headline">¶</a></h2>
+<p>There are a few helper functions in <code class="docutils literal"><span class="pre">pcdsdevices</span></code> that facilitate loading
+from <code class="docutils literal"><span class="pre">happi</span></code></p>
+<dl class="function">
+<dt id="pcdsdevices.happireader.read_happi">
+<code class="descclassname">pcdsdevices.happireader.</code><code class="descname">read_happi</code><span class="sig-paren">(</span><em>client=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.happireader.read_happi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect to the happi database and return a list of all devices.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>client</strong> (<em>happi.Client</em><em>, </em><em>optional</em>) – Instance of Client to use for the read. Included as a parameter to be
+substituted with the mock client for testing. If not provided, we’ll
+use the default client.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>devices</strong></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list of happi.Device</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pcdsdevices.happireader.construct_device">
+<code class="descclassname">pcdsdevices.happireader.</code><code class="descname">construct_device</code><span class="sig-paren">(</span><em>happi_object</em>, <em>device_class=None</em>, <em>info_map=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.happireader.construct_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a functional device from the information stored in a happi device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>happi_object</strong> (<em>happi.Device</em>) – </li>
+<li><strong>device_class</strong> (<em>class</em><em>, </em><em>optional</em>) – Class to instantiate with given happi information. If no class is given
+one will be selected using the <code class="xref py py-func docutils literal"><span class="pre">pick_class()</span></code> function</li>
+<li><strong>info_map</strong> (<em>dict</em><em>, </em><em>optional</em>) – Rename happi information to match Device keywords. Conversion from info
+name to keyword should be entered as happi info name -&gt; device kwarg
+name pairs</li>
+<li><strong>kwargs</strong> – Additional keywords are passed into the device constructor</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>device</strong></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ophyd.Device</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="lodcm.html" class="btn btn-neutral" title="LODCM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, SLAC National Accelerator Laboratory.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1+179.gddbfce3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
