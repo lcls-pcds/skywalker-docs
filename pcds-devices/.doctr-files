@@ -1,6 +1,7 @@
 pcds-devices/_sources/device.rst.txt
 pcds-devices/_sources/homs.rst.txt
 pcds-devices/_sources/index.rst.txt
+pcds-devices/_sources/interface.rst.txt
 pcds-devices/_sources/ipimb.rst.txt
 pcds-devices/_sources/lodcm.rst.txt
 pcds-devices/_sources/pim.rst.txt
@@ -44,10 +45,12 @@ pcds-devices/device.html
 pcds-devices/genindex.html
 pcds-devices/homs.html
 pcds-devices/index.html
+pcds-devices/interface.html
 pcds-devices/ipimb.html
 pcds-devices/lodcm.html
 pcds-devices/objects.inv
 pcds-devices/pim.html
+pcds-devices/py-modindex.html
 pcds-devices/search.html
 pcds-devices/searchindex.js
 pcds-devices/slits.html
