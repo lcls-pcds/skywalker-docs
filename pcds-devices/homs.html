@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Offset Mirrors &mdash; PCDS Devices 0.0.1+197.gf5180f7 documentation</title>
+  <title>Offset Mirrors &mdash; PCDS Devices 0.0.1+200.gf22b43d documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PCDS Devices 0.0.1+197.gf5180f7 documentation" href="index.html"/>
+    <link rel="top" title="PCDS Devices 0.0.1+200.gf22b43d documentation" href="index.html"/>
         <link rel="next" title="LODCM" href="lodcm.html"/>
         <link rel="prev" title="IPIMB" href="ipimb.html"/> 
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.0.1+197.gf5180f7
+                0.0.1+200.gf22b43d
               </div>
             
           
@@ -108,7 +108,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Developer Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="device.html">Base Device Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device.html">Base Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
 </ul>
 
@@ -179,7 +179,7 @@
 <h2>OffsetMirror<a class="headerlink" href="#offsetmirror" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="pcdsdevices.epics.OffsetMirror">
-<em class="property">class </em><code class="descclassname">pcdsdevices.epics.</code><code class="descname">OffsetMirror</code><span class="sig-paren">(</span><em>prefix</em>, <em>prefix_xy</em>, <em>*</em>, <em>name=None</em>, <em>read_attrs=None</em>, <em>parent=None</em>, <em>configuration_attrs=None</em>, <em>settle_time=0</em>, <em>tolerance=0.5</em>, <em>timeout=None</em>, <em>nominal_position=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pcdsdevices.epics.</code><code class="descname">OffsetMirror</code><span class="sig-paren">(</span><em>prefix</em>, <em>prefix_xy</em>, <em>*</em>, <em>name=None</em>, <em>read_attrs=None</em>, <em>parent=None</em>, <em>configuration_attrs=None</em>, <em>settle_time=0</em>, <em>tolerance=0.5</em>, <em>timeout=None</em>, <em>nominal_position=None</em>, <em>mps=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror" title="Permalink to this definition">¶</a></dt>
 <dd><p>X-Ray offset mirror class for each individual mirror system used in the FEE
 and XRT. Controls for the pitch, and primary gantry x and y motors are
 included.</p>
@@ -338,6 +338,15 @@ for this positioner is used</li>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.OffsetMirror.mps">
+<code class="descname">mps</code><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.mps" title="Permalink to this definition">¶</a></dt>
+<dd><p>FormattedComponent attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FormattedComponent</span><span class="p">(</span><span class="n">MPS</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{self._mps_prefix}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">veto</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -1084,7 +1093,7 @@ for this positioner is used</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.1+197.gf5180f7',
+            VERSION:'0.0.1+200.gf22b43d',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

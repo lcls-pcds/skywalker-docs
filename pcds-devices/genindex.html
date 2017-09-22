@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; PCDS Devices 0.0.1+197.gf5180f7 documentation</title>
+  <title>Index &mdash; PCDS Devices 0.0.1+200.gf22b43d documentation</title>
   
 
   
@@ -36,7 +36,7 @@
         <link rel="index" title="Index"
               href="#"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PCDS Devices 0.0.1+197.gf5180f7 documentation" href="index.html"/> 
+    <link rel="top" title="PCDS Devices 0.0.1+200.gf22b43d documentation" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.0.1+197.gf5180f7
+                0.0.1+200.gf22b43d
               </div>
             
           
@@ -103,7 +103,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Developer Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="device.html">Base Device Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device.html">Base Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
 </ul>
 
@@ -216,17 +216,19 @@
 </li>
       <li><a href="slits.html#pcdsdevices.epics.Slits.blocked">blocked (pcdsdevices.epics.Slits attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pim.html#pcdsdevices.epics.pim.PIMFee.blocking">blocking (pcdsdevices.epics.pim.PIMFee attribute)</a>
 
       <ul>
         <li><a href="pim.html#pcdsdevices.epics.pim.PIMMotor.blocking">(pcdsdevices.epics.pim.PIMMotor attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="interface.html#pcdsdevices.interface.BranchingInterface.branches">branches (pcdsdevices.interface.BranchingInterface attribute)</a>
 </li>
       <li><a href="interface.html#pcdsdevices.interface.BranchingInterface">BranchingInterface (class in pcdsdevices.interface)</a>
+</li>
+      <li><a href="device.html#pcdsdevices.epics.MPS.bypass">bypass (pcdsdevices.epics.MPS attribute)</a>
 </li>
       <li><a href="interface.html#pcdsdevices.interface.MPSInterface.bypassed">bypassed (pcdsdevices.interface.MPSInterface attribute)</a>
 </li>
@@ -324,10 +326,12 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="interface.html#pcdsdevices.interface.MPSInterface.faulted">faulted (pcdsdevices.interface.MPSInterface attribute)</a>
+      <li><a href="device.html#pcdsdevices.epics.MPS.fault">fault (pcdsdevices.epics.MPS attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="interface.html#pcdsdevices.interface.MPSInterface.faulted">faulted (pcdsdevices.interface.MPSInterface attribute)</a>
+</li>
       <li><a href="pim.html#pcdsdevices.epics.pim.PIMFee.focus">focus (pcdsdevices.epics.pim.PIMFee attribute)</a>
 </li>
   </ul></td>
@@ -470,8 +474,6 @@
         <li><a href="pim.html#pcdsdevices.epics.pim.PIMMotor.move">(pcdsdevices.epics.pim.PIMMotor method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pim.html#pcdsdevices.epics.pim.PIMMotor.move_diode">move_diode() (pcdsdevices.epics.pim.PIMMotor method)</a>
 </li>
       <li><a href="pim.html#pcdsdevices.epics.pim.PIMFee.move_in">move_in() (pcdsdevices.epics.pim.PIMFee method)</a>
@@ -480,6 +482,8 @@
         <li><a href="pim.html#pcdsdevices.epics.pim.PIMMotor.move_in">(pcdsdevices.epics.pim.PIMMotor method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pim.html#pcdsdevices.epics.pim.PIMFee.move_out">move_out() (pcdsdevices.epics.pim.PIMFee method)</a>
 
       <ul>
@@ -488,6 +492,18 @@
       </ul></li>
       <li><a href="homs.html#pcdsdevices.epics.mirror.OMMotor.moving">moving (pcdsdevices.epics.mirror.OMMotor attribute)</a>
 </li>
+      <li><a href="device.html#pcdsdevices.epics.MPS">MPS (class in pcdsdevices.epics)</a>
+</li>
+      <li><a href="valves.html#pcdsdevices.epics.GateValve.mps">mps (pcdsdevices.epics.GateValve attribute)</a>
+
+      <ul>
+        <li><a href="homs.html#pcdsdevices.epics.OffsetMirror.mps">(pcdsdevices.epics.OffsetMirror attribute)</a>
+</li>
+        <li><a href="valves.html#pcdsdevices.epics.PPSStopper.mps">(pcdsdevices.epics.PPSStopper attribute)</a>
+</li>
+        <li><a href="valves.html#pcdsdevices.epics.Stopper.mps">(pcdsdevices.epics.Stopper attribute)</a>
+</li>
+      </ul></li>
       <li><a href="interface.html#pcdsdevices.interface.MPSInterface">MPSInterface (class in pcdsdevices.interface)</a>
 </li>
       <li><a href="homs.html#pcdsdevices.epics.mirror.OMMotor.mv">mv() (pcdsdevices.epics.mirror.OMMotor method)</a>
@@ -528,6 +544,8 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="device.html#module-pcdsdevices.epics.mps">pcdsdevices.epics.mps (module)</a>
+</li>
       <li><a href="interface.html#module-pcdsdevices.interface">pcdsdevices.interface (module)</a>
 </li>
       <li><a href="homs.html#pcdsdevices.epics.mirror.Piezo">Piezo (class in pcdsdevices.epics.mirror)</a>
@@ -775,7 +793,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.1+197.gf5180f7',
+            VERSION:'0.0.1+200.gf22b43d',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

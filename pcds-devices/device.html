@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Base Device Class &mdash; PCDS Devices 0.0.1+197.gf5180f7 documentation</title>
+  <title>Base Classes &mdash; PCDS Devices 0.0.1+200.gf22b43d documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PCDS Devices 0.0.1+197.gf5180f7 documentation" href="index.html"/>
+    <link rel="top" title="PCDS Devices 0.0.1+200.gf22b43d documentation" href="index.html"/>
         <link rel="next" title="Interfaces" href="interface.html"/>
         <link rel="prev" title="LODCM" href="lodcm.html"/> 
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.0.1+197.gf5180f7
+                0.0.1+200.gf22b43d
               </div>
             
           
@@ -104,8 +104,9 @@
 </ul>
 <p class="caption"><span class="caption-text">Developer Documentation</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Base Device Class</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Base Classes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#loading-from-happi">Loading from happi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pcdsdevices.epics.mps">MPS Information</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
@@ -153,7 +154,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Base Device Class</li>
+      <li>Base Classes</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -172,8 +173,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="base-device-class">
-<h1>Base Device Class<a class="headerlink" href="#base-device-class" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="base-classes">
+<h1>Base Classes<a class="headerlink" href="#base-classes" title="Permalink to this headline">¶</a></h1>
 <p><code class="xref py py-class docutils literal"><span class="pre">pcdsdevices.Device</span></code> looks for a keyword <code class="docutils literal"><span class="pre">db_info</span></code> upon
 instantiation.  This captures keyword information that come from the <code class="docutils literal"><span class="pre">happi</span></code>
 databae and saves it underneath the <code class="xref py py-attr docutils literal"><span class="pre">db</span></code> attribute as
@@ -241,6 +242,61 @@ name pairs</li>
 </dd></dl>
 
 </div>
+<div class="section" id="module-pcdsdevices.epics.mps">
+<span id="mps-information"></span><h2>MPS Information<a class="headerlink" href="#module-pcdsdevices.epics.mps" title="Permalink to this headline">¶</a></h2>
+<p>Devices that are integrated with the MPS system communicate with ACR via a
+single bit summary. The results of these are published over EPICS and
+interpreted by <a class="reference internal" href="#pcdsdevices.epics.MPS" title="pcdsdevices.epics.MPS"><code class="xref py py-class docutils literal"><span class="pre">MPS</span></code></a>.</p>
+<dl class="class">
+<dt id="pcdsdevices.epics.MPS">
+<em class="property">class </em><code class="descclassname">pcdsdevices.epics.</code><code class="descname">MPS</code><span class="sig-paren">(</span><em>prefix</em>, <em>*</em>, <em>name=None</em>, <em>veto=False</em>, <em>read_attrs=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.MPS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to interpret MPS information</p>
+<p>The intention of this class is to be used as a sub-component of a device.
+There are three major attributes of each MPS bit that are relevant to
+operations; <a class="reference internal" href="interface.html#pcdsdevices.interface.MPSInterface.faulted" title="pcdsdevices.interface.MPSInterface.faulted"><code class="xref py py-attr docutils literal"><span class="pre">faulted</span></code></a> , <a class="reference internal" href="interface.html#pcdsdevices.interface.MPSInterface.bypassed" title="pcdsdevices.interface.MPSInterface.bypassed"><code class="xref py py-attr docutils literal"><span class="pre">bypassed</span></code></a> and <a class="reference internal" href="interface.html#pcdsdevices.interface.MPSInterface.veto_capable" title="pcdsdevices.interface.MPSInterface.veto_capable"><code class="xref py py-attr docutils literal"><span class="pre">veto_capable</span></code></a>.
+The first is the most obvious, when the device is faulted it reports as
+such to the MPS system. However, how this is actually interpreted by the
+MPS is determined by whether the bit is bypassed, and if there is a
+<code class="docutils literal"><span class="pre">veto</span></code> device upstream such that the fault can be safely ignored. The
+bypassed state is reported through EPICS as well but unfortunately whether
+a device is considered capable of  “veto-ing” or is vetoed by another
+device is not broadcast by EPICS so this is held within this device and the
+<code class="docutils literal"><span class="pre">lighpath</span></code> module</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>prefix</strong> (<em>str</em>) – </li>
+<li><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – </li>
+<li><strong>veto</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether or not the</li>
+<li><strong>read_attrs</strong> (<em>list</em><em>, </em><em>optional</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pcdsdevices.epics.MPS.bypass">
+<code class="descname">bypass</code><a class="headerlink" href="#pcdsdevices.epics.MPS.bypass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignal</span><span class="p">,</span> <span class="s1">&#39;_BYPS&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.MPS.fault">
+<code class="descname">fault</code><a class="headerlink" href="#pcdsdevices.epics.MPS.fault" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignalRO</span><span class="p">,</span> <span class="s1">&#39;_MPSC&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -287,7 +343,7 @@ name pairs</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.1+197.gf5180f7',
+            VERSION:'0.0.1+200.gf22b43d',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
