@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>lightpath.path &mdash; LCLS Lightpath 0.1.0+26.g88c8099 documentation</title>
+  <title>lightpath.path &mdash; LCLS Lightpath 0.1.0+35.gb910bd3 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="LCLS Lightpath 0.1.0+26.g88c8099 documentation" href="../../index.html"/>
+    <link rel="top" title="LCLS Lightpath 0.1.0+35.gb910bd3 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.1.0+26.g88c8099
+                0.1.0+35.gb910bd3
               </div>
             
           
@@ -94,10 +94,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../controller.html">LightController</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../path.html">BeamPath</a></li>
-</ul>
-<p class="caption"><span class="caption-text">User Inteface</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../broadcast.html">Python Channel Access Server</a></li>
 </ul>
 
             
@@ -233,9 +229,13 @@
 <span class="sd">    minimum_transmission : float</span>
 <span class="sd">        Minimum amount of transmission considered for beam presence</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#Subscription Information</span>
     <span class="n">SUB_PTH_CHNG</span>     <span class="o">=</span> <span class="s1">&#39;beampath_changed&#39;</span>
     <span class="n">SUB_MPSPATH_CHNG</span> <span class="o">=</span> <span class="s1">&#39;mpspath_changed&#39;</span>
+    <span class="n">_default_sub</span> <span class="o">=</span> <span class="n">SUB_PTH_CHNG</span>
+    <span class="c1">#Transmission setting</span>
     <span class="n">minimum_transmission</span> <span class="o">=</span> <span class="mf">0.1</span>
+    
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">devices</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">devices</span> <span class="o">=</span> <span class="n">devices</span>
@@ -687,7 +687,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.1.0+26.g88c8099',
+            VERSION:'0.1.0+35.gb910bd3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -1,8 +1,6 @@
 lightpath/_modules/index.html
 lightpath/_modules/lightpath/controller.html
 lightpath/_modules/lightpath/path.html
-lightpath/_modules/lightpath/ui/broadcast.html
-lightpath/_sources/broadcast.rst.txt
 lightpath/_sources/controller.rst.txt
 lightpath/_sources/index.rst.txt
 lightpath/_sources/path.rst.txt
@@ -41,7 +39,6 @@ lightpath/_static/underscore.js
 lightpath/_static/up-pressed.png
 lightpath/_static/up.png
 lightpath/_static/websupport.js
-lightpath/broadcast.html
 lightpath/controller.html
 lightpath/genindex.html
 lightpath/index.html
