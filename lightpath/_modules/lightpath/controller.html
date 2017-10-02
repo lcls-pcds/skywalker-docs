@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>lightpath.controller &mdash; LCLS Lightpath 0.1.0+44.g80069cd documentation</title>
+  <title>lightpath.controller &mdash; LCLS Lightpath 0.1.0+55.g563378a documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="LCLS Lightpath 0.1.0+44.g80069cd documentation" href="../../index.html"/>
+    <link rel="top" title="LCLS Lightpath 0.1.0+55.g563378a documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.1.0+44.g80069cd
+                0.1.0+55.g563378a
               </div>
             
           
@@ -206,31 +206,31 @@
         <span class="c1">#Iterate through creating complete paths </span>
         <span class="k">for</span> <span class="n">bp</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beamlines</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span>
                          <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">z</span><span class="p">):</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Assembling complete beamline </span><span class="si">{}</span><span class="s2"> ...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bp</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Assembling complete beamline </span><span class="si">%s</span><span class="s2"> ...&quot;</span><span class="p">,</span> <span class="n">bp</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
             <span class="c1">#Grab branches off the beamline</span>
             <span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="n">bp</span><span class="o">.</span><span class="n">branches</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Found branches onto beamlines </span><span class="si">{}</span><span class="s2"> from </span><span class="si">{}</span><span class="s2"> &quot;</span>
-                             <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">branch</span><span class="o">.</span><span class="n">branches</span><span class="p">),</span>
-                                       <span class="n">branch</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
-                <span class="k">for</span> <span class="n">destination</span> <span class="ow">in</span> <span class="n">branch</span><span class="o">.</span><span class="n">branches</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">destination</span> <span class="o">!=</span> <span class="n">bp</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Found branches onto beamlines </span><span class="si">%s</span><span class="s2"> from </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                             <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">branch</span><span class="o">.</span><span class="n">branches</span><span class="p">),</span> <span class="n">branch</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">dest</span> <span class="ow">in</span> <span class="n">branch</span><span class="o">.</span><span class="n">branches</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">dest</span> <span class="o">!=</span> <span class="n">bp</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+                        <span class="c1">#If this is a branch that can pass beam through</span>
+                        <span class="c1">#without renaming the beamline split</span>
+                        <span class="k">if</span> <span class="n">branch</span><span class="o">.</span><span class="n">beamline</span> <span class="ow">in</span> <span class="n">branch</span><span class="o">.</span><span class="n">branches</span><span class="p">:</span> 
+                            <span class="n">section</span><span class="p">,</span> <span class="n">after</span> <span class="o">=</span> <span class="n">bp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">branch</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">section</span> <span class="o">=</span> <span class="n">bp</span>
+                        <span class="c1">#Join with downstream path</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Joining </span><span class="si">%s</span><span class="s2"> and </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">bp</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">dest</span><span class="p">)</span>
                         <span class="k">try</span><span class="p">:</span>
-                            <span class="c1">#Split path up before branching device</span>
-                            <span class="n">prior</span><span class="p">,</span> <span class="n">after</span> <span class="o">=</span> <span class="n">bp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">branch</span><span class="p">)</span>
-                            <span class="c1">#Join with downstream path</span>
-                            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Joining </span><span class="si">{}</span><span class="s2"> and </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bp</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-                                                                    <span class="n">destination</span><span class="p">))</span>
-                            <span class="bp">self</span><span class="o">.</span><span class="n">beamlines</span><span class="p">[</span><span class="n">destination</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beamlines</span><span class="p">[</span><span class="n">destination</span><span class="p">]</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prior</span><span class="p">)</span>
-
+                            <span class="bp">self</span><span class="o">.</span><span class="n">beamlines</span><span class="p">[</span><span class="n">dest</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beamlines</span><span class="p">[</span><span class="n">dest</span><span class="p">]</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                                                                        <span class="n">section</span><span class="p">)</span>
                         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                            <span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s2">&quot;Device </span><span class="si">{}</span><span class="s2"> has invalid branching &quot;</span>
-                                            <span class="s2">&quot;destination </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">branch</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-                                                                    <span class="n">destination</span><span class="p">))</span>
+                            <span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s2">&quot;Device </span><span class="si">%s</span><span class="s2"> has invalid branching &quot;</span>
+                                            <span class="s2">&quot;dest </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">branch</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">dest</span><span class="p">)</span>
             <span class="c1">#Set as attribute for easy access</span>
             <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bp</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">beamlines</span><span class="p">[</span><span class="n">bp</span><span class="o">.</span><span class="n">name</span><span class="p">])</span>
-
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">destinations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -239,7 +239,6 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">impediment</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">beamlines</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
                          <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">impediment</span> <span class="ow">and</span> <span class="n">p</span><span class="o">.</span><span class="n">impediment</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">branches</span><span class="p">]))</span>
-
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tripped_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -253,7 +252,6 @@
 
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">devices</span><span class="p">))</span>
 
-
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">devices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -266,7 +264,6 @@
 
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">devices</span><span class="p">))</span>
 
-
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">incident_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -278,7 +275,6 @@
             <span class="n">devices</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">incident_devices</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">devices</span><span class="p">))</span>
-
 
 <div class="viewcode-block" id="LightController.path_to"><a class="viewcode-back" href="../../controller.html#lightpath.LightController.path_to">[docs]</a>    <span class="k">def</span> <span class="nf">path_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -337,7 +333,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.1.0+44.g80069cd',
+            VERSION:'0.1.0+55.g563378a',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
