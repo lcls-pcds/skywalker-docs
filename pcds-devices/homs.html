@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Offset Mirrors &mdash; PCDS Devices 0.0.1+206.g630264c documentation</title>
+  <title>Offset Mirrors &mdash; PCDS Devices 0.0.1+207.gd426ef4 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PCDS Devices 0.0.1+206.g630264c documentation" href="index.html"/>
+    <link rel="top" title="PCDS Devices 0.0.1+207.gd426ef4 documentation" href="index.html"/>
         <link rel="next" title="LODCM" href="lodcm.html"/>
         <link rel="prev" title="IPIMB" href="ipimb.html"/> 
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.0.1+206.g630264c
+                0.0.1+207.gd426ef4
               </div>
             
           
@@ -179,7 +179,7 @@
 <h2>OffsetMirror<a class="headerlink" href="#offsetmirror" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="pcdsdevices.epics.OffsetMirror">
-<em class="property">class </em><code class="descclassname">pcdsdevices.epics.</code><code class="descname">OffsetMirror</code><span class="sig-paren">(</span><em>prefix</em>, <em>prefix_xy</em>, <em>*</em>, <em>name=None</em>, <em>read_attrs=None</em>, <em>parent=None</em>, <em>configuration_attrs=None</em>, <em>settle_time=0</em>, <em>tolerance=0.5</em>, <em>timeout=None</em>, <em>nominal_position=None</em>, <em>mps=None</em>, <em>state_prefix=None</em>, <em>out_lines=None</em>, <em>in_lines=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pcdsdevices.epics.</code><code class="descname">OffsetMirror</code><span class="sig-paren">(</span><em>prefix</em>, <em>prefix_xy</em>, <em>*</em>, <em>name=None</em>, <em>read_attrs=None</em>, <em>parent=None</em>, <em>configuration_attrs=None</em>, <em>settle_time=0</em>, <em>tolerance=0.5</em>, <em>timeout=None</em>, <em>nominal_position=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror" title="Permalink to this definition">¶</a></dt>
 <dd><p>X-Ray offset mirror class for each individual mirror system used in the FEE
 and XRT. Controls for the pitch, and primary gantry x and y motors are
 included.</p>
@@ -207,11 +207,6 @@ in read_configuration(), and describe_configuration() calls)</li>
 completion</li>
 <li><strong>tolerance</strong> (<em>float</em><em>, </em><em>optional</em>) – Tolerance used to judge if the pitch motor has reached its final
 position</li>
-<li><strong>mps</strong> (<em>str</em><em>, </em><em>optional</em>) – Base prefix for the MPS bit of the mirror</li>
-<li><strong>state_prefix</strong> (<em>str</em><em>, </em><em>optional</em>) – Base prefix for the state record that has the In/Out state of the
-mirror</li>
-<li><strong>in_lines</strong> (<em>list</em><em>, </em><em>optional</em>) – List of beamlines that are delivered beam when the mirror is in</li>
-<li><strong>out_lines</strong> (<em>list</em><em>, </em><em>optional</em>) – List of beamlines thate are delivered beam when the mirror is out</li>
 </ul>
 </td>
 </tr>
@@ -345,15 +340,6 @@ for this positioner is used</li>
 </table>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pcdsdevices.epics.OffsetMirror.mps">
-<code class="descname">mps</code><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.mps" title="Permalink to this definition">¶</a></dt>
-<dd><p>FormattedComponent attribute</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FormattedComponent</span><span class="p">(</span><span class="n">MPS</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{self._mps_prefix}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">veto</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
 <dl class="method">
 <dt id="pcdsdevices.epics.OffsetMirror.mv">
 <code class="descname">mv</code><span class="sig-paren">(</span><em>position</em>, <em>wait=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.mv" title="Permalink to this definition">¶</a></dt>
@@ -440,15 +426,6 @@ property.</p>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="pcdsdevices.epics.OffsetMirror.state">
-<code class="descname">state</code><a class="headerlink" href="#pcdsdevices.epics.OffsetMirror.state" title="Permalink to this definition">¶</a></dt>
-<dd><p>FormattedComponent attribute</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FormattedComponent</span><span class="p">(</span><span class="n">InOutStates</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{self._state_prefix}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
 </dd></dl>
 
 <dl class="attribute">
@@ -1107,7 +1084,7 @@ for this positioner is used</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.1+206.g630264c',
+            VERSION:'0.0.1+207.gd426ef4',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
