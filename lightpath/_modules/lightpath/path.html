@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>lightpath.path &mdash; LCLS Lightpath 0.1.0+55.g563378a documentation</title>
+  <title>lightpath.path &mdash; LCLS Lightpath 0.1.0+61.g6ff9555 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="LCLS Lightpath 0.1.0+55.g563378a documentation" href="../../index.html"/>
+    <link rel="top" title="LCLS Lightpath 0.1.0+61.g6ff9555 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.1.0+55.g563378a
+                0.1.0+61.g6ff9555
               </div>
             
           
@@ -236,11 +236,12 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">devices</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">devices</span> <span class="o">=</span> <span class="n">devices</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Configuring path </span><span class="si">%s</span><span class="s2"> with </span><span class="si">%s</span><span class="s2"> devices&quot;</span><span class="p">,</span>
+                     <span class="n">name</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">devices</span><span class="p">))</span>
         <span class="c1">#Sort by position downstream to upstream</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1">#Check types and positions</span>
             <span class="k">for</span> <span class="n">dev</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Configuring device </span><span class="si">%s</span><span class="s2"> ... &quot;</span><span class="p">,</span> <span class="n">dev</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
                 <span class="c1">#Ensure positioning is physical</span>
                 <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">dev</span><span class="o">.</span><span class="n">z</span><span class="p">)</span> <span class="ow">or</span> <span class="n">dev</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;</span> <span class="mf">0.</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="n">CoordinateError</span><span class="p">(</span><span class="s1">&#39;Device </span><span class="si">%r</span><span class="s1"> is reporting a &#39;</span>
@@ -315,13 +316,9 @@
             <span class="c1">#Find inserted devices</span>
             <span class="k">elif</span> <span class="n">device</span><span class="o">.</span><span class="n">inserted</span> <span class="ow">and</span> <span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">transmission</span> <span class="o">&lt;</span>
                                     <span class="bp">self</span><span class="o">.</span><span class="n">minimum_transmission</span><span class="p">):</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Found device </span><span class="si">%s</span><span class="s2"> in blocking position&quot;</span><span class="p">,</span>
-                             <span class="n">device</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
                 <span class="n">block</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
             <span class="c1">#Find unknown devices</span>
             <span class="k">elif</span> <span class="ow">not</span> <span class="n">device</span><span class="o">.</span><span class="n">removed</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">device</span><span class="o">.</span><span class="n">inserted</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Found device </span><span class="si">%s</span><span class="s2"> in an unknown position&quot;</span><span class="p">,</span>
-                             <span class="n">device</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
                 <span class="n">block</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
             <span class="c1">#Stache our prior device</span>
             <span class="n">prior</span> <span class="o">=</span> <span class="n">device</span>
@@ -650,7 +647,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.1.0+55.g563378a',
+            VERSION:'0.1.0+61.g6ff9555',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
