@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Extensible Plans &mdash; Skywalker 0+untagged.304.g35045cf documentation</title>
+  <title>Extensible Plans &mdash; Skywalker 0+untagged.301.gd5df0a2 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Skywalker 0+untagged.304.g35045cf documentation" href="index.html"/>
+    <link rel="top" title="Skywalker 0+untagged.301.gd5df0a2 documentation" href="index.html"/>
         <link rel="next" title="Plan Tools" href="plan_tools.html"/>
         <link rel="prev" title="Fits and Plots" href="callbacks.html"/> 
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0+untagged.304.g35045cf
+                0+untagged.301.gd5df0a2
               </div>
             
           
@@ -202,7 +202,9 @@ evaluate to True or False. For more infromation see
 <li><strong>drop_missing</strong> (<em>bool</em><em>, </em><em>optional</em>) – Choice to include events where event keys are missing</li>
 <li><strong>tolerance</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum distance from target considered successful</li>
 <li><strong>delay</strong> (<em>float</em><em>, </em><em>optional</em>) – Mininum time between consecutive readings</li>
-<li><strong>max_steps</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum number of steps the scan will attempt before faulting</li>
+<li><strong>max_steps</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum number of steps the scan will attempt before faulting.
+There is a max of 10 by default, but you may disable this by setting
+this option to None. Note that this may cause the walk to run indefinitely.</li>
 </ul>
 </td>
 </tr>
@@ -368,7 +370,7 @@ can not be averaged the last shot is returned</td>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0+untagged.304.g35045cf',
+            VERSION:'0+untagged.301.gd5df0a2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
