@@ -1,3 +1,4 @@
+pcds-devices/_sources/daq.rst.txt
 pcds-devices/_sources/device.rst.txt
 pcds-devices/_sources/homs.rst.txt
 pcds-devices/_sources/index.rst.txt
@@ -41,6 +42,7 @@ pcds-devices/_static/underscore.js
 pcds-devices/_static/up-pressed.png
 pcds-devices/_static/up.png
 pcds-devices/_static/websupport.js
+pcds-devices/daq.html
 pcds-devices/device.html
 pcds-devices/genindex.html
 pcds-devices/homs.html
