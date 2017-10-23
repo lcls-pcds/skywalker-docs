@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>IPIMB &mdash; PCDS Devices 0.0.1+239.g7801170 documentation</title>
+  <title>IPIMB &mdash; PCDS Devices 0.0.1+241.g9baf441 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PCDS Devices 0.0.1+239.g7801170 documentation" href="index.html"/>
+    <link rel="top" title="PCDS Devices 0.0.1+241.g9baf441 documentation" href="index.html"/>
         <link rel="next" title="DAQ" href="daq.html"/>
         <link rel="prev" title="PIM" href="pim.html"/> 
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.0.1+239.g7801170
+                0.0.1+241.g9baf441
               </div>
             
           
@@ -174,90 +174,24 @@
 <h1>IPIMB<a class="headerlink" href="#ipimb" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="pcdsdevices.epics.IPM">
-<em class="property">class </em><code class="descclassname">pcdsdevices.epics.</code><code class="descname">IPM</code><span class="sig-paren">(</span><em>prefix</em>, <em>*</em>, <em>data=''</em>, <em>name=None</em>, <em>parent=None</em>, <em>read_attrs=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.IPM" title="Permalink to this definition">¶</a></dt>
-<dd><p>Standard intensity position monitor. Consists of two stages, one for the
-diode and one for the target. This creates a scalar readback that is also
-available over EPICS.</p>
+<em class="property">class </em><code class="descclassname">pcdsdevices.epics.</code><code class="descname">IPM</code><span class="sig-paren">(</span><em>prefix</em>, <em>data</em>, <em>*</em>, <em>name=None</em>, <em>parent=None</em>, <em>read_attrs=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.IPM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for standard Intensity Monitors</p>
 <dl class="attribute">
 <dt id="pcdsdevices.epics.IPM.data">
 <code class="descname">data</code><a class="headerlink" href="#pcdsdevices.epics.IPM.data" title="Permalink to this definition">¶</a></dt>
-<dd><p>FormattedComponent attribute</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FormattedComponent</span><span class="p">(</span><span class="n">EpicsSignalRO</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{self._data}</span><span class="s1">&#39;</span><span class="p">)</span>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignalRO</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{self._data}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="pcdsdevices.epics.IPM.diode">
-<code class="descname">diode</code><a class="headerlink" href="#pcdsdevices.epics.IPM.diode" title="Permalink to this definition">¶</a></dt>
+<dt id="pcdsdevices.epics.IPM.motors">
+<code class="descname">motors</code><a class="headerlink" href="#pcdsdevices.epics.IPM.motors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Component attribute</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">InOutStates</span><span class="p">,</span> <span class="s1">&#39;:DIODE&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">IPMMotors</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</dd></dl>
-
-<dl class="method">
-<dt id="pcdsdevices.epics.IPM.diode_in">
-<code class="descname">diode_in</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.IPM.diode_in" title="Permalink to this definition">¶</a></dt>
-<dd><p>Move the diode to the in position.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pcdsdevices.epics.IPM.diode_out">
-<code class="descname">diode_out</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.IPM.diode_out" title="Permalink to this definition">¶</a></dt>
-<dd><p>Move the diode to the out position.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pcdsdevices.epics.IPM.remove">
-<code class="descname">remove</code><span class="sig-paren">(</span><em>*args</em>, <em>wait=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.IPM.remove" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove the IPM by going to the <cite>OUT</cite> position</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>wait</strong> (<em>bool</em><em>, </em><em>optional</em>) – Wait for the status object to complete the move before returning</li>
-<li><strong>timeout</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum time to wait for the motion. If None, the default timeout
-for this positioner is used</li>
-<li><strong>settle_time</strong> (<em>float</em><em>, </em><em>optional</em>) – Delay after the set() has completed to indicate completion to the
-caller</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>status</strong> – Status object of the move</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">MoveStatus</p>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Notes</p>
-<p>Instantiated for <cite>lightpath</cite> compatability</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="pcdsdevices.epics.IPM.target">
-<code class="descname">target</code><a class="headerlink" href="#pcdsdevices.epics.IPM.target" title="Permalink to this definition">¶</a></dt>
-<dd><p>Component attribute</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">TargetStates</span><span class="p">,</span> <span class="s1">&#39;:TARGET&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="pcdsdevices.epics.IPM.target_in">
-<code class="descname">target_in</code><span class="sig-paren">(</span><em>target</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.IPM.target_in" title="Permalink to this definition">¶</a></dt>
-<dd><p>Move the target to one of the target positions</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>int</strong> (<a class="reference internal" href="#pcdsdevices.epics.IPM.target" title="pcdsdevices.epics.IPM.target"><em>target</em></a><em>,</em>) – Number of which target to move in. Must be one of 1, 2, 3, 4.</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 </dd></dl>
@@ -308,7 +242,7 @@ caller</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.1+239.g7801170',
+            VERSION:'0.0.1+241.g9baf441',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
