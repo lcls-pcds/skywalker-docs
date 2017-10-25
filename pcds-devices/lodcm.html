@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>LODCM &mdash; PCDS Devices 0.0.1+239.ge962e81 documentation</title>
+  <title>LODCM &mdash; PCDS Devices 0.0.1+250.ga40580c documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PCDS Devices 0.0.1+239.ge962e81 documentation" href="index.html"/>
+    <link rel="top" title="PCDS Devices 0.0.1+250.ga40580c documentation" href="index.html"/>
         <link rel="next" title="Base Classes" href="device.html"/>
         <link rel="prev" title="Offset Mirrors" href="homs.html"/> 
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.0.1+239.ge962e81
+                0.0.1+250.ga40580c
               </div>
             
           
@@ -174,30 +174,44 @@
 <h1>LODCM<a class="headerlink" href="#lodcm" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="pcdsdevices.epics.LODCM">
-<em class="property">class </em><code class="descclassname">pcdsdevices.epics.</code><code class="descname">LODCM</code><span class="sig-paren">(</span><em>prefix</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.LODCM" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
-<dt id="pcdsdevices.epics.LODCM.destination">
-<code class="descname">destination</code><span class="sig-paren">(</span><em>line=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.LODCM.destination" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return where the light is going for a given line at the current LODCM
-state.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>line</strong> (<em>str</em><em> or </em><em>int</em><em>, </em><em>optional</em>) – The starting line for the beam. If this is 1 or “MAIN”, light is
-coming in on H1N from the main line. If this is 2 or “MONO”, light
-is coming in on H2N to the mono line (e.g. XCS periscope)</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>destination</strong> – “BLOCKED” if the light (probably) does not go through.
-“MAIN” if the light continues on the main line.
-“MONO” if the light continues on the mono line.
-“BOTH” if the light continues on both lines.
-“UNKNOWN” if the state is strange.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
+<em class="property">class </em><code class="descclassname">pcdsdevices.epics.</code><code class="descname">LODCM</code><span class="sig-paren">(</span><em>prefix</em>, <em>*</em>, <em>name</em>, <em>main_line=None</em>, <em>mono_line='MONO'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.LODCM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Large Offset Dual Crystal Monochromator</p>
+<p>This is the device that allows XPP and XCS to multiplex with downstream
+hutches. It contains two crystals that steer/split the beam and a number of
+diagnostic devices between them. Beam can continue onto the main line, onto
+the mono line, onto both, or onto neither.</p>
+<dl class="attribute">
+<dt id="pcdsdevices.epics.LODCM.dectris_state">
+<code class="descname">dectris_state</code><a class="headerlink" href="#pcdsdevices.epics.LODCM.dectris_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">DectrisStates</span><span class="p">,</span> <span class="s1">&#39;:DH&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.LODCM.diag_clear">
+<code class="descname">diag_clear</code><a class="headerlink" href="#pcdsdevices.epics.LODCM.diag_clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns: <strong>diag_clear</strong> – False if the diagnostics will prevent beam.
+:rtype: bool</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.LODCM.diode_state">
+<code class="descname">diode_state</code><a class="headerlink" href="#pcdsdevices.epics.LODCM.diode_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">InOutStates</span><span class="p">,</span> <span class="s1">&#39;:DIODE&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.LODCM.foil_state">
+<code class="descname">foil_state</code><a class="headerlink" href="#pcdsdevices.epics.LODCM.foil_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">FoilStates</span><span class="p">,</span> <span class="s1">&#39;:FOIL&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="attribute">
@@ -218,10 +232,89 @@ is coming in on H2N to the mono line (e.g. XCS periscope)</td>
 </div>
 </dd></dl>
 
+<dl class="method">
+<dt id="pcdsdevices.epics.LODCM.lodcm_move">
+<code class="descname">lodcm_move</code><span class="sig-paren">(</span><em>h1n=None</em>, <em>h2n=None</em>, <em>yag=None</em>, <em>dectris=None</em>, <em>diode=None</em>, <em>foil=None</em>, <em>timeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.LODCM.lodcm_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move each component of the LODCM to the given state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>h1n</strong> (<em>string</em><em>, </em><em>optional</em>) – OUT, C, or Si</li>
+<li><strong>h2n</strong> (<em>string</em><em>, </em><em>optional</em>) – OUT, C, or Si</li>
+<li><strong>yag</strong> (<em>string</em><em>, </em><em>optional</em>) – OUT, YAG, SLIT1, SLIT2, or SLIT3</li>
+<li><strong>dectris</strong> (<em>string</em><em>, </em><em>optional</em>) – OUT, DECTRIS, SLIT1, SLIT2, SLIT3, OUTLOW</li>
+<li><strong>diode</strong> (<em>string</em><em>, </em><em>optional</em>) – OUT or IN</li>
+<li><strong>foil</strong> (<em>string</em><em>, </em><em>optional</em>) – OUT, Mo, Zr, Zn, Cu, Ni, Fe, or Ti</li>
+<li><strong>timeout</strong> (<em>float</em><em>, </em><em>optional</em>) – Mark status as failed after this many seconds.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>status</strong> – Status object that will be marked as finished once all components
+are done moving.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">DeviceStatus</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.LODCM.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>wait=False</em>, <em>timeout=None</em>, <em>finished_cb=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.LODCM.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves the diagnostics out of the beam.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>wait</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, wait for motion to complete.</li>
+<li><strong>timeout</strong> (<em>float</em><em>, </em><em>optional</em>) – If provided, mark the status as failed if the movement does not
+complete within this many seconds.</li>
+<li><strong>finished_cb</strong> (<em>func</em><em>, </em><em>optional</em>) – Callback function to be run once the motion has completed.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>status</strong> – Status object that will be marked finished when all diagnostics are
+done moving and will time out after the given timeout.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ophyd.status.DeviceStatus</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.LODCM.subscribe">
+<code class="descname">subscribe</code><span class="sig-paren">(</span><em>cb</em>, <em>event_type=None</em>, <em>run=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.LODCM.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe to changes in the LODCM destination</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cb</strong> (<em>callable</em>) – Callback to be run</li>
+<li><strong>event_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of event to run callback on</li>
+<li><strong>run</strong> (<em>bool</em><em>, </em><em>optional</em>) – Run the callback immediatelly</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="attribute">
-<dt id="pcdsdevices.epics.LODCM.light_states">
-<code class="descname">light_states</code><a class="headerlink" href="#pcdsdevices.epics.LODCM.light_states" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">LightStates</span></code></p>
+<dt id="pcdsdevices.epics.LODCM.yag_state">
+<code class="descname">yag_state</code><a class="headerlink" href="#pcdsdevices.epics.LODCM.yag_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">YagLomStates</span><span class="p">,</span> <span class="s1">&#39;:DV&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </dd></dl>
@@ -272,7 +365,7 @@ is coming in on H2N to the mono line (e.g. XCS periscope)</td>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.1+239.ge962e81',
+            VERSION:'0.0.1+250.ga40580c',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
