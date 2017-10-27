@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>DAQ &mdash; PCDS Devices 0+untagged.237.g4bb2dff documentation</title>
+  <title>DAQ &mdash; PCDS Devices 0+untagged.240.gd49ef30 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PCDS Devices 0+untagged.237.g4bb2dff documentation" href="index.html"/>
+    <link rel="top" title="PCDS Devices 0+untagged.240.gd49ef30 documentation" href="index.html"/>
         <link rel="next" title="Offset Mirrors" href="homs.html"/>
         <link rel="prev" title="IPIMB" href="ipimb.html"/> 
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0+untagged.237.g4bb2dff
+                0+untagged.240.gd49ef30
               </div>
             
           
@@ -231,7 +231,7 @@ finished acquiring.</p>
 
 <dl class="method">
 <dt id="pcdsdevices.daq.Daq.configure">
-<code class="descname">configure</code><span class="sig-paren">(</span><em>events=None</em>, <em>duration=None</em>, <em>record=False</em>, <em>use_l3t=False</em>, <em>controls=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.daq.Daq.configure" title="Permalink to this definition">¶</a></dt>
+<code class="descname">configure</code><span class="sig-paren">(</span><em>events=None</em>, <em>duration=None</em>, <em>record=False</em>, <em>use_l3t=False</em>, <em>controls=None</em>, <em>always_on=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.daq.Daq.configure" title="Permalink to this definition">¶</a></dt>
 <dd><p>Changes the daq’s configuration for the next run.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -249,8 +249,20 @@ begin() will run indefinitely.</li>
 count events that pass the level 3 trigger.</li>
 <li><strong>record</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, we’ll record the data. Otherwise, we’ll run without
 recording.</li>
-<li><strong>controls</strong> (<em>list of tuple</em><em>(</em><em>str</em><em>, </em><em>value</em><em>)</em><em>, </em><em>optional</em>) – If provided, these will make it into the data stream as control
-variables.</li>
+<li><strong>controls</strong> (<em>dict{str: device}</em><em>, </em><em>optional</em>) – If provided, values from these will make it into the DAQ data
+stream as variables. We will check device.position and device.value
+for quantities to use and we will update these values each time
+begin is called.</li>
+<li><strong>always_on</strong> (<em>bool</em><em>, </em><em>optional</em>) – This determines our run control during a Bluesky scan with a
+RunEngine attached to a Daq object.
+If this is False, we will start taking events at create messages
+and stop taking events at save messages. If we are configured for a
+number of events or a duration, we’ll make sure to run for exactly
+that long between the create and save messages, waiting in the scan
+if necessary.
+If this is True, we won’t provide any run control. The daq will
+start recording at the beginning of the run and will stop recording
+at the end of the run.</li>
 </ul>
 </td>
 </tr>
@@ -456,7 +468,7 @@ is expecting sub devices.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0+untagged.237.g4bb2dff',
+            VERSION:'0+untagged.240.gd49ef30',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
