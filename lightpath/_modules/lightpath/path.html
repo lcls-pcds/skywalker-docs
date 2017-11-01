@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>lightpath.path &mdash; LCLS Lightpath 0.1.0+66.gead45fa documentation</title>
+  <title>lightpath.path &mdash; LCLS Lightpath 0.1.0+75.g14fc7f2 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="LCLS Lightpath 0.1.0+66.gead45fa documentation" href="../../index.html"/>
+    <link rel="top" title="LCLS Lightpath 0.1.0+75.g14fc7f2 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.1.0+66.gead45fa
+                0.1.0+75.g14fc7f2
               </div>
             
           
@@ -236,6 +236,7 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">devices</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">devices</span> <span class="o">=</span> <span class="n">devices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_has_subscribed</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Configuring path </span><span class="si">%s</span><span class="s2"> with </span><span class="si">%s</span><span class="s2"> devices&quot;</span><span class="p">,</span>
                      <span class="n">name</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">devices</span><span class="p">))</span>
         <span class="c1">#Sort by position downstream to upstream</span>
@@ -248,9 +249,6 @@
                                           <span class="s1">&#39;non-existant beamline position, &#39;</span>
                                           <span class="s1">&#39;its coordinate was not properly &#39;</span>
                                           <span class="s1">&#39;initialized&#39;</span><span class="p">,</span> <span class="n">dev</span><span class="p">)</span>
-                <span class="c1">#Add callback here!</span>
-                <span class="n">dev</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_device_moved</span><span class="p">,</span>
-                              <span class="n">run</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
                 <span class="c1">#Add as attribute</span>
                 <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dev</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="s1">&#39;_&#39;</span><span class="p">),</span> <span class="n">dev</span><span class="p">)</span>
 
@@ -332,16 +330,14 @@
 <span class="sd">        current :attr:`.impediment` and any upstream devices that may be</span>
 <span class="sd">        inserted but have more transmission than :attr:`.minimum_transmission`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">inserted</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">inserted</span><span class="p">]</span>
-        <span class="c1">#Return an empty list instead of None</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">inserted</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[]</span>
+        <span class="c1">#Find device information</span>
+        <span class="n">inserted</span>   <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">inserted</span><span class="p">]</span>
+        <span class="n">impediment</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">impediment</span>
         <span class="c1">#No blocking devices, all inserted devices incident</span>
-        <span class="k">elif</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">impediment</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">impediment</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">inserted</span>
         <span class="c1">#Otherwise only return upstream of the impediment</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">inserted</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">impediment</span><span class="o">.</span><span class="n">z</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">inserted</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;=</span> <span class="n">impediment</span><span class="o">.</span><span class="n">z</span><span class="p">]</span>
 
 <div class="viewcode-block" id="BeamPath.show_devices"><a class="viewcode-back" href="../../path.html#lightpath.path.BeamPath.show_devices">[docs]</a>    <span class="k">def</span> <span class="nf">show_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -396,18 +392,20 @@
         <span class="k">return</span> <span class="p">[</span><span class="n">device</span> <span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span>
                 <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="s1">&#39;mps&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
                 <span class="ow">and</span> <span class="n">device</span><span class="o">.</span><span class="n">mps</span><span class="o">.</span><span class="n">faulted</span>
-                <span class="ow">and</span> <span class="ow">not</span> <span class="n">device</span><span class="o">.</span><span class="n">mps</span><span class="o">.</span><span class="n">bypassed</span><span class="p">]</span>
+                <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">mps</span><span class="o">.</span><span class="n">bypassed</span> <span class="ow">or</span> <span class="n">device</span><span class="o">.</span><span class="n">mps</span><span class="o">.</span><span class="n">veto_capable</span><span class="p">)]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">impediment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        First blocking device along the path</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">blocking_devices</span><span class="p">:</span>
+        <span class="c1">#Find device information</span>
+        <span class="n">blocks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">blocking_devices</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">blocks</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
 
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">blocking_devices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cleared</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -592,13 +590,49 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Run when a device changes state</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1">#Maybe this should introspect and see if beampath state changes</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_run_subs</span><span class="p">(</span><span class="n">sub_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">SUB_PTH_CHNG</span><span class="p">,</span>
-                         <span class="n">device</span> <span class="o">=</span> <span class="n">obj</span><span class="p">)</span>
+        <span class="c1">#Determine whether our path has been changed</span>
+        <span class="n">block</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">impediment</span>
+        <span class="k">if</span> <span class="n">block</span><span class="p">:</span>
+            <span class="n">block</span> <span class="o">=</span> <span class="n">block</span><span class="o">.</span><span class="n">z</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">block</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+        <span class="c1">#If device is upstream of impediment</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="ow">and</span> <span class="n">obj</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;=</span> <span class="n">block</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_run_subs</span><span class="p">(</span><span class="n">sub_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">SUB_PTH_CHNG</span><span class="p">,</span>
+                             <span class="n">device</span> <span class="o">=</span> <span class="n">obj</span><span class="p">)</span>
         <span class="c1">#Alert that an MPS system has moved</span>
-        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;mps&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;mps&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_run_subs</span><span class="p">(</span><span class="n">sub_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">SUB_MPSPATH_CHNG</span><span class="p">,</span>
-                          <span class="n">device</span><span class="o">=</span><span class="n">obj</span><span class="p">)</span>
+                           <span class="n">device</span><span class="o">=</span><span class="n">obj</span><span class="p">)</span>
+
+<div class="viewcode-block" id="BeamPath.subscribe"><a class="viewcode-back" href="../../path.html#lightpath.path.BeamPath.subscribe">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cb</span><span class="p">,</span> <span class="n">event_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">run</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Subscribe to changes of the valve</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cb : callable</span>
+<span class="sd">            Callback to be run</span>
+
+<span class="sd">        event_type : str, optional</span>
+<span class="sd">            Type of event to run callback on</span>
+
+<span class="sd">        run : bool, optional</span>
+<span class="sd">            Run the callback immediatelly</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_has_subscribed</span><span class="p">:</span>
+            <span class="c1">#Subscribe to all child devices</span>
+            <span class="k">for</span> <span class="n">dev</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">devices</span><span class="p">:</span>
+                <span class="c1">#Add callback here!</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">dev</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_device_moved</span><span class="p">,</span>
+                                  <span class="n">event_type</span><span class="o">=</span><span class="n">dev</span><span class="o">.</span><span class="n">SUB_STATE</span><span class="p">,</span>
+                                  <span class="n">run</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;BeamPath is unable to subscribe to device </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                                 <span class="n">dev</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_has_subscribed</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="n">event_type</span><span class="o">=</span><span class="n">event_type</span><span class="p">,</span> <span class="n">run</span><span class="o">=</span><span class="n">run</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_repr_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">yield</span><span class="p">(</span><span class="s1">&#39;range&#39;</span><span class="p">,</span>   <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">)</span>
@@ -647,7 +681,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.1.0+66.gead45fa',
+            VERSION:'0.1.0+75.g14fc7f2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
