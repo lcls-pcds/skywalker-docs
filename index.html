@@ -166,12 +166,12 @@
             
   <div class="section" id="the-pcds-skywalker-project">
 <h1>The PCDS Skywalker Project<a class="headerlink" href="#the-pcds-skywalker-project" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://travis-ci.org/slaclab/skywalker"><img alt="https://travis-ci.org/slaclab/skywalker.svg?branch=master" src="https://travis-ci.org/slaclab/skywalker.svg?branch=master" /></a>
 <p>The Skywalker software suite is a set of of Python tools designed to
 automatically deliver the photon beam to a number of experimental hutches at
 LCLS</p>
-</div>
 <div class="section" id="design-goals">
-<h1>Design Goals<a class="headerlink" href="#design-goals" title="Permalink to this headline">¶</a></h1>
+<h2>Design Goals<a class="headerlink" href="#design-goals" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Create an organized database of photon instruments and their associated
 metadata. This allows high-level applications a clean and consistent API to
@@ -191,8 +191,27 @@ of mirrors to deliver the beam quickly aand accurately for the LCLS
 experimental program</li>
 </ul>
 </div>
+<div class="section" id="accessing-applications">
+<h2>Accessing Applications<a class="headerlink" href="#accessing-applications" title="Permalink to this headline">¶</a></h2>
+<p>The top level <code class="docutils literal"><span class="pre">skywalker</span></code> repository will install two executables <code class="docutils literal"><span class="pre">skywalker</span></code>
+and <code class="docutils literal"><span class="pre">lightpath</span></code> in your <code class="docutils literal"><span class="pre">/usr/bin</span></code> directory. One can manually use the
+<code class="xref py py-class docutils literal"><span class="pre">lightpath.ui.LightApp</span></code> widget, but this script will handle loading the
+configuration stored with <cite>skywalker/config/metadata.json</cite> into the lightpath
+itself.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">lightpath</span> <span class="o">--</span><span class="n">hutch</span> <span class="n">MFX</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">skywalker</span></code> executable is installed as well. By default, this is launched
+in a simulation mode, but by using <code class="docutils literal"><span class="pre">--live</span></code> option, the application is
+instantiated ready for automated alignment</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>skywalker --live
+
+configuration stored with ``skywalker/config`` as their source.
+</pre></div>
+</div>
+</div>
 <div class="section" id="software-packages">
-<h1>Software Packages<a class="headerlink" href="#software-packages" title="Permalink to this headline">¶</a></h1>
+<h2>Software Packages<a class="headerlink" href="#software-packages" title="Permalink to this headline">¶</a></h2>
 <p>The following software packages work in concert to accomplish the goals listed
 above:</p>
 <ul class="simple">
@@ -204,13 +223,25 @@ determine where the beam is currently being delivered</li>
 <li><strong>psbeam:</strong> Image processing tools used to analyze the output of photon
 diagnostics.</li>
 </ul>
-<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="conda">
+<h2>Conda<a class="headerlink" href="#conda" title="Permalink to this headline">¶</a></h2>
+<p>Install the most recent tagged build:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">skywalker</span> <span class="o">-</span><span class="n">c</span> <span class="n">skywalker</span><span class="o">-</span><span class="n">tag</span> <span class="o">-</span><span class="n">c</span> <span class="n">lightsource2</span><span class="o">-</span><span class="n">tag</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+</pre></div>
+</div>
+<p>Install the most recent development build:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">skywalker</span> <span class="o">-</span><span class="n">c</span> <span class="n">skywalker</span><span class="o">-</span><span class="n">dev</span> <span class="o">-</span><span class="n">c</span> <span class="n">lightsource2</span><span class="o">-</span><span class="n">tag</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+</pre></div>
 </div>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
