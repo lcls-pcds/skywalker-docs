@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PIM &mdash; PCDS Devices 0+untagged.236.ga721314 documentation</title>
+  <title>PIM &mdash; PCDS Devices 0+untagged.244.g13fe270 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PCDS Devices 0+untagged.236.ga721314 documentation" href="index.html"/>
+    <link rel="top" title="PCDS Devices 0+untagged.244.g13fe270 documentation" href="index.html"/>
         <link rel="next" title="IPIMB" href="ipimb.html"/>
         <link rel="prev" title="Slits" href="slits.html"/> 
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0+untagged.236.ga721314
+                0+untagged.244.g13fe270
               </div>
             
           
@@ -273,6 +273,12 @@ in read_configuration(), and describe_configuration() calls)</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="pcdsdevices.epics.pim.PIMMotor.insert">
+<code class="descname">insert</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.pim.PIMMotor.insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pcdsdevices.epics.pim.PIMMotor.move_in" title="pcdsdevices.epics.pim.PIMMotor.move_in"><code class="xref py py-meth docutils literal"><span class="pre">move_in()</span></code></a> for lightpath interface</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="pcdsdevices.epics.pim.PIMMotor.move">
 <code class="descname">move</code><span class="sig-paren">(</span><em>position</em>, <em>wait=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.pim.PIMMotor.move" title="Permalink to this definition">¶</a></dt>
 <dd><p>Move the PIM to the inputted position, optionally waiting for the move
@@ -414,18 +420,8 @@ caller</li>
 
 <dl class="method">
 <dt id="pcdsdevices.epics.pim.PIMMotor.remove">
-<code class="descname">remove</code><span class="sig-paren">(</span><em>wait=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.pim.PIMMotor.remove" title="Permalink to this definition">¶</a></dt>
-<dd><p>Move the PIM to the OUT position. Alias for move(“OUTx”).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>status</strong> – Status object of the move</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">MoveStatus</td>
-</tr>
-</tbody>
-</table>
+<code class="descname">remove</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.pim.PIMMotor.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pcdsdevices.epics.pim.PIMMotor.move_out" title="pcdsdevices.epics.pim.PIMMotor.move_out"><code class="xref py py-meth docutils literal"><span class="pre">move_out()</span></code></a> for lightpath interface</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -890,7 +886,7 @@ caller</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0+untagged.236.ga721314',
+            VERSION:'0+untagged.244.g13fe270',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
