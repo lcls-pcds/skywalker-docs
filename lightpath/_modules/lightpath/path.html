@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>lightpath.path &mdash; LCLS Lightpath 0.1.0+93.g8edbdc4 documentation</title>
+  <title>lightpath.path &mdash; LCLS Lightpath 0.2.0+1.g666e18d documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="LCLS Lightpath 0.1.0+93.g8edbdc4 documentation" href="../../index.html"/>
+    <link rel="top" title="LCLS Lightpath 0.2.0+1.g666e18d documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.1.0+93.g8edbdc4
+                0.2.0+1.g666e18d
               </div>
             
           
@@ -176,13 +176,13 @@
 <span class="c1">####################</span>
 <span class="c1"># Standard Library #</span>
 <span class="c1">####################</span>
+<span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Iterable</span>
 
 <span class="c1">####################</span>
 <span class="c1">#    Third Party   #</span>
 <span class="c1">####################</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">prettytable</span>    <span class="k">import</span> <span class="n">PrettyTable</span>
 <span class="kn">from</span> <span class="nn">ophyd.ophydobj</span> <span class="k">import</span> <span class="n">OphydObject</span>
 <span class="kn">from</span> <span class="nn">ophyd.status</span>   <span class="k">import</span> <span class="n">wait</span> <span class="k">as</span> <span class="n">status_wait</span>
@@ -244,7 +244,7 @@
             <span class="c1">#Check types and positions</span>
             <span class="k">for</span> <span class="n">dev</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
                 <span class="c1">#Ensure positioning is physical</span>
-                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">dev</span><span class="o">.</span><span class="n">z</span><span class="p">)</span> <span class="ow">or</span> <span class="n">dev</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;</span> <span class="mf">0.</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">dev</span><span class="o">.</span><span class="n">z</span><span class="p">)</span> <span class="ow">or</span> <span class="n">dev</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;</span> <span class="mf">0.</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="n">CoordinateError</span><span class="p">(</span><span class="s1">&#39;Device </span><span class="si">%r</span><span class="s1"> is reporting a &#39;</span>
                                           <span class="s1">&#39;non-existant beamline position, &#39;</span>
                                           <span class="s1">&#39;its coordinate was not properly &#39;</span>
@@ -601,7 +601,7 @@
         <span class="k">if</span> <span class="n">block</span><span class="p">:</span>
             <span class="n">block</span> <span class="o">=</span> <span class="n">block</span><span class="o">.</span><span class="n">z</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">block</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+            <span class="n">block</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span>
         <span class="c1">#If device is upstream of impediment</span>
         <span class="k">if</span> <span class="n">obj</span> <span class="ow">and</span> <span class="n">obj</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;=</span> <span class="n">block</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_run_subs</span><span class="p">(</span><span class="n">sub_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">SUB_PTH_CHNG</span><span class="p">,</span>
@@ -687,7 +687,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.1.0+93.g8edbdc4',
+            VERSION:'0.2.0+1.g666e18d',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
