@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Fits and Plots &mdash; Skywalker 0+untagged.337.g0d336c5 documentation</title>
+  <title>Fits and Plots &mdash; Skywalker 0.1.0+41.gcc776e6 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Skywalker 0+untagged.337.g0d336c5 documentation" href="index.html"/>
+    <link rel="top" title="Skywalker 0.1.0+41.gcc776e6 documentation" href="index.html"/>
         <link rel="next" title="Extensible Plans" href="plan_stubs.html"/>
         <link rel="prev" title="Plans" href="plans.html"/> 
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0+untagged.337.g0d336c5
+                0.1.0+41.gcc776e6
               </div>
             
           
@@ -179,7 +179,7 @@ most prominent example of this in the repository is <a class="reference internal
 <dl class="class">
 <dt id="pswalker.callbacks.LiveBuild">
 <em class="property">class </em><code class="descclassname">pswalker.callbacks.</code><code class="descname">LiveBuild</code><span class="sig-paren">(</span><em>model</em>, <em>y</em>, <em>independent_vars</em>, <em>init_guess=None</em>, <em>update_every=1</em>, <em>filters=None</em>, <em>drop_missing=True</em>, <em>average=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pswalker.callbacks.LiveBuild" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">bluesky.callbacks.core.LiveFit</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">bluesky.callbacks.fitting.LiveFit</span></code></p>
 <p>Base class for live model building in Skywalker</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -324,7 +324,7 @@ field name in the event document</li>
 <dl class="class">
 <dt id="pswalker.callbacks.LivePlotWithGoal">
 <em class="property">class </em><code class="descclassname">pswalker.callbacks.</code><code class="descname">LivePlotWithGoal</code><span class="sig-paren">(</span><em>y</em>, <em>x=None</em>, <em>*</em>, <em>goal=0.0</em>, <em>tolerance=0.0</em>, <em>averages=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pswalker.callbacks.LivePlotWithGoal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">bluesky.callbacks.core.LivePlot</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">bluesky.callbacks.mpl_plotting.LivePlot</span></code></p>
 <p>Build a function that updates a plot from a stream of Events.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -414,7 +414,7 @@ callback, call <cite>plt.ion()</cite> in your IPython session.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0+untagged.337.g0d336c5',
+            VERSION:'0.1.0+41.gcc776e6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
