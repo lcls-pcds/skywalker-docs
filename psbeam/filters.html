@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Signal Filters &mdash; psbeam 0.0.2.1+19.g42524e0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="psbeam 0.0.2.1+19.g42524e0 documentation" href="index.html"/>
+        <link rel="next" title="Image Preprocessing" href="preprocessing.html"/>
+        <link rel="prev" title="Beam Detection" href="beamdetector.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> psbeam
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.2.1+19.g42524e0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Higher Level Routines</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="beamdetector.html">Beam Detection</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Signal Filters</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Image Processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Image Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contouring.html">Contouring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="morph.html">Morphological Operations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Importable Images</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="template_images.html">Basic Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing_images.html">X-Ray Beam</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">psbeam</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Signal Filters</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/filters.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="signal-filters">
+<h1>Signal Filters<a class="headerlink" href="#signal-filters" title="Permalink to this headline">¶</a></h1>
+<p>Filters that return a bool depending on if the inputted image passes a set of
+tests.</p>
+<dl class="function">
+<dt id="psbeam.filters.moments_within_range">
+<code class="descclassname">psbeam.filters.</code><code class="descname">moments_within_range</code><span class="sig-paren">(</span><em>M=None</em>, <em>image=None</em>, <em>contour=None</em>, <em>max_m0=1000000.0</em>, <em>min_m0=10</em><span class="sig-paren">)</span><a class="headerlink" href="#psbeam.filters.moments_within_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks that the image moments are within the specified range.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>M</strong> (<em>dict</em><em>, </em><em>optional</em>) – Moments of the image.</li>
+<li><strong>image</strong> (<em>np.ndarray</em><em>, </em><em>optional</em>) – Image to check the moments for.</li>
+<li><strong>contour</strong> (<em>np.ndarray</em><em>, </em><em>optional</em>) – Beam contours</li>
+<li><strong>max_m0</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum value that the zeroth moment can have</li>
+<li><strong>min_m0</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum value that the zeroth moment can have</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>within_range</strong> – Whether the moments were within the specified range.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">MomentOutOfRange</span></code> – If the zeroth moment is out of the specified range.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="psbeam.filters.contour_area_filter">
+<code class="descclassname">psbeam.filters.</code><code class="descname">contour_area_filter</code><span class="sig-paren">(</span><em>image</em>, <em>kernel=(9</em>, <em>9)</em>, <em>resize=1.0</em>, <em>uint_mode='scale'</em>, <em>min_area=100</em>, <em>min_area_factor=3</em>, <em>factor=3</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#psbeam.filters.contour_area_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks that a contour can be returned for two thresholds of the image, a
+mean threshold and an otsu threshold.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>image</strong> (<em>np.ndarray</em>) – Image to check for contours.</li>
+<li><strong>kernel</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Kernel to use when gaussian blurring.</li>
+<li><strong>resize</strong> (<em>float</em><em>, </em><em>optional</em>) – How much to resize the image by before doing any calculations.</li>
+<li><strong>uint_mode</strong> (<em>str</em><em>, </em><em>optional</em>) – Conversion mode to use when converting to uint8.</li>
+<li><strong>min_area</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum area of the otsu thresholded beam.</li>
+<li><strong>factor</strong> (<em>float</em>) – Factor to pass to the mean threshold.</li>
+<li><strong>min_area_factor</strong> (<em>float</em>) – The amount to scale down the area for comparison with the mean threshold
+contour area.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>passes</strong> – True if the image passes the check, False if it does not</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="psbeam.filters.full_filter">
+<code class="descclassname">psbeam.filters.</code><code class="descname">full_filter</code><span class="sig-paren">(</span><em>image</em>, <em>centroids_ad</em>, <em>resize=1.0</em>, <em>kernel=(13</em>, <em>13)</em>, <em>n_opening=1</em>, <em>cent_atol=2</em>, <em>thresh_m00_min=10</em>, <em>thresh_m00_max=10000000.0</em>, <em>thresh_similarity=0.067</em>, <em>thresh_mode='otsu'</em><span class="sig-paren">)</span><a class="headerlink" href="#psbeam.filters.full_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the full pipeline which includes:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Checks if there is beam by obtaining an image contour</li>
+<li>Checks the sum of all pixels is above and below a threshold</li>
+<li>Checking if the computed centroid is close to the adplugin centroid</li>
+<li>Checks that the beam is above the threshold of similarity</li>
+</ul>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>image</strong> (<em>np.ndarray</em>) – Image to process</li>
+<li><strong>centroids_ad</strong> (<em>tuple</em>) – Centroids obtained from the areadetector stats plugin.</li>
+<li><strong>resize</strong> (<em>float</em><em>, </em><em>optional</em>) – Resize the image before performing any processing.</li>
+<li><strong>kernel</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Size of kernel to use when running the gaussian filter.</li>
+<li><strong>n_opening</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of times to perform an erosion, followed by the same number of
+dilations.</li>
+<li><strong>cent_atol</strong> (<em>float</em><em>, </em><em>optional</em>) – Absolute tolerance to use when comparing AD’s and OpenCV’s centroids.</li>
+<li><strong>thresh_m00_min</strong> (<em>float</em><em>, </em><em>optional</em>) – Lower threshold for the sum of pixels in the image.</li>
+<li><strong>thresh_m00_max</strong> (<em>float</em><em>, </em><em>optional</em>) – Upper threshold for the sum of pixels in the image.</li>
+<li><strong>thresh_similarity</strong> (<em>float</em><em>, </em><em>optional</em>) – Upper threshold for beam similarity score (0.0 is perfectly circular).</li>
+<li><strong>thresh_mode</strong> (<em>str</em><em>, </em><em>optional</em>) – <p>Thresholding mode to use. For extended documentation see
+preprocessing.threshold_image. Valid modes are:</p>
+<blockquote>
+<div>[‘mean’, ‘top’, ‘bottom’, ‘adaptive’, ‘otsu’]</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Bool indicating whether the image passed the tests.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="preprocessing.html" class="btn btn-neutral float-right" title="Image Preprocessing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="beamdetector.html" class="btn btn-neutral" title="Beam Detection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, SLAC National Accelerator Laboratory.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.2.1+19.g42524e0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

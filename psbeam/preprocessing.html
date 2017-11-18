@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Image Preprocessing &mdash; psbeam 0.0.2.1+19.g42524e0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="psbeam 0.0.2.1+19.g42524e0 documentation" href="index.html"/>
+        <link rel="next" title="Contouring" href="contouring.html"/>
+        <link rel="prev" title="Signal Filters" href="filters.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> psbeam
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.2.1+19.g42524e0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Higher Level Routines</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="beamdetector.html">Beam Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filters.html">Signal Filters</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Image Processing</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Image Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contouring.html">Contouring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="morph.html">Morphological Operations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Importable Images</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="template_images.html">Basic Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing_images.html">X-Ray Beam</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">psbeam</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Image Preprocessing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/preprocessing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="image-preprocessing">
+<h1>Image Preprocessing<a class="headerlink" href="#image-preprocessing" title="Permalink to this headline">¶</a></h1>
+<p>Functions for preprocessing images.</p>
+<dl class="function">
+<dt id="psbeam.preprocessing.to_gray">
+<code class="descclassname">psbeam.preprocessing.</code><code class="descname">to_gray</code><span class="sig-paren">(</span><em>image</em>, <em>color_space='RGB'</em>, <em>cv2_color=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psbeam.preprocessing.to_gray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the inputted image to gray scale.</p>
+<p>This function should serve as a wrapper for cv2.cvtColor with basic input
+checking. Its main use is to convert color images to gray scale but it can
+be used as an alias to cv2.cvtColor if a color conversion code is passed
+into cv2_color</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>image</strong> (<em>np.ndarray</em>) – Image to convert to grayscale.</li>
+<li><strong>color_space</strong> (<em>str</em><em>, </em><em>optional</em>) – Color space of the image. Valid entries are ‘RGB’, ‘BGR’.</li>
+<li><strong>cv2_color</strong> (<em>cv2.ColorConversionCodes</em>) – OpenCV color conversion code. Bypasses image array checks if used.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>image_gray</strong> – The image converted to gray scale (ie len(image.shape) is 2)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">np.ndarray</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">InputError</span></code> – If input is not an image or color_space is invalid.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="psbeam.preprocessing.to_uint8">
+<code class="descclassname">psbeam.preprocessing.</code><code class="descname">to_uint8</code><span class="sig-paren">(</span><em>image</em>, <em>mode='scale'</em><span class="sig-paren">)</span><a class="headerlink" href="#psbeam.preprocessing.to_uint8" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Correctly</em> converts an image to uint8 type.</p>
+<p>Running ‘image.astype(np.uint8)’ on its own applies a mod(256) to handle
+values over 256. The correct way is to either clip (implemented here) or
+normalize to the the max and min possible values of the array. Below are the
+available conversion modes:</p>
+<dl class="docutils">
+<dt>clip</dt>
+<dd>Truncates the  image at 0 and 255, then returns the resulting array.</dd>
+<dt>norm</dt>
+<dd>Normalizes the image so that the maximum value of the input array is set
+to 255 and the minimum value is 0.</dd>
+<dt>scale</dt>
+<dd>Scales the image so that the maximum and minimum values of the resulting
+array corresponds to the maximum and minimum possible values of the
+input array.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>image</strong> (<em>np.ndarray</em>) – Image to be converted to uint8.</li>
+<li><strong>mode</strong> (<em>str</em><em>, </em><em>optional</em>) – Conversion mode to use. See conversion modes for more details.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Image that is a np.ndarray with dtype uint8.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="psbeam.preprocessing.uint_resize_gauss">
+<code class="descclassname">psbeam.preprocessing.</code><code class="descname">uint_resize_gauss</code><span class="sig-paren">(</span><em>image</em>, <em>mode='scale'</em>, <em>fx=1.0</em>, <em>fy=1.0</em>, <em>kernel=(11</em>, <em>11)</em>, <em>sigma=0</em><span class="sig-paren">)</span><a class="headerlink" href="#psbeam.preprocessing.uint_resize_gauss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Preprocess the image by converting to uint8, resizing and running a
+gaussian blur.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>image</strong> (<em>np.ndarray</em>) – The image to be preprocessed.</li>
+<li><strong>mode</strong> (<em>str</em><em>, </em><em>optional</em>) – Conversion mode that either clips the image or normalizes to the range
+of the original image type.</li>
+<li><strong>fx</strong> (<em>float</em><em>, </em><em>optional</em>) – Percent to resize the image by in x.</li>
+<li><strong>fy</strong> (<em>float</em><em>, </em><em>optional</em>) – Percent to resize the image by in y.</li>
+<li><strong>kernel</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Kernel to use when running the gaussian filter.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Image of type uint8 that has been resized and blurred.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="psbeam.preprocessing.threshold_image">
+<code class="descclassname">psbeam.preprocessing.</code><code class="descname">threshold_image</code><span class="sig-paren">(</span><em>image</em>, <em>binary=True</em>, <em>mode='top'</em>, <em>factor=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#psbeam.preprocessing.threshold_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thresholds the image, creating a binary image.</p>
+<p>The thresholding can be done using one of the following modes:</p>
+<dl class="docutils">
+<dt>mean</dt>
+<dd>Set the threshold line to be image.mean + image.std*factor.</dd>
+<dt>top</dt>
+<dd>Sets the threshold line to be image.max - image.std*factor, leaving just
+the highest intensity pixels.</dd>
+<dt>bottom</dt>
+<dd>Sets the threshold line to be image.min + image.std*factor, removing
+just the lowest intensity pixels</dd>
+<dt>adaptive</dt>
+<dd>Sets threshold line according to a weighed sum of neughborhood values
+using a gaussian window. See ‘Adaptive Thresholding’ in the following
+link for more details.
+<a class="reference external" href="http://docs.opencv.org/trunk/d7/d4d/tutorial_py_thresholding.html">http://docs.opencv.org/trunk/d7/d4d/tutorial_py_thresholding.html</a></dd>
+<dt>otsu</dt>
+<dd>Sets the threshold to be between the histogram peaks of a bimodal image.
+See “Otsu’s Binarization” in the following for more details.
+<a class="reference external" href="http://docs.opencv.org/trunk/d7/d4d/tutorial_py_thresholding.html">http://docs.opencv.org/trunk/d7/d4d/tutorial_py_thresholding.html</a></dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>image</strong> (<em>np.ndarray</em>) – The image to threshold.</li>
+<li><strong>binary</strong> (<em>bool</em><em>, </em><em>optional</em>) – Use binary thresholding or to_zero thresholding.</li>
+<li><strong>mode</strong> (<em>str</em><em>, </em><em>optional</em>) – Thresholding mode to use. See docstring for more information.</li>
+<li><strong>factor</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of times to multiply the std by before adding to the mean for
+thresholding.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>th</strong> – Image that has been thresholded.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="contouring.html" class="btn btn-neutral float-right" title="Contouring" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="filters.html" class="btn btn-neutral" title="Signal Filters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, SLAC National Accelerator Laboratory.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.2.1+19.g42524e0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

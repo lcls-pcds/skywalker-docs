@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Contouring &mdash; psbeam 0.0.2.1+19.g42524e0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="psbeam 0.0.2.1+19.g42524e0 documentation" href="index.html"/>
+        <link rel="next" title="Morphological Operations" href="morph.html"/>
+        <link rel="prev" title="Image Preprocessing" href="preprocessing.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> psbeam
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.2.1+19.g42524e0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Higher Level Routines</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="beamdetector.html">Beam Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filters.html">Signal Filters</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Image Processing</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Image Preprocessing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contouring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="morph.html">Morphological Operations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Importable Images</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="template_images.html">Basic Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing_images.html">X-Ray Beam</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">psbeam</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Contouring</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/contouring.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="contouring">
+<h1>Contouring<a class="headerlink" href="#contouring" title="Permalink to this headline">¶</a></h1>
+<p>Low to mid level functions and classes that mostly involve contouring. For more
+info on how they work, visit OpenCV’s documentation on contours:</p>
+<p><a class="reference external" href="http://docs.opencv.org/trunk/d3/d05/tutorial_py_table_of_contents_contours.html">http://docs.opencv.org/trunk/d3/d05/tutorial_py_table_of_contents_contours.html</a></p>
+<dl class="function">
+<dt id="psbeam.contouring.get_contours">
+<code class="descclassname">psbeam.contouring.</code><code class="descname">get_contours</code><span class="sig-paren">(</span><em>image</em>, <em>thresh_mode='otsu'</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#psbeam.contouring.get_contours" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the contours of an image according to the inputted threshold.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>image</strong> (<em>np.ndarray</em>) – Image to extract the contours from.</li>
+<li><strong>thresh_mode</strong> (<em>str</em><em>, </em><em>optional</em>) – <p>Thresholding mode to use. For extended documentation see
+<code class="docutils literal"><span class="pre">preprocessing.threshold_image</span></code>. Valid modes are:</p>
+<blockquote>
+<div>[‘mean’, ‘top’, ‘bottom’, ‘adaptive’, ‘otsu’]</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>contours</strong> – A list of the contours found in the image.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">list</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">NoContoursDetected</span></code> – The returned contours list was empty.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="psbeam.contouring.get_largest_contour">
+<code class="descclassname">psbeam.contouring.</code><code class="descname">get_largest_contour</code><span class="sig-paren">(</span><em>image=None</em>, <em>contours=None</em>, <em>thresh_mode='otsu'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#psbeam.contouring.get_largest_contour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns largest contour of the contour list. Either an image or a contour
+must be passed. If both are passed, a warning will be logged and the
+contours of the image will be computed and used to find the largest contour.</p>
+<p>Function is making an implicit assumption that there will only be one
+(large) contour in the image.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>image</strong> (<em>np.ndarray</em><em>, </em><em>optional</em>) – Image to extract the contours from.</li>
+<li><strong>contours</strong> (<em>np.ndarray</em><em>, </em><em>optional</em>) – Contours found on an image.</li>
+<li><strong>thresh_mode</strong> (<em>str</em><em>, </em><em>optional</em>) – <p>Thresholding mode to use. For extended documentation see
+<code class="docutils literal"><span class="pre">preprocessing.threshold_image</span></code>. Valid modes are:</p>
+<blockquote>
+<div>[‘mean’, ‘top’, ‘bottom’, ‘adaptive’, ‘otsu’]</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>(contour_largest, area_largest)</strong> – Contour that encloses the largest area and the area it encloses</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">tuple</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">InputError</span></code> – If neither an image nor contours are inputted, or largest area is zero</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="psbeam.contouring.get_moments">
+<code class="descclassname">psbeam.contouring.</code><code class="descname">get_moments</code><span class="sig-paren">(</span><em>image=None</em>, <em>contour=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#psbeam.contouring.get_moments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the moments of an image.</p>
+<p>Attempts to find the moments using an inputted contours first, but if it
+isn’t inputted it will compute the contours of the image then compute
+the moments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>image</strong> (<em>np.ndarray</em>) – Image to calculate moments from.</li>
+<li><strong>contour</strong> (<em>np.ndarray</em>) – Beam contour.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>moments</strong> – Dictionary with all the calculated moments of the image.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">dict</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">InputError</span></code> – If neither an image nor contours are inputted.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="psbeam.contouring.get_centroid">
+<code class="descclassname">psbeam.contouring.</code><code class="descname">get_centroid</code><span class="sig-paren">(</span><em>M</em><span class="sig-paren">)</span><a class="headerlink" href="#psbeam.contouring.get_centroid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the centroid using the inputted image moments.</p>
+<p>Centroid is computed as being the first moment in x and y divided by the
+zeroth moment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>M</strong> (<em>list</em>) – List of image moments.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Centroid of the image moments.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="psbeam.contouring.get_contour_size">
+<code class="descclassname">psbeam.contouring.</code><code class="descname">get_contour_size</code><span class="sig-paren">(</span><em>image=None</em>, <em>contour=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#psbeam.contouring.get_contour_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the length and width of the contour, or the contour of the image
+inputted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>image</strong> (<em>np.ndarray</em>) – Image to calculate moments from.</li>
+<li><strong>contour</strong> (<em>np.ndarray</em>) – Beam contour.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Length and width of the inputted contour.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">tuple</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">InputError</span></code> – If neither an image nor contours are inputted.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="psbeam.contouring.get_similarity">
+<code class="descclassname">psbeam.contouring.</code><code class="descname">get_similarity</code><span class="sig-paren">(</span><em>contour</em>, <em>template='circle'</em>, <em>method=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#psbeam.contouring.get_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a score of how similar a contour is to a selected template image.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>contour</strong> (<em>np.ndarray</em>) – Contour to be compared with the template contour</li>
+<li><strong>template</strong> (<em>str</em><em> or </em><em>np.ndarray</em><em>, </em><em>optional</em>) – String for template image to use, or can be a contour</li>
+<li><strong>method</strong> (<em>int</em><em>, </em><em>optional</em>) – Matches the contours according to an enumeration from 0 to 2. To see
+the methods in detail, go to:
+<a class="reference external" href="http://docs.opencv.org/3.1.0/df/d4e/group__imgproc__c.html#gacd971ae682604ff73cdb88645725968d">http://docs.opencv.org/3.1.0/df/d4e/group__imgproc__c.html#gacd971ae682604ff73cdb88645725968d</a></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Value that is 0.0 or larger, with 0.0 denoting a perfect matching</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">float</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">InputError</span></code> – If string for template image is not in template images, np.ndarray for
+template image is not the right shape, invalid type passed for template.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="morph.html" class="btn btn-neutral float-right" title="Morphological Operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="preprocessing.html" class="btn btn-neutral" title="Image Preprocessing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, SLAC National Accelerator Laboratory.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.2.1+19.g42524e0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
