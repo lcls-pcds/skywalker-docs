@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>LODCM &mdash; PCDS Devices 0.2.0+12.g0e05a13 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="PCDS Devices 0.2.0+12.g0e05a13 documentation" href="index.html"/>
+        <link rel="next" title="Base Classes" href="device.html"/>
+        <link rel="prev" title="Offset Mirrors" href="homs.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PCDS Devices
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0+12.g0e05a13
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Common Components</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="valves.html">Valves and Stoppers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slits.html">Slits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pim.html">PIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ipimb.html">IPIMB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="daq.html">DAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Beam Steering</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="homs.html">Offset Mirrors</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">LODCM</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="device.html">Base Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PCDS Devices</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>LODCM</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/lodcm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lodcm">
+<h1>LODCM<a class="headerlink" href="#lodcm" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="pcdsdevices.epics.LODCM">
+<em class="property">class </em><code class="descclassname">pcdsdevices.epics.</code><code class="descname">LODCM</code><span class="sig-paren">(</span><em>prefix</em>, <em>*</em>, <em>name</em>, <em>main_line=None</em>, <em>mono_line='MONO'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.LODCM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Large Offset Dual Crystal Monochromator</p>
+<p>This is the device that allows XPP and XCS to multiplex with downstream
+hutches. It contains two crystals that steer/split the beam and a number of
+diagnostic devices between them. Beam can continue onto the main line, onto
+the mono line, onto both, or onto neither.</p>
+<dl class="attribute">
+<dt id="pcdsdevices.epics.LODCM.dectris">
+<code class="descname">dectris</code><a class="headerlink" href="#pcdsdevices.epics.LODCM.dectris" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">DectrisStates</span><span class="p">,</span> <span class="s1">&#39;:DH&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.LODCM.diag_clear">
+<code class="descname">diag_clear</code><a class="headerlink" href="#pcdsdevices.epics.LODCM.diag_clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns: <strong>diag_clear</strong> – False if the diagnostics will prevent beam.
+:rtype: bool</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.LODCM.diode">
+<code class="descname">diode</code><a class="headerlink" href="#pcdsdevices.epics.LODCM.diode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">InOutStates</span><span class="p">,</span> <span class="s1">&#39;:DIODE&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.LODCM.foil">
+<code class="descname">foil</code><a class="headerlink" href="#pcdsdevices.epics.LODCM.foil" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">FoilStates</span><span class="p">,</span> <span class="s1">&#39;:FOIL&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.LODCM.h1n">
+<code class="descname">h1n</code><a class="headerlink" href="#pcdsdevices.epics.LODCM.h1n" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">LodcmStates</span><span class="p">,</span> <span class="s1">&#39;:H1N&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.LODCM.lodcm_move">
+<code class="descname">lodcm_move</code><span class="sig-paren">(</span><em>h1n=None</em>, <em>yag=None</em>, <em>dectris=None</em>, <em>diode=None</em>, <em>foil=None</em>, <em>timeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.LODCM.lodcm_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move each component of the LODCM to the given state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>h1n</strong> (<em>string</em><em>, </em><em>optional</em>) – OUT, C, or Si</li>
+<li><strong>yag</strong> (<em>string</em><em>, </em><em>optional</em>) – OUT, YAG, SLIT1, SLIT2, or SLIT3</li>
+<li><strong>dectris</strong> (<em>string</em><em>, </em><em>optional</em>) – OUT, DECTRIS, SLIT1, SLIT2, SLIT3, OUTLOW</li>
+<li><strong>diode</strong> (<em>string</em><em>, </em><em>optional</em>) – OUT or IN</li>
+<li><strong>foil</strong> (<em>string</em><em>, </em><em>optional</em>) – OUT, Mo, Zr, Zn, Cu, Ni, Fe, or Ti</li>
+<li><strong>timeout</strong> (<em>float</em><em>, </em><em>optional</em>) – Mark status as failed after this many seconds.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>status</strong> – Status object that will be marked as finished once all components
+are done moving.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">DeviceStatus</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.LODCM.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>wait=False</em>, <em>timeout=None</em>, <em>finished_cb=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.LODCM.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves the diagnostics out of the beam.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>wait</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, wait for motion to complete.</li>
+<li><strong>timeout</strong> (<em>float</em><em>, </em><em>optional</em>) – If provided, mark the status as failed if the movement does not
+complete within this many seconds.</li>
+<li><strong>finished_cb</strong> (<em>func</em><em>, </em><em>optional</em>) – Callback function to be run once the motion has completed.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>status</strong> – Status object that will be marked finished when all diagnostics are
+done moving and will time out after the given timeout.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ophyd.status.DeviceStatus</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pcdsdevices.epics.LODCM.subscribe">
+<code class="descname">subscribe</code><span class="sig-paren">(</span><em>cb</em>, <em>event_type=None</em>, <em>run=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.LODCM.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe to changes in the LODCM destination</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cb</strong> (<em>callable</em>) – Callback to be run</li>
+<li><strong>event_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of event to run callback on</li>
+<li><strong>run</strong> (<em>bool</em><em>, </em><em>optional</em>) – Run the callback immediatelly</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.LODCM.yag">
+<code class="descname">yag</code><a class="headerlink" href="#pcdsdevices.epics.LODCM.yag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Component attribute</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">YagLomStates</span><span class="p">,</span> <span class="s1">&#39;:DV&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="device.html" class="btn btn-neutral float-right" title="Base Classes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="homs.html" class="btn btn-neutral" title="Offset Mirrors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, SLAC National Accelerator Laboratory.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.2.0+12.g0e05a13',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
