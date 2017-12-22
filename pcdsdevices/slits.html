@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Slits &mdash; PCDS Devices 0.2.0+12.g0e05a13 documentation</title>
+  <title>Slits &mdash; PCDS Devices 0.2.0+26.g141e707 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PCDS Devices 0.2.0+12.g0e05a13 documentation" href="index.html"/>
+    <link rel="top" title="PCDS Devices 0.2.0+26.g141e707 documentation" href="index.html"/>
         <link rel="next" title="PIM" href="pim.html"/>
         <link rel="prev" title="Valves and Stoppers" href="valves.html"/> 
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.2.0+12.g0e05a13
+                0.2.0+26.g141e707
               </div>
             
           
@@ -196,7 +196,7 @@ create an estimate that will warn operators of narrowly closed slits while
 still allowing slits to be closed along the beampath.</p>
 <p>The simplest solution was to use a <code class="xref py py-attr docutils literal"><span class="pre">nominal_aperature</span></code> that stores
 the slit width and height that the slits should use for general operation.
-Using this the <a class="reference internal" href="interface.html#pcdsdevices.interface.LightInterface.transmission" title="pcdsdevices.interface.LightInterface.transmission"><code class="xref py py-attr docutils literal"><span class="pre">transmission</span></code></a> is calculated based on how the current
+Using this the <a class="reference internal" href="#pcdsdevices.epics.Slits.transmission" title="pcdsdevices.epics.Slits.transmission"><code class="xref py py-attr docutils literal"><span class="pre">transmission</span></code></a> is calculated based on how the current
 aperature compares to the nominal, always using the minimum of the width or
 height. This means that if you have a nominal aperature of 2 mm, but your
 slits are set to 0.5 mm, the total estimated transmission will be 25%.
@@ -240,6 +240,12 @@ about changing slit widths during alignment</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">EpicsSignal</span><span class="p">,</span> <span class="s1">&#39;:CLOSE&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.Slits.inserted">
+<code class="descname">inserted</code><a class="headerlink" href="#pcdsdevices.epics.Slits.inserted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the slits are inserted into the beampath</p>
 </dd></dl>
 
 <dl class="method">
@@ -318,6 +324,12 @@ for this positioner is used</li>
 </div>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="pcdsdevices.epics.Slits.removed">
+<code class="descname">removed</code><a class="headerlink" href="#pcdsdevices.epics.Slits.removed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the slits are entirely removed from the beampath</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="pcdsdevices.epics.Slits.set">
 <code class="descname">set</code><span class="sig-paren">(</span><em>width</em>, <em>wait=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.Slits.set" title="Permalink to this definition">¶</a></dt>
@@ -348,6 +360,12 @@ plans involving the slits to return to their starting positions.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.Slits.transmission">
+<code class="descname">transmission</code><a class="headerlink" href="#pcdsdevices.epics.Slits.transmission" title="Permalink to this definition">¶</a></dt>
+<dd><p><a href="#id1"><span class="problematic" id="id2">**</span></a>Estimated transmission of the slits based on* – attr* – <a href="#id3"><span class="problematic" id="id4">`</span></a>.nominal_aperature</p>
 </dd></dl>
 
 <dl class="method">
@@ -442,7 +460,7 @@ starting positions.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.2.0+12.g0e05a13',
+            VERSION:'0.2.0+26.g141e707',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

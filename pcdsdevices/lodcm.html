@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>LODCM &mdash; PCDS Devices 0.2.0+12.g0e05a13 documentation</title>
+  <title>LODCM &mdash; PCDS Devices 0.2.0+26.g141e707 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PCDS Devices 0.2.0+12.g0e05a13 documentation" href="index.html"/>
+    <link rel="top" title="PCDS Devices 0.2.0+26.g141e707 documentation" href="index.html"/>
         <link rel="next" title="Base Classes" href="device.html"/>
         <link rel="prev" title="Offset Mirrors" href="homs.html"/> 
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.2.0+12.g0e05a13
+                0.2.0+26.g141e707
               </div>
             
           
@@ -181,12 +181,37 @@ hutches. It contains two crystals that steer/split the beam and a number of
 diagnostic devices between them. Beam can continue onto the main line, onto
 the mono line, onto both, or onto neither.</p>
 <dl class="attribute">
+<dt id="pcdsdevices.epics.LODCM.branches">
+<code class="descname">branches</code><a class="headerlink" href="#pcdsdevices.epics.LODCM.branches" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns: <strong>branches</strong> – A list of possible destinations.
+:rtype: list of str</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="pcdsdevices.epics.LODCM.dectris">
 <code class="descname">dectris</code><a class="headerlink" href="#pcdsdevices.epics.LODCM.dectris" title="Permalink to this definition">¶</a></dt>
 <dd><p>Component attribute</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">DectrisStates</span><span class="p">,</span> <span class="s1">&#39;:DH&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.LODCM.destination">
+<code class="descname">destination</code><a class="headerlink" href="#pcdsdevices.epics.LODCM.destination" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return where the light is going at the current LODCM
+state. Indeterminate states will show as blocked.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>destination</strong> – self.main_line if the light continues on the main line.
+self.mono_line if the light continues on the mono line.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list of str</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -221,6 +246,13 @@ the mono line, onto both, or onto neither.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Component</span><span class="p">(</span><span class="n">LodcmStates</span><span class="p">,</span> <span class="s1">&#39;:H1N&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.LODCM.inserted">
+<code class="descname">inserted</code><a class="headerlink" href="#pcdsdevices.epics.LODCM.inserted" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns: <strong>inserted</strong> – True if h1n is in
+:rtype: bool</p>
 </dd></dl>
 
 <dl class="method">
@@ -277,6 +309,13 @@ done moving and will time out after the given timeout.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pcdsdevices.epics.LODCM.removed">
+<code class="descname">removed</code><a class="headerlink" href="#pcdsdevices.epics.LODCM.removed" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns: <strong>removed</strong> – True if h1n is out
+:rtype: bool</p>
 </dd></dl>
 
 <dl class="method">
@@ -355,7 +394,7 @@ done moving and will time out after the given timeout.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.2.0+12.g0e05a13',
+            VERSION:'0.2.0+26.g141e707',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
