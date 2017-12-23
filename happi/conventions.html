@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Conventions &mdash; Happi Deck 0.5.0+17.gee1db1e documentation</title>
+  <title>Conventions &mdash; Happi Deck 0.5.0+29.g5c49979 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Happi Deck 0.5.0+17.gee1db1e documentation" href="index.html"/>
-        <link rel="next" title="Client" href="client.html"/>
+    <link rel="top" title="Happi Deck 0.5.0+29.g5c49979 documentation" href="index.html"/>
+        <link rel="next" title="Using the Client" href="client.html"/>
         <link rel="prev" title="HAPPI - Heuristic Access to Positions of Photon Instruments" href="index.html"/> 
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.5.0+17.gee1db1e
+                0.5.0+29.g5c49979
               </div>
             
           
@@ -90,7 +90,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">User Documentation</span></p>
+              <p class="caption"><span class="caption-text">Tutorial</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Conventions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#basic-device-attributes">Basic Device Attributes</a><ul>
@@ -116,13 +116,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="client.html">Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="device.html">Device Containers</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Developer Documentation</span></p>
-<ul>
+<li class="toctree-l1"><a class="reference internal" href="client.html">Using the Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="develop.html">Creating New Device Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="todo.html">To-Do List</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="client_api.html">Client API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backends.html">Supported Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="containers.html">Device Containers</a></li>
 </ul>
 
             
@@ -202,32 +203,18 @@ before entering any information into the database.</p>
 <h3>prefix<a class="headerlink" href="#prefix" title="Permalink to this headline">¶</a></h3>
 <p>This should be the prefix for all of the PVs contained within the device. It does
 not matter if this is an invalid record by itself. Each Device Container will
-have it’s own convention for base PV. See <a class="reference internal" href="device.html#containers"><span class="std std-ref">Containers</span></a>.</p>
+have it’s own convention for base PV. See <a class="reference internal" href="containers.html#containers"><span class="std std-ref">Containers</span></a>.</p>
 </div>
 <div class="section" id="beamline">
 <h3>beamline<a class="headerlink" href="#beamline" title="Permalink to this headline">¶</a></h3>
 <p>Beamline refers to a single segment of the full path with no branching paths.
 Paths may only branch between beamlines. As a convention, we are adopting the
 following beamline names for the branching paths:</p>
-<ul class="simple">
-<li>FEE: from the start of the FEE to M1S.</li>
-<li>SXD: from M1S to M2S</li>
-<li>AMO: from M2S to the AMO IP</li>
-<li>SXR: from M2S to the SXR IP</li>
-<li>HXD: from M1S to XPP LODCM Crystal 1</li>
-<li>XPP: from XPP LODCM Crystal 1 to the XPP IP</li>
-<li>PINK: from XPP LODCM Crystal 1 to XRT-M1</li>
-<li>PERI: from XRT-M1 to XCS LODCM Crystal 2</li>
-<li>XCS: from XCS LODCM Crystal 2 to the XCS IP</li>
-<li>XRT_0: from XRT-M1 to XRT-M2</li>
-<li>XRT_1: from XRT-M2 to XCS LODCM Crystal 1</li>
-<li>XCS_LOM: from XCS LODCM Crystal 1 to Crystal 2</li>
-<li>CXI: from XCS LODCM Crystal 1 to the CXI IP</li>
-<li>MEC: from XRT-M2 to the MEC IP</li>
-<li>MFX: from XRT-M2 to the MFX IP</li>
-</ul>
-<p>Mirrors and other steering devices should be the last element of a beamline.
-Note that this naming scheme will necessarily have to change for lcls 2.</p>
+<div class="figure" id="id1">
+<img alt="_images/LCLS.png" src="_images/LCLS.png" />
+<p class="caption"><span class="caption-text">Drawing of LCLS beamline layout</span></p>
+</div>
+<p>Note that this naming scheme will necessarily have to change for lcls 2.</p>
 </div>
 <div class="section" id="z">
 <h3>z<a class="headerlink" href="#z" title="Permalink to this headline">¶</a></h3>
@@ -345,7 +332,7 @@ sufficient.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="client.html" class="btn btn-neutral float-right" title="Client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="client.html" class="btn btn-neutral float-right" title="Using the Client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="HAPPI - Heuristic Access to Positions of Photon Instruments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -379,7 +366,7 @@ sufficient.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.5.0+17.gee1db1e',
+            VERSION:'0.5.0+29.g5c49979',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

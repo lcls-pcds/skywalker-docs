@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Device Containers &mdash; Happi Deck 0.5.0+17.gee1db1e documentation</title>
+  <title>Device Containers &mdash; Happi Deck 0.5.0+29.g5c49979 documentation</title>
   
 
   
@@ -35,9 +35,9 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Happi Deck 0.5.0+17.gee1db1e documentation" href="index.html"/>
+    <link rel="top" title="Happi Deck 0.5.0+29.g5c49979 documentation" href="index.html"/>
         <link rel="next" title="happi.containers.GateValve" href="generated/happi.containers.GateValve.html"/>
-        <link rel="prev" title="Client" href="client.html"/> 
+        <link rel="prev" title="happi.backends.json_db.JSONBackend" href="generated/happi.backends.json_db.JSONBackend.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.5.0+17.gee1db1e
+                0.5.0+29.g5c49979
               </div>
             
           
@@ -90,10 +90,16 @@
               
             
             
-              <p class="caption"><span class="caption-text">User Documentation</span></p>
-<ul class="current">
+              <p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">Conventions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="client.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client.html">Using the Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop.html">Creating New Device Types</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="client_api.html">Client API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backends.html">Supported Backends</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Device Containers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#device">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#containers">Containers</a><ul>
@@ -112,11 +118,6 @@
 </li>
 </ul>
 </li>
-</ul>
-<p class="caption"><span class="caption-text">Developer Documentation</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="develop.html">Creating New Device Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="todo.html">To-Do List</a></li>
 </ul>
 
             
@@ -167,7 +168,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/device.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/containers.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -182,25 +183,6 @@
             
   <div class="section" id="device-containers">
 <span id="device-label"></span><h1>Device Containers<a class="headerlink" href="#device-containers" title="Permalink to this headline">¶</a></h1>
-<p>In order to ensure that information is entered into the database in an
-organized fashion, the client will only accept classes that inherit from
-<a class="reference internal" href="#happi.Device" title="happi.Device"><code class="xref py py-class docutils literal"><span class="pre">Device</span></code></a>. Each device will have the key information represented as
-class attributes, available to be manipulated like any other regular property</p>
-<p>Editing the information for a container is a simple as:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">happi</span> <span class="kn">import</span> <span class="n">Device</span>
-
-<span class="gp">In [2]: </span><span class="n">device</span> <span class="o">=</span> <span class="n">Device</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_device&#39;</span><span class="p">)</span>
-
-<span class="gp">In [3]: </span><span class="n">device</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;new_name&#39;</span>
-</pre></div>
-</div>
-<p>The <a class="reference internal" href="#happi.Device" title="happi.Device"><code class="xref py py-class docutils literal"><span class="pre">Device</span></code></a> class also supports extraneous data that may not have been
-captured when the original container was created. You can either enter this as
-a keyword, or enter it into the <a class="reference internal" href="#happi.Device.extraneous" title="happi.Device.extraneous"><code class="xref py py-attr docutils literal"><span class="pre">Device.extraneous</span></code></a> dictionary.</p>
-<p>While you are free to play around with the device attributes, when loading the
-object into the database you will need to make sure that all of the
-<a class="reference internal" href="#happi.Device.mandatory_info" title="happi.Device.mandatory_info"><code class="xref py py-attr docutils literal"><span class="pre">Device.mandatory_info</span></code></a> has been entered, otherwise the client
-will reject the device.</p>
 <div class="section" id="device">
 <h2>Device<a class="headerlink" href="#device" title="Permalink to this headline">¶</a></h2>
 <p>A generic device container is available for use that holds a few basic traits
@@ -446,7 +428,7 @@ basis.</p>
         <a href="generated/happi.containers.GateValve.html" class="btn btn-neutral float-right" title="happi.containers.GateValve" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="client.html" class="btn btn-neutral" title="Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="generated/happi.backends.json_db.JSONBackend.html" class="btn btn-neutral" title="happi.backends.json_db.JSONBackend" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -477,7 +459,7 @@ basis.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.5.0+17.gee1db1e',
+            VERSION:'0.5.0+29.g5c49979',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Client &mdash; Happi Deck 0.5.0+17.gee1db1e documentation</title>
+  <title>Using the Client &mdash; Happi Deck 0.5.0+29.g5c49979 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Happi Deck 0.5.0+17.gee1db1e documentation" href="index.html"/>
-        <link rel="next" title="Device Containers" href="device.html"/>
+    <link rel="top" title="Happi Deck 0.5.0+29.g5c49979 documentation" href="index.html"/>
+        <link rel="next" title="Creating New Device Types" href="develop.html"/>
         <link rel="prev" title="Conventions" href="conventions.html"/> 
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.5.0+17.gee1db1e
+                0.5.0+29.g5c49979
               </div>
             
           
@@ -90,23 +90,23 @@
               
             
             
-              <p class="caption"><span class="caption-text">User Documentation</span></p>
+              <p class="caption"><span class="caption-text">Tutorial</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">Conventions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Client</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#authentication">Authentication</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using the Client</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#creating-a-new-entry">Creating a New Entry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#searching-the-database">Searching the Database</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#editing-device-information">Editing Device Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#client-api">Client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#selecting-a-backend">Selecting a Backend</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="device.html">Device Containers</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Developer Documentation</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="develop.html">Creating New Device Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="todo.html">To-Do List</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="client_api.html">Client API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backends.html">Supported Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="containers.html">Device Containers</a></li>
 </ul>
 
             
@@ -151,7 +151,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Client</li>
+      <li>Using the Client</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -170,84 +170,81 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="client">
-<span id="client-label"></span><h1>Client<a class="headerlink" href="#client" title="Permalink to this headline">¶</a></h1>
-<p>Users will interact with the database by using the <a class="reference internal" href="#happi.Client" title="happi.Client"><code class="xref py py-class docutils literal"><span class="pre">happi.Client</span></code></a>, this
+  <div class="section" id="using-the-client">
+<span id="client-label"></span><h1>Using the Client<a class="headerlink" href="#using-the-client" title="Permalink to this headline">¶</a></h1>
+<p>Users will interact with the database by using the <a class="reference internal" href="client_api.html#happi.Client" title="happi.Client"><code class="xref py py-class docutils literal"><span class="pre">happi.Client</span></code></a>, this
 will handle the authentication, and methods for adding, editing and removing
 devices.</p>
-<p>By default the MongoDB underneath happi is incredibly flexible, allowing us to
-put arbitrary key-value pair information into the databse. While this will make
-adding functionality easy in the future, it also means that any rules on the
-structure of the data we allow will need to be performed by the
-<a class="reference internal" href="#happi.Client" title="happi.Client"><code class="xref py py-class docutils literal"><span class="pre">happi.Client</span></code></a> itself. To make this intuitive, the client deals
-primarily with objects we will call Device Containers, see <a class="reference internal" href="device.html#device-label"><span class="std std-ref">Device Containers</span></a>
-in order to see more about how the devices are created. However the basic use
-cases for the client can be demonstrated without much knowledge of how the
-<a class="reference internal" href="device.html#happi.Device" title="happi.Device"><code class="xref py py-class docutils literal"><span class="pre">Device</span></code></a> container works.</p>
-<div class="section" id="authentication">
-<h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
-<p>There are two accounts available for accessing the Happi database, one of which
-is embedded in the source code itself that provides basic reading privilege,
-the other which allows you to add and edit.</p>
-<p>The <a class="reference internal" href="#happi.Client" title="happi.Client"><code class="xref py py-class docutils literal"><span class="pre">Client</span></code></a> also assumes a host and port name of the MongoDB instance.
-All of this information can be entered upon intialization of the client using
-keyword arguments.</p>
-</div>
+<p>Happi is incredibly flexible, allowing us to put arbitrary key-value pair
+information into the databse. While this will make adding functionality easy in
+the future, it also means that any rules on the structure of the data we allow
+will need to be performed by the <a class="reference internal" href="client_api.html#happi.Client" title="happi.Client"><code class="xref py py-class docutils literal"><span class="pre">happi.Client</span></code></a> itself. To make this
+intuitive, the client deals primarily with objects we will call Device
+Containers, see <a class="reference internal" href="containers.html#device-label"><span class="std std-ref">Device Containers</span></a> in order to see more about how the devices
+are created. However the basic use cases for the client can be demonstrated
+without much knowledge of how the <a class="reference internal" href="containers.html#happi.Device" title="happi.Device"><code class="xref py py-class docutils literal"><span class="pre">Device</span></code></a> container works.</p>
 <div class="section" id="creating-a-new-entry">
 <span id="entry-code"></span><h2>Creating a New Entry<a class="headerlink" href="#creating-a-new-entry" title="Permalink to this headline">¶</a></h2>
-<p>A new device must be a subclass of the basic container <a class="reference internal" href="device.html#happi.Device" title="happi.Device"><code class="xref py py-class docutils literal"><span class="pre">Device</span></code></a>.
+<p>A new device must be a subclass of the basic container <a class="reference internal" href="containers.html#happi.Device" title="happi.Device"><code class="xref py py-class docutils literal"><span class="pre">Device</span></code></a>.
 While you are free to use the initialized object whereever you see fit, the client
-has a hook to create new devices. The examples belows use a <code class="docutils literal"><span class="pre">MockClient</span></code> so
-that the tutorial does not change actual database files.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">happi</span>
+has a hook to create new devices.</p>
+<p>Before we can create our first client, we need to create a backend for our device
+information to be stored.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">happi.backends.json_db</span> <span class="kn">import</span> <span class="n">JSONBackend</span>
 
-<span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">happi.tests</span>
+<span class="gp">In [2]: </span><span class="n">db</span> <span class="o">=</span> <span class="n">JSONBackend</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;doc_test.json&#39;</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you are connecting to an existing database you can pass the information
+directly into the <code class="docutils literal"><span class="pre">Client</span></code> itself at <cite>__init__`</cite>. See <a class="reference internal" href="#db-choice"><span class="std std-ref">Selecting a Backend</span></a>
+about how to configure your default backend choice</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="kn">from</span> <span class="nn">happi</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">Device</span>
 
-<span class="gp">In [3]: </span><span class="n">client</span> <span class="o">=</span> <span class="n">happi</span><span class="o">.</span><span class="n">tests</span><span class="o">.</span><span class="n">MockClient</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="n">pw</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="n">db</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="gp">In [4]: </span><span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;doc_test.json&#39;</span><span class="p">)</span>
 
-<span class="gp">In [4]: </span><span class="n">device</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">create_device</span><span class="p">(</span><span class="s2">&quot;Device&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_device&#39;</span><span class="p">,</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;PV:BASE&#39;</span><span class="p">,</span> <span class="n">beamline</span><span class="o">=</span><span class="s1">&#39;XRT&#39;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">345.5</span><span class="p">)</span>
+<span class="gp">In [5]: </span><span class="n">device</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">create_device</span><span class="p">(</span><span class="s2">&quot;Device&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_device&#39;</span><span class="p">,</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;PV:BASE&#39;</span><span class="p">,</span> <span class="n">beamline</span><span class="o">=</span><span class="s1">&#39;XRT&#39;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">345.5</span><span class="p">)</span>
 
-<span class="gp">In [5]: </span><span class="n">device</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+<span class="gp">In [6]: </span><span class="n">device</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Alternatively, you can create the device separately and add the device
-explicitly using <a class="reference internal" href="device.html#happi.Device.save" title="happi.Device.save"><code class="xref py py-meth docutils literal"><span class="pre">Device.save()</span></code></a></p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">device</span> <span class="o">=</span> <span class="n">happi</span><span class="o">.</span><span class="n">Device</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_device2&#39;</span><span class="p">,</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;PV:BASE2&#39;</span><span class="p">,</span> <span class="n">beamline</span><span class="o">=</span><span class="s1">&#39;MFX&#39;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">355.5</span><span class="p">)</span>
+explicitly using <a class="reference internal" href="containers.html#happi.Device.save" title="happi.Device.save"><code class="xref py py-meth docutils literal"><span class="pre">Device.save()</span></code></a></p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">device</span> <span class="o">=</span> <span class="n">Device</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_device2&#39;</span><span class="p">,</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;PV:BASE2&#39;</span><span class="p">,</span> <span class="n">beamline</span><span class="o">=</span><span class="s1">&#39;MFX&#39;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">355.5</span><span class="p">)</span>
 
-<span class="gp">In [7]: </span><span class="n">client</span><span class="o">.</span><span class="n">add_device</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="gp">In [8]: </span><span class="n">client</span><span class="o">.</span><span class="n">add_device</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The main advantage of the first method is that all of the container classes are
-already stored in the <a class="reference internal" href="#happi.Client.device_types" title="happi.Client.device_types"><code class="xref py py-attr docutils literal"><span class="pre">Client.device_types</span></code></a> dictionary so they can be
+already stored in the <a class="reference internal" href="client_api.html#happi.Client.device_types" title="happi.Client.device_types"><code class="xref py py-attr docutils literal"><span class="pre">Client.device_types</span></code></a> dictionary so they can be
 easily accessed with a string. Keep in mind, that either way, all of the
 mandatory information needs to be given to the device before it can be loaded
 into the database. For more information on device creation see
-<a class="reference internal" href="device.html#device-label"><span class="std std-ref">Device Containers</span></a>.</p>
+<a class="reference internal" href="containers.html#device-label"><span class="std std-ref">Device Containers</span></a>.</p>
 </div>
 <div class="section" id="searching-the-database">
 <h2>Searching the Database<a class="headerlink" href="#searching-the-database" title="Permalink to this headline">¶</a></h2>
 <p>There are two ways to load information from the database
-<a class="reference internal" href="#happi.Client.load_device" title="happi.Client.load_device"><code class="xref py py-meth docutils literal"><span class="pre">Client.load_device()</span></code></a> and <a class="reference internal" href="#happi.Client.search" title="happi.Client.search"><code class="xref py py-meth docutils literal"><span class="pre">Client.search()</span></code></a>. The former should only
+<a class="reference internal" href="client_api.html#happi.Client.find_device" title="happi.Client.find_device"><code class="xref py py-meth docutils literal"><span class="pre">Client.find_device()</span></code></a> and <a class="reference internal" href="client_api.html#happi.Client.search" title="happi.Client.search"><code class="xref py py-meth docutils literal"><span class="pre">Client.search()</span></code></a>. The former should only
 be used to load one device at at a time. Both accept criteria in the from of
 keyword-value pairs to find the device or device/s you desire. Here are some
 example searches to demonstrate the power of the Happi Client</p>
 <p>First, lets look for all the devices of type generic <code class="docutils literal"><span class="pre">Device</span></code>, as first their
 corresponding objects or as a dictionary</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Device&#39;</span><span class="p">)</span>
-<span class="gh">Out[8]: </span><span class="go"></span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Device&#39;</span><span class="p">)</span>
+<span class="gh">Out[9]: </span><span class="go"></span>
 <span class="go">[Device my_device (prefix=PV:BASE, z=345.5),</span>
 <span class="go"> Device my_device2 (prefix=PV:BASE2, z=355.5)]</span>
 
-<span class="gp">In [9]: </span><span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Device&#39;</span><span class="p">,</span> <span class="n">as_dict</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="go">                                                                                                     Out[9]: </span>
+<span class="gp">In [10]: </span><span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Device&#39;</span><span class="p">,</span> <span class="n">as_dict</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="go">                                                                                                     Out[10]: </span>
 <span class="go">[{&#39;_id&#39;: &#39;PV:BASE&#39;,</span>
 <span class="go">  &#39;active&#39;: True,</span>
 <span class="go">  &#39;args&#39;: [&#39;{{prefix}}&#39;],</span>
 <span class="go">  &#39;beamline&#39;: &#39;XRT&#39;,</span>
-<span class="go">  &#39;creation&#39;: &#39;Mon Dec 11 15:45:18 2017&#39;,</span>
+<span class="go">  &#39;creation&#39;: &#39;Sat Dec 23 03:32:21 2017&#39;,</span>
 <span class="go">  &#39;device_class&#39;: None,</span>
 <span class="go">  &#39;kwargs&#39;: {&#39;name&#39;: &#39;{{name}}&#39;},</span>
-<span class="go">  &#39;last_edit&#39;: &#39;Mon Dec 11 15:45:18 2017&#39;,</span>
+<span class="go">  &#39;last_edit&#39;: &#39;Sat Dec 23 03:32:21 2017&#39;,</span>
 <span class="go">  &#39;macros&#39;: None,</span>
 <span class="go">  &#39;name&#39;: &#39;my_device&#39;,</span>
 <span class="go">  &#39;parent&#39;: None,</span>
@@ -261,10 +258,10 @@ corresponding objects or as a dictionary</p>
 <span class="go">  &#39;active&#39;: True,</span>
 <span class="go">  &#39;args&#39;: [&#39;{{prefix}}&#39;],</span>
 <span class="go">  &#39;beamline&#39;: &#39;MFX&#39;,</span>
-<span class="go">  &#39;creation&#39;: &#39;Mon Dec 11 15:45:18 2017&#39;,</span>
+<span class="go">  &#39;creation&#39;: &#39;Sat Dec 23 03:32:21 2017&#39;,</span>
 <span class="go">  &#39;device_class&#39;: None,</span>
 <span class="go">  &#39;kwargs&#39;: {&#39;name&#39;: &#39;{{name}}&#39;},</span>
-<span class="go">  &#39;last_edit&#39;: &#39;Mon Dec 11 15:45:18 2017&#39;,</span>
+<span class="go">  &#39;last_edit&#39;: &#39;Sat Dec 23 03:32:21 2017&#39;,</span>
 <span class="go">  &#39;macros&#39;: None,</span>
 <span class="go">  &#39;name&#39;: &#39;my_device2&#39;,</span>
 <span class="go">  &#39;parent&#39;: None,</span>
@@ -278,25 +275,25 @@ corresponding objects or as a dictionary</p>
 </div>
 <p>There are also some more advance methods to search specific areas of the
 beamline</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Device&#39;</span><span class="p">,</span> <span class="n">beamline</span><span class="o">=</span><span class="s1">&#39;MFX&#39;</span><span class="p">)</span>
-<span class="gh">Out[10]: </span><span class="go">[Device my_device2 (prefix=PV:BASE2, z=355.5)]</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Device&#39;</span><span class="p">,</span> <span class="n">beamline</span><span class="o">=</span><span class="s1">&#39;MFX&#39;</span><span class="p">)</span>
+<span class="gh">Out[11]: </span><span class="go">[Device my_device2 (prefix=PV:BASE2, z=355.5)]</span>
 
-<span class="gp">In [11]: </span><span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Device&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mf">314.4</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mf">348.6</span><span class="p">)</span>
-<span class="go">                                                        Out[11]: [Device my_device (prefix=PV:BASE, z=345.5)]</span>
+<span class="gp">In [12]: </span><span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Device&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mf">314.4</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mf">348.6</span><span class="p">)</span>
+<span class="go">                                                        Out[12]: [Device my_device (prefix=PV:BASE, z=345.5)]</span>
 </pre></div>
 </div>
 <p>You can also explicitly load a single device. The advantage of this method is
 you won’t have to parse a list of returned devices. If nothing meets your given
 criteria, an <code class="docutils literal"><span class="pre">SearchError</span></code> will be raised</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="n">device</span> <span class="o">=</span>  <span class="n">client</span><span class="o">.</span><span class="n">load_device</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;PV:BASE2&#39;</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="n">device</span> <span class="o">=</span>  <span class="n">client</span><span class="o">.</span><span class="n">find_device</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;PV:BASE2&#39;</span><span class="p">)</span>
 
-<span class="gp">In [13]: </span><span class="k">print</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span> <span class="n">device</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="gp">In [14]: </span><span class="k">print</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span> <span class="n">device</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="go">PV:BASE2 my_device2</span>
 
-<span class="gp">In [14]: </span><span class="k">try</span><span class="p">:</span>
-<span class="gp">   ....: </span>    <span class="n">client</span><span class="o">.</span><span class="n">load_device</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;non-existant&#39;</span><span class="p">)</span>
-<span class="gp">   ....: </span><span class="k">except</span> <span class="n">happi</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">SearchError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="gp">In [15]: </span><span class="k">try</span><span class="p">:</span>
+<span class="gp">   ....: </span>    <span class="n">client</span><span class="o">.</span><span class="n">find_device</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;non-existant&#39;</span><span class="p">)</span>
+<span class="gp">   ....: </span><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
 <span class="gp">   ....: </span>
 <span class="go">                    No device information found that matches the search criteria</span>
 </pre></div>
@@ -306,266 +303,43 @@ criteria, an <code class="docutils literal"><span class="pre">SearchError</span>
 <h2>Editing Device Information<a class="headerlink" href="#editing-device-information" title="Permalink to this headline">¶</a></h2>
 <p>The workflow for editing a device looks very similar to the code within
 <a class="reference internal" href="#entry-code"><span class="std std-ref">Creating a New Entry</span></a>, but instead of instantiating the device you use either
-<a class="reference internal" href="#happi.Client.load_device" title="happi.Client.load_device"><code class="xref py py-meth docutils literal"><span class="pre">Client.load_device()</span></code></a> or <a class="reference internal" href="#happi.Client.search" title="happi.Client.search"><code class="xref py py-meth docutils literal"><span class="pre">Client.search()</span></code></a> to grab an existing device from
+<a class="reference internal" href="client_api.html#happi.Client.find_device" title="happi.Client.find_device"><code class="xref py py-meth docutils literal"><span class="pre">Client.find_device()</span></code></a> or <a class="reference internal" href="client_api.html#happi.Client.search" title="happi.Client.search"><code class="xref py py-meth docutils literal"><span class="pre">Client.search()</span></code></a> to grab an existing device from
 the dataprefix. When the device is retreived this way the class method
-<a class="reference internal" href="device.html#happi.Device.save" title="happi.Device.save"><code class="xref py py-meth docutils literal"><span class="pre">Device.save()</span></code></a> is overwritten, simply call this when you are done editing
+<a class="reference internal" href="containers.html#happi.Device.save" title="happi.Device.save"><code class="xref py py-meth docutils literal"><span class="pre">Device.save()</span></code></a> is overwritten, simply call this when you are done editing
 the Device information.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [15]: </span><span class="n">my_motor</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">load_device</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;PV:BASE&#39;</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">my_motor</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">find_device</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;PV:BASE&#39;</span><span class="p">)</span>
 
-<span class="gp">In [16]: </span><span class="n">my_motor</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">425.4</span>
+<span class="gp">In [17]: </span><span class="n">my_motor</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">425.4</span>
 
-<span class="gp">In [17]: </span><span class="n">my_motor</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+<span class="gp">In [18]: </span><span class="n">my_motor</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Because the database uses the <code class="docutils literal"><span class="pre">prefix</span></code> key as a device’s identification you
 can not edit this information in the same way. Instead you must explicitly
-remove the device and then use <a class="reference internal" href="#happi.Client.add_device" title="happi.Client.add_device"><code class="xref py py-meth docutils literal"><span class="pre">Client.add_device()</span></code></a> to create a new
+remove the device and then use <a class="reference internal" href="client_api.html#happi.Client.add_device" title="happi.Client.add_device"><code class="xref py py-meth docutils literal"><span class="pre">Client.add_device()</span></code></a> to create a new
 entry.</p>
 </div>
 <p>Finally, lets clean up our example objects by using
-<a class="reference internal" href="#happi.Client.remove_device" title="happi.Client.remove_device"><code class="xref py py-meth docutils literal"><span class="pre">Client.remove_device()</span></code></a> to clean them from the database</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="n">device_1</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">load_device</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_device&#39;</span><span class="p">)</span>
+<a class="reference internal" href="client_api.html#happi.Client.remove_device" title="happi.Client.remove_device"><code class="xref py py-meth docutils literal"><span class="pre">Client.remove_device()</span></code></a> to clean them from the database</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="n">device_1</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">find_device</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_device&#39;</span><span class="p">)</span>
 
-<span class="gp">In [19]: </span><span class="n">device_2</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">load_device</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_device2&#39;</span><span class="p">)</span>
+<span class="gp">In [20]: </span><span class="n">device_2</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">find_device</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_device2&#39;</span><span class="p">)</span>
 
-<span class="gp">In [20]: </span><span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="p">(</span><span class="n">device_1</span><span class="p">,</span> <span class="n">device_2</span><span class="p">):</span>
+<span class="gp">In [21]: </span><span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="p">(</span><span class="n">device_1</span><span class="p">,</span> <span class="n">device_2</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="n">client</span><span class="o">.</span><span class="n">remove_device</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 <span class="gp">   ....: </span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="client-api">
-<h2>Client API<a class="headerlink" href="#client-api" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="happi.Client">
-<em class="property">class </em><code class="descclassname">happi.</code><code class="descname">Client</code><span class="sig-paren">(</span><em>database=None</em>, <em>db_type=&lt;class 'happi.backends.MongoBackend'&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.Client" title="Permalink to this definition">¶</a></dt>
-<dd><p>The client to control the contents of the Happi Database</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>database</strong> (<em>happi.backends.Backend</em>) – A already instantiated backend</li>
-<li><strong>db_type</strong> (<em>happi.backends.Backend</em>) – A class to use if the database keyword is <cite>None</cite></li>
-<li><strong>kwargs</strong> – Passed to the <cite>db_type</cite> backend</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="attribute">
-<dt id="happi.Client.device_types">
-<code class="descname">device_types</code><a class="headerlink" href="#happi.Client.device_types" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dict</em> – Mapping of Container namees to class types</p>
-</dd></dl>
-
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">DatabaseError: – Raised if the Client fails to instantiate the Database</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="happi.Client.add_device">
-<code class="descname">add_device</code><span class="sig-paren">(</span><em>device</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.Client.add_device" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add a new device into the database</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>device</strong> (<a class="reference internal" href="device.html#happi.Device" title="happi.Device"><code class="xref py py-class docutils literal"><span class="pre">Device</span></code></a>) – The device to store in the database</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">EntryError: – If all of the mandatory information for the device has not been
-specified or there is already a device with that <code class="docutils literal"><span class="pre">id</span></code> in the
-database</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="happi.Client.all_devices">
-<code class="descname">all_devices</code><a class="headerlink" href="#happi.Client.all_devices" title="Permalink to this definition">¶</a></dt>
-<dd><p>A list of all contained devices</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="happi.Client.create_device">
-<code class="descname">create_device</code><span class="sig-paren">(</span><em>device_cls</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.Client.create_device" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a new device</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>device_cls</strong> (<a class="reference internal" href="device.html#happi.Device" title="happi.Device"><code class="xref py py-class docutils literal"><span class="pre">Device</span></code></a> or name of class) – The Device Container to instantiate</li>
-<li><strong>kwargs</strong> – Information to pass through to the device, upon initialization</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An instantiated version of the device</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">device</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">TypeError: – If the provided class is not a subclass of <a class="reference internal" href="device.html#happi.Device" title="happi.Device"><code class="xref py py-class docutils literal"><span class="pre">Device</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">create_device</span><span class="p">(</span><span class="n">Device</span><span class="p">,</span>   <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_device&#39;</span> <span class="o">...</span><span class="p">)</span>
-<span class="n">device</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">create_device</span><span class="p">(</span><span class="s1">&#39;Device&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_device&#39;</span><span class="p">,</span><span class="o">...</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="#happi.Client.device_types" title="happi.Client.device_types"><code class="xref py py-attr docutils literal"><span class="pre">device_types</span></code></a></p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="happi.Client.export">
-<code class="descname">export</code><span class="sig-paren">(</span><em>path=&lt;_io.TextIOWrapper name='&lt;stdout&gt;' mode='w' encoding='UTF-8'&gt;</em>, <em>sep='\t'</em>, <em>attrs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.Client.export" title="Permalink to this definition">¶</a></dt>
-<dd><p>Export the contents of the database into a text file</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>path</strong> (<em>File Handle</em>) – File-like object to save text file</li>
-<li><strong>sep</strong> (<em>str</em>) – Separator to place inbetween columns of information</li>
-<li><strong>attrs</strong> (<em>iterable</em>) – Attributes to include, these will be a list of values</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="happi.Client.find_document">
-<code class="descname">find_document</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.Client.find_document" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load a device document from the database</p>
-<p>If multiple matches are found, a single document will be returned to
-the user. How the database will choose to select this device is based
-on each individual implementation</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> – Add information to locate the device in keyword pairs</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>document</strong> – A dict that matches the specified information.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">SearchError: – If no document with the given information is found</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="#happi.Client.load_device" title="happi.Client.load_device"><code class="xref py py-meth docutils literal"><span class="pre">load_device()</span></code></a>, <a class="reference internal" href="#happi.Client.search" title="happi.Client.search"><code class="xref py py-meth docutils literal"><span class="pre">search()</span></code></a></p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="happi.Client.load_device">
-<code class="descname">load_device</code><span class="sig-paren">(</span><em>**post</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.Client.load_device" title="Permalink to this definition">¶</a></dt>
-<dd><p>Used to query the database for an individual Device</p>
-<p>If multiple devices are found, only the first is returned</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>post</strong> – Information to pertinent to the device</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">SearchError</span></code> – If no match for the given information is found</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>device</strong> – A device that matches the characteristics given</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="device.html#happi.Device" title="happi.Device"><code class="xref py py-class docutils literal"><span class="pre">Device</span></code></a></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="happi.Client.remove_device">
-<code class="descname">remove_device</code><span class="sig-paren">(</span><em>device</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.Client.remove_device" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove a device from the database</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>device</strong> (<a class="reference internal" href="device.html#happi.Device" title="happi.Device"><code class="xref py py-class docutils literal"><span class="pre">Device</span></code></a>) – Device to be removed from the database</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="happi.Client.search">
-<code class="descname">search</code><span class="sig-paren">(</span><em>start=0.0</em>, <em>end=None</em>, <em>as_dict=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.Client.search" title="Permalink to this definition">¶</a></dt>
-<dd><p>Search the database for a device or devices</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>as_dict</strong> (<em>bool</em><em>, </em><em>optional</em>) – Return the information as a list of dictionaries or a list of
-<a class="reference internal" href="device.html#happi.Device" title="happi.Device"><code class="xref py py-class docutils literal"><span class="pre">Device</span></code></a> containers</li>
-<li><strong>start</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum beamline position to include devices</li>
-<li><strong>end</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum beamline position to include devices</li>
-<li><strong>kwargs</strong> – Information to filter through the database structured as key, value
-pairs for the desired pieces of EntryInfo</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li><em>Either a list of devices or dictionaries</em></li>
-<li><em>Example</em></li>
-<li><em>.. code::</em> – gate_valves = client.search(type=’Valve’)
-hxr_valves  = client.search(type=’Valve’, beamline=’HXR’)</li>
-</ul>
-</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="happi.Client.validate">
-<code class="descname">validate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#happi.Client.validate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Validate all of the devices in the database by attempting to initialize
-them and asserting their mandatory information is present. Information
-is written to the logger</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>ids</strong> – List of device ids that have failed verification</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">Automated script to scan database and alert invalid devices. Either
-send email or post to eLog to keep a running log of incorrect changes</p>
-</div>
-</dd></dl>
-
-</dd></dl>
-
+<div class="section" id="selecting-a-backend">
+<span id="db-choice"></span><h2>Selecting a Backend<a class="headerlink" href="#selecting-a-backend" title="Permalink to this headline">¶</a></h2>
+<p>Happi supports both JSON and MongoDB backends. You can always import your
+chosen backend directly, but in order to save time you can create an
+environment variable <code class="docutils literal"><span class="pre">HAPPI_BACKEND</span></code> and set this to <code class="docutils literal"><span class="pre">&quot;mongodb&quot;</span></code>. This well
+tell the library to assume you want to use the <a class="reference internal" href="generated/happi.backends.mongo_db.MongoBackend.html#happi.backends.mongo_db.MongoBackend" title="happi.backends.mongo_db.MongoBackend"><code class="xref py py-class docutils literal"><span class="pre">MongoBackend</span></code></a>.
+Otherwise, the library uses the <a class="reference internal" href="generated/happi.backends.json_db.JSONBackend.html#happi.backends.json_db.JSONBackend" title="happi.backends.json_db.JSONBackend"><code class="xref py py-class docutils literal"><span class="pre">JSONBackend</span></code></a>.</p>
 </div>
 </div>
 
@@ -579,7 +353,7 @@ send email or post to eLog to keep a running log of incorrect changes</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="device.html" class="btn btn-neutral float-right" title="Device Containers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="develop.html" class="btn btn-neutral float-right" title="Creating New Device Types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="conventions.html" class="btn btn-neutral" title="Conventions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -613,7 +387,7 @@ send email or post to eLog to keep a running log of incorrect changes</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.5.0+17.gee1db1e',
+            VERSION:'0.5.0+29.g5c49979',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
