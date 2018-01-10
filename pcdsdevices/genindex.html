@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; PCDS Devices 0.2.0+26.g141e707 documentation</title>
+  <title>Index &mdash; PCDS Devices 0.2.0+35.g169ecd5 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
         <link rel="index" title="Index"
               href="#"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PCDS Devices 0.2.0+26.g141e707 documentation" href="index.html"/> 
+    <link rel="top" title="PCDS Devices 0.2.0+35.g169ecd5 documentation" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.2.0+26.g141e707
+                0.2.0+35.g169ecd5
               </div>
             
           
@@ -101,11 +101,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="homs.html">Offset Mirrors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lodcm.html">LODCM</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Developer Documentation</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="device.html">Base Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
 </ul>
 
             
@@ -183,6 +178,7 @@
  | <a href="#K"><strong>K</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
  | <a href="#O"><strong>O</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#R"><strong>R</strong></a>
@@ -213,14 +209,14 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="daq.html#pcdsdevices.daq.Daq.begin">begin() (pcdsdevices.daq.Daq method)</a>
 </li>
-      <li><a href="slits.html#pcdsdevices.epics.Slits.block">block() (pcdsdevices.epics.Slits method)</a>
+      <li><a href="slits.html#pcdsdevices.slits.Slits.block">block() (pcdsdevices.slits.Slits method)</a>
 </li>
-      <li><a href="slits.html#pcdsdevices.epics.Slits.block_cmd">block_cmd (pcdsdevices.epics.Slits attribute)</a>
-</li>
-      <li><a href="slits.html#pcdsdevices.epics.Slits.blocked">blocked (pcdsdevices.epics.Slits attribute)</a>
+      <li><a href="slits.html#pcdsdevices.slits.Slits.block_cmd">block_cmd (pcdsdevices.slits.Slits attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="slits.html#pcdsdevices.slits.Slits.blocked">blocked (pcdsdevices.slits.Slits attribute)</a>
+</li>
       <li><a href="pim.html#pcdsdevices.epics.pim.PIMFee.blocking">blocking (pcdsdevices.epics.pim.PIMFee attribute)</a>
 
       <ul>
@@ -228,10 +224,6 @@
 </li>
       </ul></li>
       <li><a href="lodcm.html#pcdsdevices.epics.LODCM.branches">branches (pcdsdevices.epics.LODCM attribute)</a>
-</li>
-      <li><a href="device.html#pcdsdevices.epics.MPS.bypass">bypass (pcdsdevices.epics.MPS attribute)</a>
-</li>
-      <li><a href="device.html#pcdsdevices.epics.MPS.bypassed">bypassed (pcdsdevices.epics.MPS attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -258,16 +250,20 @@
       <ul>
         <li><a href="homs.html#pcdsdevices.epics.mirror.Piezo.check_value">(pcdsdevices.epics.mirror.Piezo method)</a>
 </li>
+        <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.check_value">(pcdsdevices.slits.SlitPositioner method)</a>
+</li>
       </ul></li>
-      <li><a href="slits.html#pcdsdevices.epics.Slits.close">close() (pcdsdevices.epics.Slits method)</a>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.clear_sub">clear_sub() (pcdsdevices.slits.SlitPositioner method)</a>
+</li>
+      <li><a href="valves.html#pcdsdevices.epics.Stopper.close">close() (pcdsdevices.epics.Stopper method)</a>
 
       <ul>
-        <li><a href="valves.html#pcdsdevices.epics.Stopper.close">(pcdsdevices.epics.Stopper method)</a>
+        <li><a href="slits.html#pcdsdevices.slits.Slits.close">(pcdsdevices.slits.Slits method)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="slits.html#pcdsdevices.epics.Slits.close_cmd">close_cmd (pcdsdevices.epics.Slits attribute)</a>
+      <li><a href="slits.html#pcdsdevices.slits.Slits.close_cmd">close_cmd (pcdsdevices.slits.Slits attribute)</a>
 </li>
       <li><a href="daq.html#pcdsdevices.daq.Daq.collect">collect() (pcdsdevices.daq.Daq method)</a>
 </li>
@@ -286,8 +282,14 @@
       <li><a href="daq.html#pcdsdevices.daq.Daq.complete">complete() (pcdsdevices.daq.Daq method)</a>
 </li>
       <li><a href="daq.html#pcdsdevices.daq.Daq.configure">configure() (pcdsdevices.daq.Daq method)</a>
+
+      <ul>
+        <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.configure">(pcdsdevices.slits.SlitPositioner method)</a>
 </li>
+      </ul></li>
       <li><a href="daq.html#pcdsdevices.daq.Daq.connect">connect() (pcdsdevices.daq.Daq method)</a>
+</li>
+      <li><a href="slits.html#pcdsdevices.slits.Slits.current_aperture">current_aperture (pcdsdevices.slits.Slits attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -301,10 +303,16 @@
 </li>
       <li><a href="lodcm.html#pcdsdevices.epics.LODCM.dectris">dectris (pcdsdevices.epics.LODCM attribute)</a>
 </li>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.describe">describe() (pcdsdevices.slits.SlitPositioner method)</a>
+</li>
       <li><a href="daq.html#pcdsdevices.daq.Daq.describe_collect">describe_collect() (pcdsdevices.daq.Daq method)</a>
 </li>
       <li><a href="daq.html#pcdsdevices.daq.Daq.describe_configuration">describe_configuration() (pcdsdevices.daq.Daq method)</a>
+
+      <ul>
+        <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.describe_configuration">(pcdsdevices.slits.SlitPositioner method)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="lodcm.html#pcdsdevices.epics.LODCM.destination">destination (pcdsdevices.epics.LODCM attribute)</a>
@@ -321,6 +329,8 @@
 </li>
       <li><a href="daq.html#pcdsdevices.daq.Daq.disconnect">disconnect() (pcdsdevices.daq.Daq method)</a>
 </li>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.done">done (pcdsdevices.slits.SlitPositioner attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -328,7 +338,11 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="homs.html#pcdsdevices.epics.mirror.OMMotor.egu">egu (pcdsdevices.epics.mirror.OMMotor attribute)</a>
+
+      <ul>
+        <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.egu">(pcdsdevices.slits.SlitPositioner attribute)</a>
 </li>
+      </ul></li>
       <li><a href="homs.html#pcdsdevices.epics.mirror.Piezo.enable">enable (pcdsdevices.epics.mirror.Piezo attribute)</a>
 </li>
   </ul></td>
@@ -337,20 +351,18 @@
 </li>
       <li><a href="daq.html#pcdsdevices.daq.Daq.end_run">end_run() (pcdsdevices.daq.Daq method)</a>
 </li>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.event_types">event_types (pcdsdevices.slits.SlitPositioner attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="device.html#pcdsdevices.epics.MPS.fault">fault (pcdsdevices.epics.MPS attribute)</a>
-</li>
-      <li><a href="device.html#pcdsdevices.epics.MPS.faulted">faulted (pcdsdevices.epics.MPS attribute)</a>
+      <li><a href="pim.html#pcdsdevices.epics.pim.PIMFee.focus">focus (pcdsdevices.epics.pim.PIMFee attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pim.html#pcdsdevices.epics.pim.PIMFee.focus">focus (pcdsdevices.epics.pim.PIMFee attribute)</a>
-</li>
       <li><a href="lodcm.html#pcdsdevices.epics.LODCM.foil">foil (pcdsdevices.epics.LODCM attribute)</a>
 </li>
   </ul></td>
@@ -363,9 +375,15 @@
 </li>
       <li><a href="homs.html#pcdsdevices.epics.OffsetMirror.gan_y_p">gan_y_p (pcdsdevices.epics.OffsetMirror attribute)</a>
 </li>
+      <li><a href="valves.html#pcdsdevices.epics.GateValve">GateValve (class in pcdsdevices.epics)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="valves.html#pcdsdevices.epics.GateValve">GateValve (class in pcdsdevices.epics)</a>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.get">get() (pcdsdevices.slits.SlitPositioner method)</a>
+</li>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.get_device_tuple">get_device_tuple() (pcdsdevices.slits.SlitPositioner method)</a>
+</li>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.get_instantiated_signals">get_instantiated_signals() (pcdsdevices.slits.SlitPositioner method)</a>
 </li>
       <li><a href="pim.html#pcdsdevices.epics.pim.PIMFee.go">go (pcdsdevices.epics.pim.PIMFee attribute)</a>
 </li>
@@ -388,6 +406,8 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="homs.html#pcdsdevices.epics.mirror.OMMotor.high_limit_switch">high_limit_switch (pcdsdevices.epics.mirror.OMMotor attribute)</a>
+</li>
+      <li><a href="slits.html#pcdsdevices.slits.Slits.hints">hints (pcdsdevices.slits.Slits attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -418,13 +438,13 @@
 </li>
         <li><a href="valves.html#pcdsdevices.epics.PPSStopper.inserted">(pcdsdevices.epics.PPSStopper attribute)</a>
 </li>
-        <li><a href="slits.html#pcdsdevices.epics.Slits.inserted">(pcdsdevices.epics.Slits attribute)</a>
-</li>
         <li><a href="valves.html#pcdsdevices.epics.Stopper.inserted">(pcdsdevices.epics.Stopper attribute)</a>
 </li>
         <li><a href="pim.html#pcdsdevices.epics.pim.PIMFee.inserted">(pcdsdevices.epics.pim.PIMFee attribute)</a>
 </li>
         <li><a href="pim.html#pcdsdevices.epics.pim.PIMMotor.inserted">(pcdsdevices.epics.pim.PIMMotor attribute)</a>
+</li>
+        <li><a href="slits.html#pcdsdevices.slits.Slits.inserted">(pcdsdevices.slits.Slits attribute)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -510,13 +530,15 @@
       <ul>
         <li><a href="homs.html#pcdsdevices.epics.OffsetMirror.move">(pcdsdevices.epics.OffsetMirror method)</a>
 </li>
-        <li><a href="slits.html#pcdsdevices.epics.Slits.move">(pcdsdevices.epics.Slits method)</a>
-</li>
         <li><a href="homs.html#pcdsdevices.epics.mirror.Piezo.move">(pcdsdevices.epics.mirror.Piezo method)</a>
 </li>
         <li><a href="pim.html#pcdsdevices.epics.pim.PIMFee.move">(pcdsdevices.epics.pim.PIMFee method)</a>
 </li>
         <li><a href="pim.html#pcdsdevices.epics.pim.PIMMotor.move">(pcdsdevices.epics.pim.PIMMotor method)</a>
+</li>
+        <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.move">(pcdsdevices.slits.SlitPositioner method)</a>
+</li>
+        <li><a href="slits.html#pcdsdevices.slits.Slits.move">(pcdsdevices.slits.Slits method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -536,9 +558,11 @@
 </li>
       </ul></li>
       <li><a href="homs.html#pcdsdevices.epics.mirror.OMMotor.moving">moving (pcdsdevices.epics.mirror.OMMotor attribute)</a>
+
+      <ul>
+        <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.moving">(pcdsdevices.slits.SlitPositioner attribute)</a>
 </li>
-      <li><a href="device.html#pcdsdevices.epics.MPS">MPS (class in pcdsdevices.epics)</a>
-</li>
+      </ul></li>
       <li><a href="valves.html#pcdsdevices.epics.PPSStopper.mps">mps (pcdsdevices.epics.PPSStopper attribute)</a>
 </li>
       <li><a href="homs.html#pcdsdevices.epics.mirror.OMMotor.mv">mv() (pcdsdevices.epics.mirror.OMMotor method)</a>
@@ -554,6 +578,14 @@
   </ul></td>
 </tr></table>
 
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.name">name (pcdsdevices.slits.SlitPositioner attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -564,14 +596,14 @@
       <li><a href="valves.html#pcdsdevices.epics.GateValve.open">open() (pcdsdevices.epics.GateValve method)</a>
 
       <ul>
-        <li><a href="slits.html#pcdsdevices.epics.Slits.open">(pcdsdevices.epics.Slits method)</a>
-</li>
         <li><a href="valves.html#pcdsdevices.epics.Stopper.open">(pcdsdevices.epics.Stopper method)</a>
+</li>
+        <li><a href="slits.html#pcdsdevices.slits.Slits.open">(pcdsdevices.slits.Slits method)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="slits.html#pcdsdevices.epics.Slits.open_cmd">open_cmd (pcdsdevices.epics.Slits attribute)</a>
+      <li><a href="slits.html#pcdsdevices.slits.Slits.open_cmd">open_cmd (pcdsdevices.slits.Slits attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -579,9 +611,15 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="daq.html#pcdsdevices.daq.Daq.pause">pause() (pcdsdevices.daq.Daq method)</a>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.parent">parent (pcdsdevices.slits.SlitPositioner attribute)</a>
 </li>
-      <li><a href="device.html#module-pcdsdevices.epics.mps">pcdsdevices.epics.mps (module)</a>
+      <li><a href="daq.html#pcdsdevices.daq.Daq.pause">pause() (pcdsdevices.daq.Daq method)</a>
+
+      <ul>
+        <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.pause">(pcdsdevices.slits.SlitPositioner method)</a>
+</li>
+      </ul></li>
+      <li><a href="slits.html#module-pcdsdevices.slits">pcdsdevices.slits (module)</a>
 </li>
       <li><a href="homs.html#pcdsdevices.epics.mirror.Piezo">Piezo (class in pcdsdevices.epics.mirror)</a>
 </li>
@@ -610,6 +648,8 @@
 </li>
         <li><a href="pim.html#pcdsdevices.epics.pim.PIMMotor.position">(pcdsdevices.epics.pim.PIMMotor attribute)</a>
 </li>
+        <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.position">(pcdsdevices.slits.SlitPositioner attribute)</a>
+</li>
       </ul></li>
       <li><a href="valves.html#pcdsdevices.epics.PPSStopper">PPSStopper (class in pcdsdevices.epics)</a>
 </li>
@@ -619,22 +659,32 @@
         <li><a href="homs.html#pcdsdevices.epics.mirror.Piezo.precision">(pcdsdevices.epics.mirror.Piezo attribute)</a>
 </li>
       </ul></li>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.put">put() (pcdsdevices.slits.SlitPositioner method)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.read">read() (pcdsdevices.slits.SlitPositioner method)</a>
+</li>
       <li><a href="daq.html#pcdsdevices.daq.Daq.read_configuration">read_configuration() (pcdsdevices.daq.Daq method)</a>
+
+      <ul>
+        <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.read_configuration">(pcdsdevices.slits.SlitPositioner method)</a>
+</li>
+      </ul></li>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.readback">readback (pcdsdevices.slits.SlitPositioner attribute)</a>
 </li>
       <li><a href="lodcm.html#pcdsdevices.epics.LODCM.remove">remove() (pcdsdevices.epics.LODCM method)</a>
 
       <ul>
-        <li><a href="slits.html#pcdsdevices.epics.Slits.remove">(pcdsdevices.epics.Slits method)</a>
-</li>
         <li><a href="valves.html#pcdsdevices.epics.Stopper.remove">(pcdsdevices.epics.Stopper method)</a>
 </li>
         <li><a href="pim.html#pcdsdevices.epics.pim.PIMMotor.remove">(pcdsdevices.epics.pim.PIMMotor method)</a>
+</li>
+        <li><a href="slits.html#pcdsdevices.slits.Slits.remove">(pcdsdevices.slits.Slits method)</a>
 </li>
       </ul></li>
       <li><a href="lodcm.html#pcdsdevices.epics.LODCM.removed">removed (pcdsdevices.epics.LODCM attribute)</a>
@@ -644,11 +694,11 @@
 </li>
         <li><a href="valves.html#pcdsdevices.epics.PPSStopper.removed">(pcdsdevices.epics.PPSStopper attribute)</a>
 </li>
-        <li><a href="slits.html#pcdsdevices.epics.Slits.removed">(pcdsdevices.epics.Slits attribute)</a>
-</li>
         <li><a href="valves.html#pcdsdevices.epics.Stopper.removed">(pcdsdevices.epics.Stopper attribute)</a>
 </li>
         <li><a href="pim.html#pcdsdevices.epics.pim.PIMMotor.removed">(pcdsdevices.epics.pim.PIMMotor attribute)</a>
+</li>
+        <li><a href="slits.html#pcdsdevices.slits.Slits.removed">(pcdsdevices.slits.Slits attribute)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -660,6 +710,12 @@
 </li>
       </ul></li>
       <li><a href="daq.html#pcdsdevices.daq.Daq.resume">resume() (pcdsdevices.daq.Daq method)</a>
+
+      <ul>
+        <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.resume">(pcdsdevices.slits.SlitPositioner method)</a>
+</li>
+      </ul></li>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.root">root (pcdsdevices.slits.SlitPositioner attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -667,22 +723,36 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="slits.html#pcdsdevices.epics.Slits.set">set() (pcdsdevices.epics.Slits method)</a>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.set">set() (pcdsdevices.slits.SlitPositioner method)</a>
+
+      <ul>
+        <li><a href="slits.html#pcdsdevices.slits.Slits.set">(pcdsdevices.slits.Slits method)</a>
 </li>
+      </ul></li>
       <li><a href="homs.html#pcdsdevices.epics.mirror.OMMotor.set_current_position">set_current_position() (pcdsdevices.epics.mirror.OMMotor method)</a>
 
       <ul>
         <li><a href="homs.html#pcdsdevices.epics.mirror.Piezo.set_current_position">(pcdsdevices.epics.mirror.Piezo method)</a>
 </li>
       </ul></li>
-      <li><a href="homs.html#pcdsdevices.epics.OffsetMirror.settle_time">settle_time (pcdsdevices.epics.OffsetMirror attribute)</a>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.setpoint">setpoint (pcdsdevices.slits.SlitPositioner attribute)</a>
 </li>
-      <li><a href="slits.html#pcdsdevices.epics.Slits">Slits (class in pcdsdevices.epics)</a>
+      <li><a href="homs.html#pcdsdevices.epics.OffsetMirror.settle_time">settle_time (pcdsdevices.epics.OffsetMirror attribute)</a>
+
+      <ul>
+        <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.settle_time">(pcdsdevices.slits.SlitPositioner attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner">SlitPositioner (class in pcdsdevices.slits)</a>
+</li>
+      <li><a href="slits.html#pcdsdevices.slits.Slits">Slits (class in pcdsdevices.slits)</a>
 </li>
       <li><a href="daq.html#pcdsdevices.daq.Daq.stage">stage() (pcdsdevices.daq.Daq method)</a>
 
       <ul>
-        <li><a href="slits.html#pcdsdevices.epics.Slits.stage">(pcdsdevices.epics.Slits method)</a>
+        <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.stage">(pcdsdevices.slits.SlitPositioner method)</a>
+</li>
+        <li><a href="slits.html#pcdsdevices.slits.Slits.stage">(pcdsdevices.slits.Slits method)</a>
 </li>
       </ul></li>
       <li><a href="pim.html#pcdsdevices.epics.pim.PIMFee.state">state (pcdsdevices.epics.pim.PIMFee attribute)</a>
@@ -691,10 +761,10 @@
         <li><a href="pim.html#pcdsdevices.epics.pim.PIMMotor.state">(pcdsdevices.epics.pim.PIMMotor attribute)</a>
 </li>
       </ul></li>
-      <li><a href="daq.html#pcdsdevices.daq.Daq.state_enum">state_enum (pcdsdevices.daq.Daq attribute)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="daq.html#pcdsdevices.daq.Daq.state_enum">state_enum (pcdsdevices.daq.Daq attribute)</a>
+</li>
       <li><a href="pim.html#pcdsdevices.epics.pim.PIMMotor.states">states (pcdsdevices.epics.pim.PIMMotor attribute)</a>
 </li>
       <li><a href="pim.html#pcdsdevices.epics.pim.PIMPulnixDetector.stats2">stats2 (pcdsdevices.epics.pim.PIMPulnixDetector attribute)</a>
@@ -708,11 +778,13 @@
       <ul>
         <li><a href="valves.html#pcdsdevices.epics.PPSStopper.subscribe">(pcdsdevices.epics.PPSStopper method)</a>
 </li>
-        <li><a href="slits.html#pcdsdevices.epics.Slits.subscribe">(pcdsdevices.epics.Slits method)</a>
-</li>
         <li><a href="valves.html#pcdsdevices.epics.Stopper.subscribe">(pcdsdevices.epics.Stopper method)</a>
 </li>
         <li><a href="pim.html#pcdsdevices.epics.pim.PIMMotor.subscribe">(pcdsdevices.epics.pim.PIMMotor method)</a>
+</li>
+        <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.subscribe">(pcdsdevices.slits.SlitPositioner method)</a>
+</li>
+        <li><a href="slits.html#pcdsdevices.slits.Slits.subscribe">(pcdsdevices.slits.Slits method)</a>
 </li>
       </ul></li>
       <li><a href="valves.html#pcdsdevices.epics.PPSStopper.summary">summary (pcdsdevices.epics.PPSStopper attribute)</a>
@@ -723,11 +795,15 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.timeout">timeout (pcdsdevices.slits.SlitPositioner attribute)</a>
+</li>
       <li><a href="homs.html#pcdsdevices.epics.OffsetMirror.tolerance">tolerance (pcdsdevices.epics.OffsetMirror attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="slits.html#pcdsdevices.epics.Slits.transmission">transmission (pcdsdevices.epics.Slits attribute)</a>
+      <li><a href="slits.html#pcdsdevices.slits.Slits.transmission">transmission (pcdsdevices.slits.Slits attribute)</a>
+</li>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.trigger">trigger() (pcdsdevices.slits.SlitPositioner method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -738,9 +814,11 @@
       <li><a href="daq.html#pcdsdevices.daq.Daq.unstage">unstage() (pcdsdevices.daq.Daq method)</a>
 
       <ul>
-        <li><a href="slits.html#pcdsdevices.epics.Slits.unstage">(pcdsdevices.epics.Slits method)</a>
+        <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.unstage">(pcdsdevices.slits.SlitPositioner method)</a>
 </li>
       </ul></li>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.unsubscribe">unsubscribe() (pcdsdevices.slits.SlitPositioner method)</a>
+</li>
       <li><a href="homs.html#pcdsdevices.epics.mirror.OMMotor.upper_ctrl_limit">upper_ctrl_limit (pcdsdevices.epics.mirror.OMMotor attribute)</a>
 </li>
   </ul></td>
@@ -766,16 +844,16 @@
       <li><a href="homs.html#pcdsdevices.epics.mirror.OMMotor.velocity">velocity (pcdsdevices.epics.mirror.OMMotor attribute)</a>
 </li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="device.html#pcdsdevices.epics.MPS.veto_capable">veto_capable (pcdsdevices.epics.MPS attribute)</a>
-</li>
-  </ul></td>
 </tr></table>
 
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="daq.html#pcdsdevices.daq.Daq.wait">wait() (pcdsdevices.daq.Daq method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="slits.html#pcdsdevices.slits.SlitPositioner.wait_for_connection">wait_for_connection() (pcdsdevices.slits.SlitPositioner method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -787,9 +865,9 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="slits.html#pcdsdevices.epics.Slits.xcenter">xcenter (pcdsdevices.epics.Slits attribute)</a>
+      <li><a href="slits.html#pcdsdevices.slits.Slits.xcenter">xcenter (pcdsdevices.slits.Slits attribute)</a>
 </li>
-      <li><a href="slits.html#pcdsdevices.epics.Slits.xwidth">xwidth (pcdsdevices.epics.Slits attribute)</a>
+      <li><a href="slits.html#pcdsdevices.slits.Slits.xwidth">xwidth (pcdsdevices.slits.Slits attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -807,9 +885,9 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="slits.html#pcdsdevices.epics.Slits.ycenter">ycenter (pcdsdevices.epics.Slits attribute)</a>
+      <li><a href="slits.html#pcdsdevices.slits.Slits.ycenter">ycenter (pcdsdevices.slits.Slits attribute)</a>
 </li>
-      <li><a href="slits.html#pcdsdevices.epics.Slits.ywidth">ywidth (pcdsdevices.epics.Slits attribute)</a>
+      <li><a href="slits.html#pcdsdevices.slits.Slits.ywidth">ywidth (pcdsdevices.slits.Slits attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -858,7 +936,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.2.0+26.g141e707',
+            VERSION:'0.2.0+35.g169ecd5',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

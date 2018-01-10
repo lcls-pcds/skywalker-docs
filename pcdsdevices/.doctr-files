@@ -1,8 +1,6 @@
 pcdsdevices/_sources/daq.rst.txt
-pcdsdevices/_sources/device.rst.txt
 pcdsdevices/_sources/homs.rst.txt
 pcdsdevices/_sources/index.rst.txt
-pcdsdevices/_sources/interface.rst.txt
 pcdsdevices/_sources/ipimb.rst.txt
 pcdsdevices/_sources/lodcm.rst.txt
 pcdsdevices/_sources/pim.rst.txt
@@ -43,11 +41,9 @@ pcdsdevices/_static/up-pressed.png
 pcdsdevices/_static/up.png
 pcdsdevices/_static/websupport.js
 pcdsdevices/daq.html
-pcdsdevices/device.html
 pcdsdevices/genindex.html
 pcdsdevices/homs.html
 pcdsdevices/index.html
-pcdsdevices/interface.html
 pcdsdevices/ipimb.html
 pcdsdevices/lodcm.html
 pcdsdevices/objects.inv
