@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PIM &mdash; PCDS Devices 0.2.0+35.g169ecd5 documentation</title>
+  <title>PIM &mdash; PCDS Devices 0.2.0+85.g919a949 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PCDS Devices 0.2.0+35.g169ecd5 documentation" href="index.html"/>
+    <link rel="top" title="PCDS Devices 0.2.0+85.g919a949 documentation" href="index.html"/>
         <link rel="next" title="IPIMB" href="ipimb.html"/>
         <link rel="prev" title="Slits" href="slits.html"/> 
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.2.0+35.g169ecd5
+                0.2.0+85.g919a949
               </div>
             
           
@@ -174,59 +174,6 @@
 <h1>PIM<a class="headerlink" href="#pim" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="complete-device">
 <h2>Complete Device<a class="headerlink" href="#complete-device" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="pcdsdevices.epics.PIM">
-<em class="property">class </em><code class="descclassname">pcdsdevices.epics.</code><code class="descname">PIM</code><span class="sig-paren">(</span><em>prefix</em>, <em>prefix_det=None</em>, <em>read_attrs=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.PIM" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#pcdsdevices.epics.pim.PIMMotor" title="pcdsdevices.epics.pim.PIMMotor"><code class="xref py py-class docutils literal"><span class="pre">pcdsdevices.epics.pim.PIMMotor</span></code></a></p>
-<p>Full profile intensity monitor including the motor to move the yag, and the
-detector to view it.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>prefix</strong> (<em>str</em>) – The EPICS base of the motor</li>
-<li><strong>prefix_det</strong> (<em>str</em><em>, </em><em>optional</em>) – The EPICS base PV of the detector. If None, it will be inferred from
-the motor prefix</li>
-<li><strong>read_attrs</strong> (<em>sequence of attribute names</em><em>, </em><em>optional</em>) – The signals to be read during data acquisition (i.e., in read() and
-describe() calls)</li>
-<li><strong>configuration_attrs</strong> (<em>sequence of attribute names</em><em>, </em><em>optional</em>) – The signals to be returned when asked for the motor configuration (i.e.
-in read_configuration(), and describe_configuration() calls)</li>
-<li><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the offset mirror</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="pcdsdevices.epics.PIM.check_camera">
-<code class="descname">check_camera</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.PIM.check_camera" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks if the camera is acquiring images.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><code class="xref py py-exc docutils literal"><span class="pre">NotInsertedError</span></code> – Error raised if the camera is not in the inserted position</li>
-<li><code class="xref py py-exc docutils literal"><span class="pre">NotAcquiringError</span></code> – Error raised if the camera is not acquiring</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="pcdsdevices.epics.PIM.detector">
-<code class="descname">detector</code><a class="headerlink" href="#pcdsdevices.epics.PIM.detector" title="Permalink to this definition">¶</a></dt>
-<dd><p>FormattedComponent attribute</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FormattedComponent</span><span class="p">(</span><span class="n">PIMPulnixDetector</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{self._prefix_det}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">read_attrs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;stats2&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</dd></dl>
-
 </div>
 <div class="section" id="major-components">
 <h2>Major Components<a class="headerlink" href="#major-components" title="Permalink to this headline">¶</a></h2>
@@ -290,44 +237,6 @@ in read_configuration(), and describe_configuration() calls)</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="pcdsdevices.epics.pim.PIMMotor.move">
-<code class="descname">move</code><span class="sig-paren">(</span><em>position</em>, <em>wait=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.pim.PIMMotor.move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Move the PIM to the inputted position, optionally waiting for the move
-to complete. String inputs are not case sensitive and must be one of
-the following:</p>
-<blockquote>
-<div>“DIODE”, “OUT”, “IN”, “YAG”</div></blockquote>
-<p>Enumerated positions can also be inputted where:</p>
-<blockquote>
-<div>1 : “DIODE”, 2 : “OUT”, 3 : “IN”, 3 : “YAG”</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>position</strong> (<em>str</em><em> or </em><em>number</em>) – String or enumerated position to move to.</li>
-<li><strong>wait</strong> (<em>bool</em><em>, </em><em>optional</em>) – Wait for the status object to complete the move before returning</li>
-<li><strong>timeout</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum time to wait for the motion. If None, the default timeout
-for this positioner is used</li>
-<li><strong>settle_time</strong> (<em>float</em><em>, </em><em>optional</em>) – Delay after the set() has completed to indicate completion to the
-caller</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>status</strong> – Status object of the move</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">MoveStatus</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – If the inputted position to move to is not a valid position</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="pcdsdevices.epics.pim.PIMMotor.move_diode">
 <code class="descname">move_diode</code><span class="sig-paren">(</span><em>wait=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.pim.PIMMotor.move_diode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Move the PIM to the DIODE position. Alias for move(“DIODE”).</p>
@@ -376,60 +285,6 @@ caller</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="pcdsdevices.epics.pim.PIMMotor.mv">
-<code class="descname">mv</code><span class="sig-paren">(</span><em>position</em>, <em>wait=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.pim.PIMMotor.mv" title="Permalink to this definition">¶</a></dt>
-<dd><p>Move the PIM to the inputted position, optionally waiting for the move
-to complete. String inputs are not case sensitive and must be one of
-the following:</p>
-<blockquote>
-<div>“DIODE”, “OUT”, “IN”, “YAG”</div></blockquote>
-<p>Enumerated positions can also be inputted where:</p>
-<blockquote>
-<div>1 : “DIODE”, 2 : “OUT”, 3 : “IN”, 3 : “YAG”</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>position</strong> (<em>str</em><em> or </em><em>number</em>) – String or enumerated position to move to.</li>
-<li><strong>wait</strong> (<em>bool</em><em>, </em><em>optional</em>) – Wait for the status object to complete the move before returning</li>
-<li><strong>timeout</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum time to wait for the motion. If None, the default timeout
-for this positioner is used</li>
-<li><strong>settle_time</strong> (<em>float</em><em>, </em><em>optional</em>) – Delay after the set() has completed to indicate completion to the
-caller</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>status</strong> – Status object of the move</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">MoveStatus</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – If the inputted position to move to is not a valid position</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="pcdsdevices.epics.pim.PIMMotor.position">
-<code class="descname">position</code><a class="headerlink" href="#pcdsdevices.epics.pim.PIMMotor.position" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the current position of the yag.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>position</strong></td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="pcdsdevices.epics.pim.PIMMotor.remove">
 <code class="descname">remove</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.pim.PIMMotor.remove" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for <a class="reference internal" href="#pcdsdevices.epics.pim.PIMMotor.move_out" title="pcdsdevices.epics.pim.PIMMotor.move_out"><code class="xref py py-meth docutils literal"><span class="pre">move_out()</span></code></a> for lightpath interface</p>
@@ -439,50 +294,6 @@ caller</li>
 <dt id="pcdsdevices.epics.pim.PIMMotor.removed">
 <code class="descname">removed</code><a class="headerlink" href="#pcdsdevices.epics.pim.PIMMotor.removed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether the YAG is inserted</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="pcdsdevices.epics.pim.PIMMotor.state">
-<code class="descname">state</code><a class="headerlink" href="#pcdsdevices.epics.pim.PIMMotor.state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the current position of the yag.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>position</strong></td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="pcdsdevices.epics.pim.PIMMotor.states">
-<code class="descname">states</code><a class="headerlink" href="#pcdsdevices.epics.pim.PIMMotor.states" title="Permalink to this definition">¶</a></dt>
-<dd><p>FormattedComponent attribute</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FormattedComponent</span><span class="p">(</span><span class="n">PIMStates</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{self.prefix}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="pcdsdevices.epics.pim.PIMMotor.subscribe">
-<code class="descname">subscribe</code><span class="sig-paren">(</span><em>cb</em>, <em>event_type=None</em>, <em>run=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pcdsdevices.epics.pim.PIMMotor.subscribe" title="Permalink to this definition">¶</a></dt>
-<dd><p>Subscribe to changes of the PIMMotor</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>cb</strong> (<em>callable</em>) – Callback to be run</li>
-<li><strong>event_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of event to run callback on</li>
-<li><strong>run</strong> (<em>bool</em><em>, </em><em>optional</em>) – Run the callback immediatelly</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 </dd></dl>
@@ -919,7 +730,7 @@ caller</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.2.0+35.g169ecd5',
+            VERSION:'0.2.0+85.g919a949',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
