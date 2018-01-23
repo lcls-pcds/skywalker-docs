@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>happi.backends.mongo_db.MongoBackend &mdash; Happi Deck 0.5.0+39.g8524775 documentation</title>
+  <title>happi.backends.qs_db.QSBackend &mdash; Happi Deck 0.5.0+39.g8524775 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Happi Deck 0.5.0+39.g8524775 documentation" href="../index.html"/>
         <link rel="up" title="Supported Backends" href="../backends.html"/>
-        <link rel="next" title="happi.backends.json_db.JSONBackend" href="happi.backends.json_db.JSONBackend.html"/>
-        <link rel="prev" title="Supported Backends" href="../backends.html"/> 
+        <link rel="next" title="Device Containers" href="../containers.html"/>
+        <link rel="prev" title="happi.backends.json_db.JSONBackend" href="happi.backends.json_db.JSONBackend.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -102,9 +102,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../client_api.html">Client API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../backends.html">Supported Backends</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../backends.html#backend-choices">Backend Choices</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">happi.backends.mongo_db.MongoBackend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="happi.backends.mongo_db.MongoBackend.html">happi.backends.mongo_db.MongoBackend</a></li>
 <li class="toctree-l3"><a class="reference internal" href="happi.backends.json_db.JSONBackend.html">happi.backends.json_db.JSONBackend</a></li>
-<li class="toctree-l3"><a class="reference internal" href="happi.backends.qs_db.QSBackend.html">happi.backends.qs_db.QSBackend</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">happi.backends.qs_db.QSBackend</a></li>
 </ul>
 </li>
 </ul>
@@ -156,13 +156,13 @@
         
           <li><a href="../backends.html">Supported Backends</a> &raquo;</li>
         
-      <li>happi.backends.mongo_db.MongoBackend</li>
+      <li>happi.backends.qs_db.QSBackend</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/generated/happi.backends.mongo_db.MongoBackend.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/happi.backends.qs_db.QSBackend.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -175,31 +175,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="happi-backends-mongo-db-mongobackend">
-<h1>happi.backends.mongo_db.MongoBackend<a class="headerlink" href="#happi-backends-mongo-db-mongobackend" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="happi-backends-qs-db-qsbackend">
+<h1>happi.backends.qs_db.QSBackend<a class="headerlink" href="#happi-backends-qs-db-qsbackend" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="happi.backends.mongo_db.MongoBackend">
-<em class="property">class </em><code class="descclassname">happi.backends.mongo_db.</code><code class="descname">MongoBackend</code><span class="sig-paren">(</span><em>host=None</em>, <em>user=None</em>, <em>pw=None</em>, <em>db=None</em>, <em>collection=None</em>, <em>timeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.backends.mongo_db.MongoBackend" title="Permalink to this definition">¶</a></dt>
-<dd><p>Abstraction for MongoDB backend</p>
+<dt id="happi.backends.qs_db.QSBackend">
+<em class="property">class </em><code class="descclassname">happi.backends.qs_db.</code><code class="descname">QSBackend</code><span class="sig-paren">(</span><em>run_no</em>, <em>proposal</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.backends.qs_db.QSBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Questionniare Backend</p>
+<p>This backend connects to the LCLS questionnaire and looks at devices with
+the key pattern pcds-<em>-setup-</em>-<a href="#id1"><span class="problematic" id="id2">*</span></a>. These fields are then combined and turned
+into proper happi devices. The translation of table name to pcdsdevices
+class is determined by the <code class="xref py py-attr docutils literal"><span class="pre">device_translations</span></code> dictionary. The
+beamline is determined by looking where the proposal was submitted.</p>
+<p>Unlike the other backends, this one is read-only. All changes to the device
+information should be done via the web interface. Finally, in order to
+avoid duplicating any code needed to search the device database, the
+QSBackend inherits directly from JSONBackend. Many of the functions are
+unmodified with exception being that this backend merely searchs through an
+in memory dictionary while the JSONBackend reads from the file before
+searches.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>host</strong> (<em>str</em><em>, </em><em>optional</em>) – Hostname for MongoDB</li>
-<li><strong>user</strong> (<em>str</em><em>, </em><em>optional</em>) – Username for MongoDB instance</li>
-<li><strong>pw</strong> (<em>str</em><em>, </em><em>optional</em>) – Password for given username</li>
-<li><strong>host</strong> – Host of the MongoDB instance</li>
-<li><strong>db</strong> (<em>str</em><em>, </em><em>optional</em>) – Database name within the MongoDB instance</li>
-<li><strong>timeout</strong> (<em>float</em><em>, </em><em>optional</em>) – Time to wait for connection attempt</li>
+<li><strong>run_no</strong> (<em>int</em>) – Desired run number i.e 16</li>
+<li><strong>proposal</strong> (<em>str</em>) – Proposal identifier i.e “LR32”</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
-<dt id="happi.backends.mongo_db.MongoBackend.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>host=None</em>, <em>user=None</em>, <em>pw=None</em>, <em>db=None</em>, <em>collection=None</em>, <em>timeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.backends.mongo_db.MongoBackend.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="happi.backends.qs_db.QSBackend.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>run_no</em>, <em>proposal</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.backends.qs_db.QSBackend.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p class="rubric">Methods</p>
@@ -209,17 +217,26 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#happi.backends.mongo_db.MongoBackend.__init__" title="happi.backends.mongo_db.MongoBackend.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>([host,&nbsp;user,&nbsp;pw,&nbsp;db,&nbsp;collection,&nbsp;…])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#happi.backends.qs_db.QSBackend.__init__" title="happi.backends.qs_db.QSBackend.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>(run_no,&nbsp;proposal)</td>
 <td></td>
 </tr>
 <tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">delete</span></code>(_id)</td>
-<td>Delete a device instance from the database</td>
+<td>The current implementation of this backend is read-only</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">find</span></code>([multiples])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">find</span></code>([_id,&nbsp;multiples])</td>
 <td>Find an instance or instances that matches the search criteria</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">save</span></code>(_id,&nbsp;post[,&nbsp;insert])</td>
-<td>Save information to the database</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">initialize</span></code>()</td>
+<td>Can not initialize a new Questionnaire entry from API</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">load</span></code>()</td>
+<td>Return the structured dictionary of information</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">save</span></code>(*args,&nbsp;**kwargs)</td>
+<td>The current implementation of this backend is read-only</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">store</span></code>(*args,&nbsp;**kwargs)</td>
+<td>The current implementation of this backend is read-only</td>
 </tr>
 </tbody>
 </table>
@@ -237,10 +254,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="happi.backends.json_db.JSONBackend.html" class="btn btn-neutral float-right" title="happi.backends.json_db.JSONBackend" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../containers.html" class="btn btn-neutral float-right" title="Device Containers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../backends.html" class="btn btn-neutral" title="Supported Backends" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="happi.backends.json_db.JSONBackend.html" class="btn btn-neutral" title="happi.backends.json_db.JSONBackend" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

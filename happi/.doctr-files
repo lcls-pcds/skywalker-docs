@@ -7,6 +7,7 @@ happi/_sources/conventions.rst.txt
 happi/_sources/develop.rst.txt
 happi/_sources/generated/happi.backends.json_db.JSONBackend.rst.txt
 happi/_sources/generated/happi.backends.mongo_db.MongoBackend.rst.txt
+happi/_sources/generated/happi.backends.qs_db.QSBackend.rst.txt
 happi/_sources/generated/happi.containers.Attenuator.rst.txt
 happi/_sources/generated/happi.containers.GateValve.rst.txt
 happi/_sources/generated/happi.containers.IPM.rst.txt
@@ -61,6 +62,7 @@ happi/conventions.html
 happi/develop.html
 happi/generated/happi.backends.json_db.JSONBackend.html
 happi/generated/happi.backends.mongo_db.MongoBackend.html
+happi/generated/happi.backends.qs_db.QSBackend.html
 happi/generated/happi.containers.Attenuator.html
 happi/generated/happi.containers.GateValve.html
 happi/generated/happi.containers.IPM.html
