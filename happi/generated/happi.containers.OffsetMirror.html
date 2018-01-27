@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>happi.containers.OffsetMirror &mdash; Happi Deck 0.5.0+44.g11bb843 documentation</title>
+  <title>happi.containers.OffsetMirror &mdash; Happi Deck 0.5.0+47.g644ba0b documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Happi Deck 0.5.0+44.g11bb843 documentation" href="../index.html"/>
+    <link rel="top" title="Happi Deck 0.5.0+47.g644ba0b documentation" href="../index.html"/>
         <link rel="up" title="Device Containers" href="../containers.html"/>
         <link rel="next" title="happi.containers.PulsePicker" href="happi.containers.PulsePicker.html"/>
         <link rel="prev" title="happi.containers.Stopper" href="happi.containers.Stopper.html"/> 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.5.0+44.g11bb843
+                0.5.0+47.g644ba0b
               </div>
             
           
@@ -207,22 +207,15 @@ control motor record base instead.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="happi.containers.OffsetMirror.states">
-<code class="descname">states</code><a class="headerlink" href="#happi.containers.OffsetMirror.states" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – A basic in/out states pv that tells us whether the mirror is in the
-beam or not.
-If the states pv doesn’t exist yet, this can be the x control motor
-record base instead.</p>
+<dt id="happi.containers.OffsetMirror.prefix_xy">
+<code class="descname">prefix_xy</code><a class="headerlink" href="#happi.containers.OffsetMirror.prefix_xy" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str, optional</em> – Name of the X and Y motors if different than the standard prefix</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="happi.containers.OffsetMirror.destinations">
-<code class="descname">destinations</code><a class="headerlink" href="#happi.containers.OffsetMirror.destinations" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dict</em> – A mapping that matches the base pv’s outputs with destinations. The
-keys should be enum states or indexes and the values should be beamline
-names. See <a class="reference internal" href="../conventions.html#conventions"><span class="std std-ref">Conventions</span></a> for an explanation of beamline names.
-If the mirror is purely for alignment and not for steering, this can be
-an empty dict.</p>
+<dt id="happi.containers.OffsetMirror.xgantry_prefix">
+<code class="descname">xgantry_prefix</code><a class="headerlink" href="#happi.containers.OffsetMirror.xgantry_prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str, optional</em> – Prefix of the X Gantry PVs if different than the standard prefix</p>
 </dd></dl>
 
 <dl class="method">
@@ -299,7 +292,7 @@ an empty dict.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0+44.g11bb843',
+            VERSION:'0.5.0+47.g644ba0b',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

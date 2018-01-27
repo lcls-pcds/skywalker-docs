@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>happi.containers.Attenuator &mdash; Happi Deck 0.5.0+44.g11bb843 documentation</title>
+  <title>happi.containers.Attenuator &mdash; Happi Deck 0.5.0+47.g644ba0b documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Happi Deck 0.5.0+44.g11bb843 documentation" href="../index.html"/>
+    <link rel="top" title="Happi Deck 0.5.0+47.g644ba0b documentation" href="../index.html"/>
         <link rel="up" title="Device Containers" href="../containers.html"/>
         <link rel="next" title="happi.containers.Stopper" href="happi.containers.Stopper.html"/>
         <link rel="prev" title="happi.containers.IPM" href="happi.containers.IPM.html"/> 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.5.0+44.g11bb843
+                0.5.0+47.g644ba0b
               </div>
             
           
@@ -198,8 +198,14 @@ assigned the beam control system by default.</p>
 <dd><p><em>str</em> – For attunators, the base PV should be the base record from the
 attentuation calculation and control IOC, one level up from the
 calculated tranmission ratio. For example, if the transmission PV is
-“XPP:ATT:COM:R_CUR”, the base PV is “XPP:ATT:COM”. A regex will be used
-to check that “ATT” is found in the base PV.</p>
+“XPP:ATT:COM:R_CUR”, the base PV is “XPP:ATT”. A regex will be used
+to check that “ATT” is found in the base PV</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="happi.containers.Attenuator.n_filters">
+<code class="descname">n_filters</code><a class="headerlink" href="#happi.containers.Attenuator.n_filters" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – Number of Attenuator blades</p>
 </dd></dl>
 
 <dl class="method">
@@ -276,7 +282,7 @@ to check that “ATT” is found in the base PV.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0+44.g11bb843',
+            VERSION:'0.5.0+47.g644ba0b',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

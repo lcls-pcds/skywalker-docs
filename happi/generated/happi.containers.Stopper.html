@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>happi.containers.Stopper &mdash; Happi Deck 0.5.0+44.g11bb843 documentation</title>
+  <title>happi.containers.Stopper &mdash; Happi Deck 0.5.0+47.g644ba0b documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Happi Deck 0.5.0+44.g11bb843 documentation" href="../index.html"/>
+    <link rel="top" title="Happi Deck 0.5.0+47.g644ba0b documentation" href="../index.html"/>
         <link rel="up" title="Device Containers" href="../containers.html"/>
         <link rel="next" title="happi.containers.OffsetMirror" href="happi.containers.OffsetMirror.html"/>
         <link rel="prev" title="happi.containers.Attenuator" href="happi.containers.Attenuator.html"/> 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.5.0+44.g11bb843
+                0.5.0+47.g644ba0b
               </div>
             
           
@@ -189,23 +189,12 @@
 <dl class="class">
 <dt id="happi.containers.Stopper">
 <em class="property">class </em><code class="descclassname">happi.containers.</code><code class="descname">Stopper</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#happi.containers.Stopper" title="Permalink to this definition">¶</a></dt>
-<dd><p>Large devices that prevent beam when it could cause damage to hardware. In
-addition to the standard attributes, this has entries for mps pv and veto
-boolean. The veto boolean will be True by default and does not need to be
-set for each stopper. Stoppers will have their system set to mps by
-default.</p>
+<dd><p>Large devices that prevent beam when it could cause damage to hardware.</p>
 <dl class="attribute">
 <dt id="happi.containers.Stopper.prefix">
 <code class="descname">prefix</code><a class="headerlink" href="#happi.containers.Stopper.prefix" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>str</em> – The base PV should be the combined mps status PV e.g.
 “STPR:XRT1:1:S5IN_MPS”.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="happi.containers.Stopper.mps">
-<code class="descname">mps</code><a class="headerlink" href="#happi.containers.Stopper.mps" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – The mps PV should be the prefix for the lower mps logic PVs e.g.
-“HFX:UM6:STP_01”.</p>
 </dd></dl>
 
 <dl class="method">
@@ -282,7 +271,7 @@ default.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0+44.g11bb843',
+            VERSION:'0.5.0+47.g644ba0b',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
