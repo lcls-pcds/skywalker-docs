@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>lightpath.path &mdash; LCLS Lightpath 0.2.1+2.g191e5df documentation</title>
+  <title>lightpath.path &mdash; LCLS Lightpath 0.2.2+12.g651a43e documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="LCLS Lightpath 0.2.1+2.g191e5df documentation" href="../../index.html"/>
+    <link rel="top" title="LCLS Lightpath 0.2.2+12.g651a43e documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.2.1+2.g191e5df
+                0.2.2+12.g651a43e
               </div>
             
           
@@ -228,7 +228,6 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#Subscription Information</span>
     <span class="n">SUB_PTH_CHNG</span>     <span class="o">=</span> <span class="s1">&#39;beampath_changed&#39;</span>
-    <span class="n">SUB_MPSPATH_CHNG</span> <span class="o">=</span> <span class="s1">&#39;mpspath_changed&#39;</span>
     <span class="n">_default_sub</span>     <span class="o">=</span> <span class="n">SUB_PTH_CHNG</span>
     <span class="c1">#Transmission setting</span>
     <span class="n">minimum_transmission</span> <span class="o">=</span> <span class="mf">0.1</span>
@@ -244,7 +243,7 @@
             <span class="c1">#Check types and positions</span>
             <span class="k">for</span> <span class="n">dev</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
                 <span class="c1">#Ensure positioning is physical</span>
-                <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">dev</span><span class="o">.</span><span class="n">z</span><span class="p">)</span> <span class="ow">or</span> <span class="n">dev</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;</span> <span class="mf">0.</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">dev</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">z</span><span class="p">)</span> <span class="ow">or</span> <span class="n">dev</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;</span> <span class="mf">0.</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="n">CoordinateError</span><span class="p">(</span><span class="s1">&#39;Device </span><span class="si">%r</span><span class="s1"> is reporting a &#39;</span>
                                           <span class="s1">&#39;non-existant beamline position, &#39;</span>
                                           <span class="s1">&#39;its coordinate was not properly &#39;</span>
@@ -262,21 +261,21 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Branching devices along the path</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">devices</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s1">&#39;branches&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">devices</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">md</span><span class="p">,</span> <span class="s1">&#39;branches&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">range</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Starting z position of beamline</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">z</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">z</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        List of devices ordered by coordinates</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">devices</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">dev</span> <span class="p">:</span> <span class="n">dev</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">devices</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">dev</span> <span class="p">:</span> <span class="n">dev</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">blocking_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -291,10 +290,10 @@
         <span class="n">block</span>         <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
             <span class="c1">#If we have switched beamlines</span>
-            <span class="k">if</span> <span class="n">prior</span> <span class="ow">and</span> <span class="n">device</span><span class="o">.</span><span class="n">beamline</span> <span class="o">!=</span> <span class="n">prior</span><span class="o">.</span><span class="n">beamline</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">prior</span> <span class="ow">and</span> <span class="n">device</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">beamline</span> <span class="o">!=</span> <span class="n">prior</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">beamline</span><span class="p">:</span>
                 <span class="c1">#Find improperly configured optics</span>
                 <span class="k">for</span> <span class="n">optic</span> <span class="ow">in</span> <span class="n">last_branches</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">device</span><span class="o">.</span><span class="n">beamline</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">optic</span><span class="o">.</span><span class="n">destination</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">device</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">beamline</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">optic</span><span class="o">.</span><span class="n">destination</span><span class="p">:</span>
                         <span class="n">block</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">optic</span><span class="p">)</span>
                 <span class="c1">#Clear optics that have been evaluated</span>
                 <span class="n">last_branches</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
@@ -302,8 +301,8 @@
             <span class="c1">#If our last device was an optic, make sure it wasn&#39;t required</span>
             <span class="c1">#to continue along this beampath</span>
             <span class="k">elif</span> <span class="p">(</span><span class="n">prior</span> <span class="ow">in</span> <span class="n">last_branches</span>
-                <span class="ow">and</span> <span class="n">device</span><span class="o">.</span><span class="n">beamline</span> <span class="ow">in</span> <span class="n">prior</span><span class="o">.</span><span class="n">branches</span>
-                <span class="ow">and</span> <span class="n">device</span><span class="o">.</span><span class="n">beamline</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">prior</span><span class="o">.</span><span class="n">destination</span><span class="p">):</span>
+                <span class="ow">and</span> <span class="n">device</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">beamline</span> <span class="ow">in</span> <span class="n">prior</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">branches</span>
+                <span class="ow">and</span> <span class="n">device</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">beamline</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">prior</span><span class="o">.</span><span class="n">destination</span><span class="p">):</span>
                 <span class="n">block</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">last_branches</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 
             <span class="c1">#Find branching devices and store</span>
@@ -343,7 +342,7 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">impediment</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">inserted</span>
         <span class="c1">#Otherwise only return upstream of the impediment</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">inserted</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;=</span> <span class="n">impediment</span><span class="o">.</span><span class="n">z</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">inserted</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;=</span> <span class="n">impediment</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">z</span><span class="p">]</span>
 
 <div class="viewcode-block" id="BeamPath.show_devices"><a class="viewcode-back" href="../../path.html#lightpath.path.BeamPath.show_devices">[docs]</a>    <span class="k">def</span> <span class="nf">show_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -363,42 +362,9 @@
         <span class="n">pt</span><span class="o">.</span><span class="n">float_format</span>  <span class="o">=</span> <span class="s1">&#39;8.5&#39;</span>
         <span class="c1">#Add info</span>
         <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
-            <span class="n">pt</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="n">d</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">beamline</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">removed</span><span class="p">)])</span>
+            <span class="n">pt</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="n">d</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">beamline</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">removed</span><span class="p">)])</span>
         <span class="c1">#Show table</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">)</span></div>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">veto_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        A list of MPS veto devices along the path</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">device</span> <span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span>
-                <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="s1">&#39;mps&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-                <span class="ow">and</span> <span class="n">device</span><span class="o">.</span><span class="n">mps</span><span class="o">.</span><span class="n">veto_capable</span><span class="p">]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">tripped_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Devices who are both faulted and unprotected from the beam</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">ins_veto</span> <span class="o">=</span> <span class="p">[</span><span class="n">veto</span> <span class="k">for</span> <span class="n">veto</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">veto_devices</span> <span class="k">if</span> <span class="n">veto</span><span class="o">.</span><span class="n">inserted</span><span class="p">]</span>
-
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">ins_veto</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">faulted_devices</span>
-
-        <span class="k">return</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">faulted_devices</span>
-                  <span class="k">if</span> <span class="n">ins_veto</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">z</span> <span class="o">&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">z</span><span class="p">]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">faulted_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        A list of faulted MPS devices, this includes those protected by veto</span>
-<span class="sd">        devices</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">device</span> <span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span>
-                <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="s1">&#39;mps&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-                <span class="ow">and</span> <span class="n">device</span><span class="o">.</span><span class="n">mps</span><span class="o">.</span><span class="n">faulted</span>
-                <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">mps</span><span class="o">.</span><span class="n">bypassed</span> <span class="ow">or</span> <span class="n">device</span><span class="o">.</span><span class="n">mps</span><span class="o">.</span><span class="n">veto_capable</span><span class="p">)]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">impediment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -514,14 +480,14 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Must supply information where to split the path&quot;</span><span class="p">)</span>
         <span class="c1">#Grab the z if given a device</span>
         <span class="k">if</span> <span class="n">device</span><span class="p">:</span>
-            <span class="n">z</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">z</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">z</span>
         <span class="c1">#Look within range</span>
         <span class="k">if</span> <span class="n">z</span><span class="o">&lt;</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">z</span><span class="o">&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Split position </span><span class="si">{}</span><span class="s2"> is not within the range of &quot;</span>
                              <span class="s2">&quot;the path.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
         <span class="c1">#Split the paths</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">BeamPath</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">devices</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;=</span> <span class="n">z</span><span class="p">]),</span>
-                <span class="n">BeamPath</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">devices</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">z</span> <span class="o">&gt;</span>  <span class="n">z</span><span class="p">])</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">BeamPath</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">devices</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;=</span> <span class="n">z</span><span class="p">]),</span>
+                <span class="n">BeamPath</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">devices</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">z</span> <span class="o">&gt;</span>  <span class="n">z</span><span class="p">])</span>
                <span class="p">)</span></div>
 
 <div class="viewcode-block" id="BeamPath.from_join"><a class="viewcode-back" href="../../path.html#lightpath.path.BeamPath.from_join">[docs]</a>    <span class="nd">@classmethod</span>
@@ -599,17 +565,13 @@
         <span class="c1">#Determine whether our path has been changed</span>
         <span class="n">block</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">impediment</span>
         <span class="k">if</span> <span class="n">block</span><span class="p">:</span>
-            <span class="n">block</span> <span class="o">=</span> <span class="n">block</span><span class="o">.</span><span class="n">z</span>
+            <span class="n">block</span> <span class="o">=</span> <span class="n">block</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">z</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">block</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span>
         <span class="c1">#If device is upstream of impediment</span>
-        <span class="k">if</span> <span class="n">obj</span> <span class="ow">and</span> <span class="n">obj</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;=</span> <span class="n">block</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="ow">and</span> <span class="n">obj</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;=</span> <span class="n">block</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_run_subs</span><span class="p">(</span><span class="n">sub_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">SUB_PTH_CHNG</span><span class="p">,</span>
                              <span class="n">device</span> <span class="o">=</span> <span class="n">obj</span><span class="p">)</span>
-        <span class="c1">#Alert that an MPS system has moved</span>
-        <span class="k">if</span> <span class="n">obj</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;mps&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_run_subs</span><span class="p">(</span><span class="n">sub_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">SUB_MPSPATH_CHNG</span><span class="p">,</span>
-                           <span class="n">device</span><span class="o">=</span><span class="n">obj</span><span class="p">)</span>
 
 <div class="viewcode-block" id="BeamPath.subscribe"><a class="viewcode-back" href="../../path.html#lightpath.path.BeamPath.subscribe">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cb</span><span class="p">,</span> <span class="n">event_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">run</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -687,7 +649,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.2.1+2.g191e5df',
+            VERSION:'0.2.2+12.g651a43e',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
