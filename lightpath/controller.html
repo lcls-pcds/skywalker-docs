@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>LightController &mdash; LCLS Lightpath 0.2.2+16.g71de692 documentation</title>
+  <title>LightController &mdash; LCLS Lightpath 0.2.2+24.g23ebeda documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="LCLS Lightpath 0.2.2+16.g71de692 documentation" href="index.html"/>
+    <link rel="top" title="LCLS Lightpath 0.2.2+24.g23ebeda documentation" href="index.html"/>
         <link rel="next" title="BeamPath" href="path.html"/>
         <link rel="prev" title="Introduction" href="tutorial.html"/> 
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.2.2+16.g71de692
+                0.2.2+24.g23ebeda
               </div>
             
           
@@ -170,15 +170,26 @@ beampath will include devices in both the FEE and the XRT. The
 where the beam is and what the state of the MPS system is currently.</p>
 <dl class="class">
 <dt id="lightpath.LightController">
-<em class="property">class </em><code class="descclassname">lightpath.</code><code class="descname">LightController</code><span class="sig-paren">(</span><em>*devices</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lightpath/controller.html#LightController"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightpath.LightController" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">lightpath.</code><code class="descname">LightController</code><span class="sig-paren">(</span><em>client</em>, <em>endstations=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lightpath/controller.html#LightController"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightpath.LightController" title="Permalink to this definition">¶</a></dt>
 <dd><p>Controller for the LCLS Lightpath</p>
 <p>Handles grouping devices into beamlines and joining paths together. Also
 provides an overview of the state of the entire beamline</p>
+<dl class="attribute">
+<dt id="lightpath.LightController.containers">
+<code class="descname">containers</code><a class="headerlink" href="#lightpath.LightController.containers" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – List of happi Device objects that were unable to be instantiated</p>
+</dd></dl>
+
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> – LCLS Devices</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>client</strong> (<em>happi.Client</em>) – Happi Client</li>
+<li><strong>endstations</strong> (<em>list</em><em>, </em><em>optional</em>) – List of experimental endstations to load BeamPath objects for. If left
+as None, all endstations will be loaded</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
@@ -198,6 +209,24 @@ provides an overview of the state of the entire beamline</p>
 <dt id="lightpath.LightController.incident_devices">
 <code class="descname">incident_devices</code><a class="headerlink" href="#lightpath.LightController.incident_devices" title="Permalink to this definition">¶</a></dt>
 <dd><p>List of all devices in contact with photons along the beamline</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lightpath.LightController.load_beamline">
+<code class="descname">load_beamline</code><span class="sig-paren">(</span><em>endstation</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lightpath/controller.html#LightController.load_beamline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightpath.LightController.load_beamline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a beamline from the provided happi client</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>endstation</strong> (<em>str</em>) – Name of endstation to load</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>path</strong></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="path.html#lightpath.path.BeamPath" title="lightpath.path.BeamPath">BeamPath</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -266,7 +295,7 @@ provides an overview of the state of the entire beamline</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.2.2+16.g71de692',
+            VERSION:'0.2.2+24.g23ebeda',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
